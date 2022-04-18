@@ -23,15 +23,20 @@
 
 
 ## Project Description
- > Your project description should summarize the project you are proposing. Be sure to include:
- > * Why is it important or interesting to you?
- > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
- >   * [toolname](link) - Short description
- > * What will be the input/output of your project? What are the features that the project provides?
- > 
- > This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
- > 
- > You also need to set up an empty project board by choosing the  “Automated kanban with review” option on Github. You should also have a Backlog and In testing columns added.
+> * This is important because it teaches us to implement real-world applications. Databases are used in almost every real-world application, so understanding the caveats and their mechanism will deepen our understanding of databases, even in the simplest form. This is interesting because it allows us to practice the relations we’ve learned. For example, in CS 10C we implemented different data structures, and applying those practically and deeply is greatly interesting to us. Additionally, it allows us to further our real-world application knowledge, as mentioned above.
+
+> * We plan to use C++ for our language with REST libraries, allowing us to communicate with the database and its potential clients. The data that will be stored will be JSON, so a JSON library will also be used. 
+
+> For personal technologies/clients, we will be using VSCode as our IDE and Github as our version control.
+
+> Features Provided:
+> Set - it will ask for an id and data object to store, and then using a hash algorithm store the data in a position within the hash table given by the key.
+
+> Find-  Given an id, using a hash algorithm it will find a key and then retrieve the stored data at the location.
+
+> Delete- given an id, Using the hash algorithm, it will find the data stored at the location and delete it.
+
+
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to:
  > * Create an "Epic" (note) for each feature. Place these epics in the `Backlog` column
