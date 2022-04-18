@@ -26,15 +26,21 @@
 > * This is important because it teaches us to implement real-world applications. Databases are used in almost every real-world application, so understanding the caveats and their mechanism will deepen our understanding of databases, even in the simplest form. This is interesting because it allows us to practice the relations we’ve learned. For example, in CS 10C we implemented different data structures, and applying those practically and deeply is greatly interesting to us. Additionally, it allows us to further our real-world application knowledge, as mentioned above.
 
 > * We plan to use C++ for our language with REST libraries, allowing us to communicate with the database and its potential clients. The data that will be stored will be JSON, so a JSON library will also be used. 
+> * [RESTCPP](https://github.com/microsoft/cpprestsdk) - REST API for CPP
+> * [JSONCPP](https://github.com/open-source-parsers/jsoncpp) - JSON for CPP
+
+
 
 > * For personal technologies/clients, we will be using VSCode as our IDE and Github as our version control.
+> * [VSCODE](https://code.visualstudio.com/) - a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.
+> * [Github](https://github.com/) - is a web-based version-control and collaboration platform for software developers.
 
 > Features Provided:
-> * Set - it will ask for an id and data object to store, and then using a hash algorithm store the data in a position within the hash table given by the key.
+> * **Set** - it will ask for an id and data object to store, and then using a hash algorithm store the data in a position within the hash table given by the key.
 
-> * Find-  Given an id, using a hash algorithm it will find a key and then retrieve the stored data at the location.
+> * **Find** -  Given an id, using a hash algorithm it will find a key and then retrieve the stored data at the location.
 
-> * Delete- given an id, Using the hash algorithm, it will find the data stored at the location and delete it.
+> * **Delete** - given an id, Using the hash algorithm, it will find the data stored at the location and delete it.
 
 
  > ## Phase II
