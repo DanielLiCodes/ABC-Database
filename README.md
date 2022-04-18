@@ -27,14 +27,14 @@
 
 > * We plan to use C++ for our language with REST libraries, allowing us to communicate with the database and its potential clients. The data that will be stored will be JSON, so a JSON library will also be used. 
 
-> For personal technologies/clients, we will be using VSCode as our IDE and Github as our version control.
+> * For personal technologies/clients, we will be using VSCode as our IDE and Github as our version control.
 
 > Features Provided:
-> Set - it will ask for an id and data object to store, and then using a hash algorithm store the data in a position within the hash table given by the key.
+> * Set - it will ask for an id and data object to store, and then using a hash algorithm store the data in a position within the hash table given by the key.
 
-> Find-  Given an id, using a hash algorithm it will find a key and then retrieve the stored data at the location.
+> * Find-  Given an id, using a hash algorithm it will find a key and then retrieve the stored data at the location.
 
-> Delete- given an id, Using the hash algorithm, it will find the data stored at the location and delete it.
+> * Delete- given an id, Using the hash algorithm, it will find the data stored at the location and delete it.
 
 
  > ## Phase II
