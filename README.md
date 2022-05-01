@@ -28,9 +28,14 @@
  # Phase II
  
  ## UML Diagram
-![umldiagram](https://user-images.githubusercontent.com/64798216/166168503-db77f2dc-c369-4c99-ab9c-8bb30eb916d2.jpeg)
-For our class diagram, we have one main database class, with 3 sub databases for different data types. The database is comprised of that, as well as normal Database node, that can be modified and compared to other nodes.
-The nodes consist of two different types of nodes, a regular JSON node for easy access, as well as a string node that just holds a string.
+![uml diagram](https://user-images.githubusercontent.com/64798216/166169702-c9ed200e-38f7-452b-90c1-6907c05a11b6.png)
+
+For our class diagram, we have one main database abstract class, which is the base database. That's linked to 3 different types of databases, for arrays, hashtables, and linked lists. Those databases each have their own methods and variables according to what a linked list, array, and hashtable have, such as a head/tail for linked list, and a resize function for array.
+
+The database then has another abstract class, which is the database node. The database node class is extended by a string node, as well as a json node class. In each database class such as the hashtable class, it will be made using the database nodes. For example, the hashmap class has an array of database nodes, which are then used in the hashmap. 
+
+The json node allows for quick access from our api calls, and the string node is just a regular string. 
+
 
  > In addition to completing the "Class Diagram" section below, you will need to:
  > * Create an "Epic" (note) for each feature. Place these epics in the `Backlog` column
