@@ -44,6 +44,10 @@
 
 
  > ## Phase II
+![UML Diagram](https://imgur.com/a/4kWCKju)
+For our class diagram, we have one main database class, with 3 sub databases for different data types. The database is comprised of that, as well as normal Database node, that can be modified and compared to other nodes.
+The nodes consist of two different types of nodes, a regular JSON node for easy access, as well as a string node that just holds a string.
+
  > In addition to completing the "Class Diagram" section below, you will need to:
  > * Create an "Epic" (note) for each feature. Place these epics in the `Backlog` column
  > * Complete your first *sprint planning* meeting to plan out the next 7 days of work.
