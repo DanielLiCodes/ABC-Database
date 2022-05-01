@@ -28,7 +28,8 @@
  # Phase II
  
  ## UML Diagram
-![uml diagram](https://user-images.githubusercontent.com/64798216/166169702-c9ed200e-38f7-452b-90c1-6907c05a11b6.png)
+![UML Diagram](https://user-images.githubusercontent.com/64798216/166169966-2decf51f-9cdf-435f-8c65-9181d8f42210.jpeg)
+
 
 For our class diagram, we have one main database abstract class, which is the base database. That's linked to 3 different types of databases, for arrays, hashtables, and linked lists. Those databases each have their own methods and variables according to what a linked list, array, and hashtable have, such as a head/tail for linked list, and a resize function for array.
 
