@@ -1,35 +1,17 @@
- > As you complete each section you **must** remove the prompt text. Every *turnin* of this project includes points for formatting of this README so keep it clean and keep it up to date. 
- > Prompt text is any lines beginning with "\>"
- > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
-# ABC - Database
- > Your author list below should include links to all members GitHub (remove existing author).
- 
- > Authors: \<[Shashank Biju ](https://github.com/shadJack127)\>
- >          \<[Daniel Li](https://github.com/DanielLiCodes)\>
- >          \<[Nisarg Patel ](https://github.com/NisargIO)\>
- >          \<[Marcus Lee ](https://github.com/MLee2003)\>
- 
- > You will be forming a group of **FOUR** students and working on an interesting project. The project has 4 phases, each one with specific requirements. A list of proposed project ideas that have been successful in previous quarters is listed in the project specifications document on Canvas. You can select an idea from the list, start thinking about the features you will implement, what design patterns can help you implement them, and why. If you want to propose your own original idea, you will have to contact an instructor to discuss the project and obtain written permission before you submit your project proposal (Phase 1). Your project needs to implement at least one design pattern iteratively, which you will have to justify in later phases.The project work should be divided almost equally among team members. You can of course help each other, but it needs to be clear who will be responsible for which features. Additionally, you are expected to follow Scrum patterns, specifically the use of a Scrum (Project) board, Sprints, and Scrum meetings. While Daily Scrums are not required we highly encourage you to practice them.
+## ABC DATABASE
 
- 
- > ## Expectations
- > * Incorporate **at least one** design pattern
- >   * It is recommended that you include a design pattern that we will teach this session (Composite, Strategy, or Visitor)
- > * Your project should be implemented in C++. If you wish to choose anoher programming language (e.g. Java, Python), please discuss with your lab TA to obtain permission.
- > * You can incorporate additional technologies/tools but they must be approved (in writing) by the instructor or the TA.
- > * Each member of the group **must** be committing code regularly and make sure their code is correctly attributed to them. We will be checking attributions to determine if there was equal contribution to the project.
- > * Each member of the group must actively participate in the Github Project board and reviewing commited code.
-> * All project phases are to be submitted to this GitHub repository. You should modify this README file to reflect the different phases of the project. In addition, you should regularly hold sprint meetings with your group. You will need to hold two scrum/check-in meetings with your lab TA/reader in two different weeks in addition to the final demo.
+
+ > Authors: [Shashank Biju, ](https://github.com/shadJack127)
+ >          [Daniel Li,](https://github.com/DanielLiCodes)
+ >          [Nisarg Patel, ](https://github.com/NisargIO)
+ >          [Marcus Lee ](https://github.com/MLee2003)
 
 
 ## Project Description
-> * This is important because it teaches us to implement real-world applications. Databases are used in almost every real-world application, so understanding the caveats and their mechanism will deepen our understanding of databases, even in the simplest form. This is interesting because it allows us to practice the relations we’ve learned. For example, in CS 10C we implemented different data structures, and applying those practically and deeply is greatly interesting to us. Additionally, it allows us to further our real-world application knowledge, as mentioned above.
 
 > * We plan to use C++ for our language with REST libraries, allowing us to communicate with the database and its potential clients. The data that will be stored will be JSON, so a JSON library will also be used. 
 > * [RESTCPP](https://github.com/microsoft/cpprestsdk) - REST API for CPP
 > * [JSONCPP](https://github.com/open-source-parsers/jsoncpp) - JSON for CPP
-
-
 
 > * For personal technologies/clients, we will be using VSCode as our IDE and Github as our version control.
 > * [VSCODE](https://code.visualstudio.com/) - a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.
