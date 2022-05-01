@@ -26,6 +26,8 @@
 
 
  # Phase II
+ 
+ ##UML Diagram
 ![umldiagram](https://user-images.githubusercontent.com/64798216/166168503-db77f2dc-c369-4c99-ab9c-8bb30eb916d2.jpeg)
 For our class diagram, we have one main database class, with 3 sub databases for different data types. The database is comprised of that, as well as normal Database node, that can be modified and compared to other nodes.
 The nodes consist of two different types of nodes, a regular JSON node for easy access, as well as a string node that just holds a string.
