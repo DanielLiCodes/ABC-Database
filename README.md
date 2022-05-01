@@ -1,4 +1,4 @@
-## ABC DATABASE
+# ABC DATABASE
 
 
  > Authors: [Shashank Biju, ](https://github.com/shadJack127)
@@ -7,7 +7,7 @@
  >          [Marcus Lee ](https://github.com/MLee2003)
 
 
-## Project Description
+# Project Description
 
 > * We plan to use C++ for our language with REST libraries, allowing us to communicate with the database and its potential clients. The data that will be stored will be JSON, so a JSON library will also be used. 
 > * [RESTCPP](https://github.com/microsoft/cpprestsdk) - REST API for CPP
@@ -17,7 +17,7 @@
 > * [VSCODE](https://code.visualstudio.com/) - a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.
 > * [Github](https://github.com/) - is a web-based version-control and collaboration platform for software developers.
 
-> Features Provided:
+## Features Provided:
 > * **Set** - it will ask for an id and data object to store, and then using a hash algorithm store the data in a position within the hash table given by the key.
 
 > * **Find** -  Given an id, using a hash algorithm it will find a key and then retrieve the stored data at the location.
@@ -25,7 +25,7 @@
 > * **Delete** - given an id, Using the hash algorithm, it will find the data stored at the location and delete it.
 
 
- > ## Phase II
+ # Phase II
 ![umldiagram](https://user-images.githubusercontent.com/64798216/166168503-db77f2dc-c369-4c99-ab9c-8bb30eb916d2.jpeg)
 For our class diagram, we have one main database class, with 3 sub databases for different data types. The database is comprised of that, as well as normal Database node, that can be modified and compared to other nodes.
 The nodes consist of two different types of nodes, a regular JSON node for easy access, as well as a string node that just holds a string.
