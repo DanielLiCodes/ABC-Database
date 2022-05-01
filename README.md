@@ -32,9 +32,9 @@
 
 For our class diagram, we have one main database abstract class, which is the base database. That's linked to 3 different types of databases, for arrays, hashtables, and linked lists. Those databases each have their own methods and variables according to what a linked list, array, and hashtable have, such as a head/tail for linked list, and a resize function for array.
 
-The database then has another abstract class, which is the database node. The database node class is extended by a string node, as well as a json node class. In each database class such as the hashtable class, it will be made using the database nodes. For example, the hashmap class has an array of database nodes, which are then used in the hashmap. 
+The database then has another abstract class, which is the database node. The database node class is extended by a string node, as well as a JSON node class. In each database class such as the hashtable class, it will be made using the database nodes. For example, the hashmap class has an array of database nodes, which are then used in the hashmap. 
 
-The json node allows for quick access from our api calls, and the string node is just a regular string. 
+The JSON node allows for quick access from our api calls, and the string node is just a regular string. 
 
 
  > In addition to completing the "Class Diagram" section below, you will need to:
