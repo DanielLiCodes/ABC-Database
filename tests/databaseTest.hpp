@@ -16,4 +16,8 @@ TEST(PowTest, EvalPowNeg){
    EXPECT_EQ(8, 8);
 }
 
+Test(PowTest, EvalSort){
+   EXPECT_EQ(8, 8);
+}
+
 #endif
