@@ -4,6 +4,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+class ArrayDatabase : Database{
 private:
     DatabaseNode* array[]
     int size;
@@ -29,5 +30,5 @@ public:
         strat->sort(array);
         delete strat;
     }
-
+}
 #endif
