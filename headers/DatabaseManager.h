@@ -3,19 +3,27 @@
 
 #include <map>
 #include <string>
+#include <vector>
 #include "Database.h"
+
 using namespace std;
 
+
+struct Credentials {
+    string user;
+    string password;
+};
 class DatabaseManager
 {
 private:
     map<string, string> accessability;
-    map<string, Database> data;
+    vector<Database> databases;
 
 public:
-    bool canAccess(const string &user, const string &password);
-    void setAccess(const string &user, const string &password);
-    Database getDatabase(const string &name);
+    bool canAccess(const Credentials &acc);
+    bool setAccess(const Credentials &acc, const Credentials &_new);
+    Database getDatabase(const string &name) const;
+    Database createDatabase(const string &name, const string &type);
 };
 
 #endif
