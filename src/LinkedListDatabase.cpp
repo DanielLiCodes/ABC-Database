@@ -57,9 +57,23 @@ void LinkedListDatabase::remove(const string &context){
     string temp;
     ss >> temp >> temp >> temp;
     if(temp.substr(0,4) == "json"){
-        for(int i = 0; i < arr.size(); i++){
-            if(arr[i]->print() ==  temp.substr(6,temp.length()-6)){
-                arr.erase(arr.begin()+i);
+        LinkedListNode* temp2 = head;
+        if(head->data->print() == temp.substr(6, temp.length()-6)){
+            head = head->next;
+            delete temp2;
+            if(!head) tail = nullptr;
+        }else{
+            temp2 = temp2->next;
+            while(temp2){
+                if(temp2->data->print() == temp.substr(6, temp.length()-6)){
+                    LinkedListNode* temp3 = temp2->next;
+                    temp2->next = temp3 ? temp3->next : nullptr;
+                    delete temp3;
+                    if(!temp2->next) tail = temp2;
+                    break;
+                }else{
+                    temp2 = temp2->next;
+                }
             }
         }
     }
