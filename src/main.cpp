@@ -1,8 +1,14 @@
-#include "../headers/DatabaseManager.h"
 #include "HTTPServer.cpp"
 using namespace Pistache;
 
 
 int main() {
-     Http::listenAndServe<HelloHandler>("*:9080");
+    Address addr(Ipv4::any(), Port(9080));
+    auto opts = Http::Endpoint::options()
+                    .threads(1);
+
+    Http::Endpoint server(addr);
+    server.init(opts);
+    server.setHandler(Http::make_handler<HelloHandler>());
+    server.serve();
 }
