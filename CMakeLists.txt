@@ -24,7 +24,7 @@ ADD_EXECUTABLE(test
 # -----------------
 
 # Pistache (HTTP)
-TARGET_LINK_LIBRARIES(ABCdatabase Pistache)
+TARGET_LINK_LIBRARIES(ABCdatabase pistache)
 
 
 # Google Test (TESTING)
