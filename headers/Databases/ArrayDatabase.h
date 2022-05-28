@@ -1,3 +1,4 @@
+#pragma once
 #ifndef __ARRAYDATABASE_H__
 #define __ARRAYDATABASE_H__
 

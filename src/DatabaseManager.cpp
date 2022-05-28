@@ -1,5 +1,5 @@
 #include "../headers/DatabaseManager.h"
-#include "../headers/Databases/ArrayDatabase.h"
+#include "ArrayDatabase.cpp"
 // #include "../headers/Databases/HashTableDatabase.h"
 // #include "../headers/Databases/LinkedListDatabase.h"
 
@@ -50,4 +50,12 @@ void DatabaseManager::createDatabase(const string &name, const string &type) {
     // else if(type == "linkedlist") {
     //     databases.push_back(new LinkedListDatabase(name));
     // }
+}
+
+vector<Database*> DatabaseManager::getDatabases() const {
+    return databases;
+}
+
+int DatabaseManager::size() const {
+    return databases.size();
 }
