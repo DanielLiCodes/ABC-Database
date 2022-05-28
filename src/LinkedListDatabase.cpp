@@ -33,15 +33,18 @@ void LinkedListDatabase::add(const string &context){
         }
     }
 }
+
 DatabaseNode* LinkedListDatabase::get(const string &context){
     istringstream ss(context);
     string temp;
     ss >> temp >> temp >> temp;
     if(temp.substr(0,4) == "json"){
-        for(int i = 0; i < arr.size(); i++){
-            if(arr[i]->print() ==  temp.substr(6,temp.length()-6)){
-                return arr[i];
+        LinkedListNode* temp2 = head;
+        while(temp2){
+            if(temp2->data->print() ==  temp.substr(6,temp.length()-6)){
+                return temp2->data;
             }
+            temp2 = temp2->next;
         }
     }
     return nullptr;
