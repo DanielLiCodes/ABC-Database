@@ -5,10 +5,10 @@
 #include "DatabaseNode.h"
 
 
-#include "../../rapidjson/document.h"
-#include "../../rapidjson/pointer.h"
-#include "../../rapidjson/writer.h"
-#include "../../rapidjson/stringbuffer.h"
+#include "rapidjson/document.h"
+#include "rapidjson/pointer.h"
+#include "rapidjson/writer.h"
+#include "rapidjson/stringbuffer.h"
 
 using namespace std;
 using namespace rapidjson;
