@@ -16,13 +16,10 @@ using namespace rapidjson;
 class JSONDatabaseNode : public DatabaseNode {
     private:
         Document data;
-        string key;
     public:
-        // JSONDatabaseNode(const string &key) {
-        //     this->key = key;
-        //     data.SetObject();
-        // }
-        JSONDatabaseNode();
+        JSONDatabaseNode(const string &key): DatabaseNode(key) {
+            data.SetObject();
+        }
         void add(const string &context);
         string get(const string &context) const;
         void set(const string &context);

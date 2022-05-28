@@ -10,7 +10,7 @@ using namespace std;
 class Database
 {
 protected:
-    //string name;
+    string name;
     int size;
     unordered_map<string, string> accessability;
     bool canAccess(string username, string password){

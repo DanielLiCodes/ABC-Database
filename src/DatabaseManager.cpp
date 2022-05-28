@@ -1,5 +1,5 @@
 #include "../headers/DatabaseManager.h"
-// #include "../headers/Databases/ArrayDatabase.h"
+#include "../headers/Databases/ArrayDatabase.h"
 // #include "../headers/Databases/HashTableDatabase.h"
 // #include "../headers/Databases/LinkedListDatabase.h"
 
@@ -41,5 +41,13 @@ Database* DatabaseManager::getDatabase(const string &name) const {
 }
 
 void DatabaseManager::createDatabase(const string &name, const string &type) {
-    return;
+    if(type == "array") {
+        databases.push_back(new ArrayDatabase(name));
+    }
+    // else if(type == "hashtable") {
+    //     databases.push_back(new HashTableDatabase(name));
+    // }
+    // else if(type == "linkedlist") {
+    //     databases.push_back(new LinkedListDatabase(name));
+    // }
 }

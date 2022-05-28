@@ -8,7 +8,10 @@ using namespace std;
 
 
 class DatabaseNode {
+    protected:
+        string key;
     public:
+        DatabaseNode(const string &key): key(key){}
         virtual void add(const string &context) = 0;
         virtual string get(const string &context) const = 0;
         virtual void set(const string &context) = 0;
@@ -26,6 +29,7 @@ class DatabaseNode {
                 copy = copy.substr(pos + 1);
                 pos = copy.find(" ");
             }
+            result.push_back(copy.substr(pos + 1));
             return result;
           }
 };
