@@ -14,7 +14,6 @@ ADD_SUBDIRECTORY(pistache)
 # Executables
 # -----------------
 ADD_EXECUTABLE(ABCdatabase
-    src/Nodes/JSONNode.cpp
     src/main.cpp
 )
 ADD_EXECUTABLE(test
