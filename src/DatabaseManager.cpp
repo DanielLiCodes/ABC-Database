@@ -41,15 +41,15 @@ Database* DatabaseManager::getDatabase(const string &name) const {
 }
 
 void DatabaseManager::createDatabase(const string &name, const string &type) {
-    if(type === "hash" || type === "hashtable") {
+    if(type == "hash" || type == "hashtable") {
         Database* db = new HashTableDatabase(name, type);
         databases.push_back(db);
     }
-    else if(type === "linked" || type === "linkedlist") {
+    else if(type == "linked" || type == "linkedlist") {
         Database* db = new LinkedListDatabase(name, type);
         databases.push_back(db);
     }
-    else if(type === "arr" || type === "array") {
+    else if(type == "arr" || type == "array") {
         Database* db = new ArrayDatabase(name, type);
         databases.push_back(db);
     }
