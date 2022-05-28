@@ -1,7 +1,7 @@
 #include "../headers/DatabaseManager.h"
-#include "../headers/Databases/ArrayDatabase.h"
-#include "../headers/Databases/HashTableDatabase.h"
-#include "../headers/Databases/LinkedListDatabase.h"
+// #include "../headers/Databases/ArrayDatabase.h"
+// #include "../headers/Databases/HashTableDatabase.h"
+// #include "../headers/Databases/LinkedListDatabase.h"
 
 // Adds default username and password
 DatabaseManager::DatabaseManager() {
@@ -41,16 +41,5 @@ Database* DatabaseManager::getDatabase(const string &name) const {
 }
 
 void DatabaseManager::createDatabase(const string &name, const string &type) {
-    if(type == "hash" || type == "hashtable") {
-        Database* db = new HashTableDatabase(name, type);
-        databases.push_back(db);
-    }
-    else if(type == "linked" || type == "linkedlist") {
-        Database* db = new LinkedListDatabase(name, type);
-        databases.push_back(db);
-    }
-    else if(type == "arr" || type == "array") {
-        Database* db = new ArrayDatabase(name, type);
-        databases.push_back(db);
-    }
+    return;
 }

@@ -20,12 +20,12 @@ class JSONDatabaseNode : public DatabaseNode {
         JSONDatabaseNode(const string &key): DatabaseNode(key) {
             data.SetObject();
         }
-        ~JSONDatabaseNode();
         void add(const string &context);
         string get(const string &context) const;
         void set(const string &context);
         void remove(const string &context);
         string print();
+        
 };
 
 #endif

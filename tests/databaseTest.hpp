@@ -4,13 +4,13 @@
 #include "gtest/gtest.h"
 #include <string>
 
-#include "../headers/Nodes/DatabaseNode.h"
 #include "../headers/Nodes/JSONNode.h"
 
 
 TEST(DBTest, getAllParameters){
-   DatabaseNode* db = new JSONDatabaseNode("Test");
-   vector<string> params1 = db->getAllParameters("first second third fourth fifth");
+   JSONDatabaseNode* db = new JSONDatabaseNode("Test");
+   string str = "first second";
+   vector<string> params1 = db->getAllParameters(str);
    EXPECT_EQ("first", params1.at(0));
    EXPECT_EQ(8, 8);
    EXPECT_EQ(8, 8);
