@@ -10,8 +10,8 @@ private:
         DatabaseNode* data;
         LinkedListNode(DatabaseNode* data, LinkedListNode* next=nullptr): data(data), next(next){}
     };
-    LinkedListNode* head;
-    LinkedListNode* tail;
+    LinkedListNode* head = nullptr;
+    LinkedListNode* tail = nullptr;
 public:
     string at(int index);
     void add(const string &context);
