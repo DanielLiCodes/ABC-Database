@@ -1,14 +1,11 @@
-// #include "HTTPServer.cpp"
+#include "HTTPServer.cpp"
 #include "./Nodes/JSONNode.cpp"
-#include "http/httplib.h"
+#include "DatabaseManager.cpp"
+
+using namespace httplib;
 
 int main() {
-    httplib::Server svr;
-
-
-svr.Get("/hi", [](const httplib::Request &, httplib::Response &res) {
-  res.set_content("Hello World!", "text/plain");
-});
-
-svr.listen("0.0.0.0", 8080);
+    DatabaseManager* manager = new DatabaseManager();
+    Server* svr = setupRoutes(manager);
+    svr->listen("0.0.0.0", 8080);
 }       

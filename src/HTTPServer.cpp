@@ -1,17 +1,35 @@
-// #include <pistache/endpoint.h>
-// #include <pistache/http.h>
-// #include <pistache/router.h>
+#include "http/httplib.h"
+#include "DatabaseManager.cpp"
+using namespace httplib;
 
-// using namespace Pistache;
-// using namespace Rest;
+Server* setupRoutes(DatabaseManager* manager) {
+    Server* svr = new Server();
 
-// void HelloWorld(const Rest::Request& request, Http::ResponseWriter response) {
-//      response.send(Http::Code::Ok, "Hello, World\n");
-// }
 
-// Rest::Router setupRoutes() {
-//     Rest::Router router;
-//     Routes::Get(router, "/hw", Routes::bind(&HelloWorld));
-//     return router;
-// }
+    // GET /create
+    svr->Get("/create", [&](const Request &req, Response &res) {
+        auto val = req.get_param_value("name");
+        auto type = req.get_param_value("type");
+        if(val != "" && type != "") {
+            manager->createDatabase(val, type);
+            res.set_content("Database created", "text/plain");
+        }
+        else {
+            res.status = 400;
+            res.set_content("Invalid request", "text/plain");
+        }
+        res.set_content(val, "text/plain");
+    });
+
+
+    // GET /databases/list
+    svr->Get("/databases/list", [&](const Request &req, Response &res) {
+        stringstream ss;
+        for(unsigned int i = 0; i < manager->size(); i++) {
+            ss << manager->getDatabases()[i]->getName() << endl;
+        }
+        res.set_content(ss.str(), "text/plain");
+    });
+    return svr;
+}
 

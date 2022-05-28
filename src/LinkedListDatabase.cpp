@@ -1,5 +1,5 @@
 #include "../headers/Databases/LinkedListDatabase.h"
-#include "../src/nodes/JSONNode.cpp"
+#include "Nodes/JSONNode.cpp"
 
 #include <string>
 #include <sstream>
