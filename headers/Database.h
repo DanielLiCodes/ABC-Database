@@ -1,3 +1,4 @@
+#pragma once
 #ifndef __DATABASE_H__
 #define __DATABASE_H__
 
@@ -10,7 +11,7 @@ using namespace std;
 class Database
 {
 protected:
-    //string name;
+    string name;
     int size;
     unordered_map<string, string> accessability;
     bool canAccess(string username, string password){
@@ -36,7 +37,7 @@ public:
 
     void sort();
     void print();
-    string getName();
+    string getName() {return name;};
     int getSize();
 };
 

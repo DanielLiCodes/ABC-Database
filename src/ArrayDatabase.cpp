@@ -1,6 +1,7 @@
 #include "../headers/Databases/ArrayDatabase.h"
 #include "../headers/SortingStrats/SortingStrategy.hpp"
-#include "../src/nodes/JSONNode.cpp"
+#include "../headers/Nodes/JSONNode.h"
+#include "../headers/Nodes/StringNode.h"
 
 #include <string>
 #include <sstream>
@@ -23,17 +24,22 @@ string ArrayDatabase::at(int index){
     return arr[index]->print();
 }
 
-//example context add/str
+//EXAMPLE CONTEXT: "json <rest send to context of Node>"
+//EXAMPLE CONTEXT: "string <rest send to context of Node>"
 void ArrayDatabase::add(const string &context){
-    istringstream ss(context);
-    int idx = context.rfind('/');
-    string name = context.substr(idx+1);
-    string temp;
-    ss >> temp >> temp >> temp;
-    if(temp.substr(0,4) == "json"){
-        arr.push_back(new JSONDatabaseNode(temp.substr(6,temp.length()-6)));
+    if(context.substr(0,4) == "json"){
+        JSONDatabaseNode* temp = new JSONDatabaseNode(context.substr(5));
+        temp->set(context.substr(5));
+        arr.push_back(temp);
+    }
+    else if(context.substr(0,6) == "string"){ 
+        // TODO:
     }
 }
+
+
+//EXAMPLE CONTEXT: "get <rest send to context of Node>"
+//EXAMPLE CONTEXT: "get <rest send to context of Node>"
 DatabaseNode* ArrayDatabase::get(const string &context){
     istringstream ss(context);
     string temp;
@@ -48,7 +54,7 @@ DatabaseNode* ArrayDatabase::get(const string &context){
     return nullptr;
 }    
 void ArrayDatabase::set(const string &context){
-    //??
+    return;
 }
 void ArrayDatabase::remove(const string &context){
     istringstream ss(context);

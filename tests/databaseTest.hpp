@@ -3,20 +3,40 @@
 
 #include "gtest/gtest.h"
 #include <string>
+#include <iostream>
+#include <vector>
 
-#include "../headers/Nodes/DatabaseNode.h"
-#include "../headers/Nodes/JSONNode.h"
-
+using namespace std;
+#include "../src/Nodes/JSONNode.cpp"
 
 TEST(DBTest, getAllParameters){
-   DatabaseNode* db = new JSONDatabaseNode("Test");
-   vector<string> params1 = db->getAllParameters("first second third fourth fifth");
-   EXPECT_EQ("first", params1.at(0));
-   EXPECT_EQ(8, 8);
-   EXPECT_EQ(8, 8);
-   EXPECT_EQ(8, 8);
+   JSONDatabaseNode node = JSONDatabaseNode("Kurs");
+   vector<string> params = node.getAllParameters("first second third fourth fifth");
+   EXPECT_EQ("first", params.at(0));
+   EXPECT_EQ("second", params.at(1));
+   EXPECT_EQ("third", params.at(2));
+   EXPECT_EQ("fourth", params.at(3));
+   EXPECT_EQ("fifth", params.at(4));
+}
 
-   // FINISH THIS MARCUS
+
+TEST(DBTest, AddNode){
+   JSONDatabaseNode node = JSONDatabaseNode("Kurs");
+   node.add("/john/jogn");
+   EXPECT_EQ("{\"john\":{\"jogn\":null}}", node.print());
+}
+
+TEST(DBTest, SetNode){
+   JSONDatabaseNode node = JSONDatabaseNode("Kurs");
+   node.set("/john/jogn 18");
+   EXPECT_EQ("{\"john\":{\"jogn\":\"18\"}}", node.print());
+}
+
+
+TEST(DBTest, RenmovNode){
+   JSONDatabaseNode node = JSONDatabaseNode("Kurs");
+   node.set("/john/jogn 18");
+   EXPECT_EQ("{\"john\":{\"jogn\":\"18\"}}", node.print());
 }
 
 

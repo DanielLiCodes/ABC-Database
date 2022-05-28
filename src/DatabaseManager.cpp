@@ -1,7 +1,8 @@
 #include "../headers/DatabaseManager.h"
-#include "../headers/Databases/ArrayDatabase.h"
-#include "../headers/Databases/HashTableDatabase.h"
-#include "../headers/Databases/LinkedListDatabase.h"
+#include "ArrayDatabase.cpp"
+#include "Nodes/JSONNode.cpp"
+// #include "../headers/Databases/HashTableDatabase.h"
+// #include "../headers/Databases/LinkedListDatabase.h"
 
 // Adds default username and password
 DatabaseManager::DatabaseManager() {
@@ -41,16 +42,21 @@ Database* DatabaseManager::getDatabase(const string &name) const {
 }
 
 void DatabaseManager::createDatabase(const string &name, const string &type) {
-    if(type == "hash" || type == "hashtable") {
-        Database* db = new HashTableDatabase(name, type);
-        databases.push_back(db);
+    if(type == "array") {
+        databases.push_back(new ArrayDatabase(name));
     }
-    else if(type == "linked" || type == "linkedlist") {
-        Database* db = new LinkedListDatabase(name, type);
-        databases.push_back(db);
-    }
-    else if(type == "arr" || type == "array") {
-        Database* db = new ArrayDatabase(name, type);
-        databases.push_back(db);
-    }
+    // else if(type == "hashtable") {
+    //     databases.push_back(new HashTableDatabase(name));
+    // }
+    // else if(type == "linkedlist") {
+    //     databases.push_back(new LinkedListDatabase(name));
+    // }
+}
+
+vector<Database*> DatabaseManager::getDatabases() const {
+    return databases;
+}
+
+int DatabaseManager::size() const {
+    return databases.size();
 }
