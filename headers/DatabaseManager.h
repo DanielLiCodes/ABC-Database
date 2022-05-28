@@ -13,6 +13,7 @@ struct Credentials {
     string user;
     string password;
 };
+
 class DatabaseManager
 {
 private:
