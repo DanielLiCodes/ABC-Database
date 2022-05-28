@@ -16,7 +16,6 @@ public:
 
     void sort(string SortingStrategy="insertion");
     string at(int index);
-
     void add(const string &context);
     DatabaseNode* get(const string &context);
     void set(const string &context);

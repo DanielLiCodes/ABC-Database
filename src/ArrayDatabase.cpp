@@ -1,6 +1,6 @@
 #include "../headers/Databases/ArrayDatabase.h"
 #include "../headers/SortingStrats/SortingStrategy.hpp"
-#include "../src/nodes/JSONNode.cpp"
+#include "../src/Nodes/JSONNode.cpp"
 
 #include <string>
 #include <sstream>

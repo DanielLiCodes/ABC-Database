@@ -1,7 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.2)
 PROJECT(ABCDatabase)
 SET(CMAKE_CXX_STANDARD 17)
-ADD_COMPILE_OPTIONS(-pthread)
+ADD_COMPILE_OPTIONS(-pthread -fPIC)
 
 
 # -----------------
@@ -14,6 +14,7 @@ ADD_SUBDIRECTORY(pistache)
 # Executables
 # -----------------
 ADD_EXECUTABLE(ABCdatabase
+    src/Nodes/JSONNode.cpp
     src/main.cpp
 )
 ADD_EXECUTABLE(test
