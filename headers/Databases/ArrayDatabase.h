@@ -1,0 +1,1 @@
+class ArrayDatabase : public Database {}

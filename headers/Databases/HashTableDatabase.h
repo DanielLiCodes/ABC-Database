@@ -1,0 +1,1 @@
+class HashTableDatabase : public Database {}

@@ -1,7 +1,7 @@
 #include "../headers/DatabaseManager.h"
 #include "../headers/Databases/ArrayDatabase.h"
 #include "../headers/Databases/HashTableDatabase.h"
-#include "../headers/Databases/LinkListDatabase.h"
+#include "../headers/Databases/LinkedListDatabase.h"
 
 // Adds default username and password
 DatabaseManager::DatabaseManager() {
