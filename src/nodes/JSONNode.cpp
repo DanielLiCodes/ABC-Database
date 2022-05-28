@@ -1,30 +1,30 @@
 #include "../../headers/Nodes/JSONNode.h"
 
-// EXAMPLE CONTEXT : "add /john/age/18"
+// EXAMPLE CONTEXT : "/john/age"
 void JSONDatabaseNode::add(const string &context) {
     vector<string> params = getAllParameters(context);
-    Pointer(params.at(1).c_str()).Create(data);
+    Pointer(params.at(0).c_str()).Create(data);
 }
 
 
-// EXAMPLE CONTEXT : "set /john/age 18"
+// EXAMPLE CONTEXT : "/john/age 18"
 void JSONDatabaseNode::set(const string &context) {
     vector<string> params = getAllParameters(context);
-    Pointer(params.at(1).c_str()).Set(data, params.at(2).c_str());
+    Pointer(params.at(0).c_str()).Set(data, params.at(1).c_str());
 }
 
 
-// EXAMPLE CONTEXT : "get /john/age"
+// EXAMPLE CONTEXT : "/john/age"
 string JSONDatabaseNode::get(const string &context) const {
     vector<string> params = getAllParameters(context);
-    return Pointer(params.at(1).c_str()).Get(data)->GetString();
+    return Pointer(params.at(0).c_str()).Get(data)->GetString();
 }
 
 
-// EXAMPLE CONTEXT : "delete /john/age"
+// EXAMPLE CONTEXT : "/john/age"
 void JSONDatabaseNode::remove(const string &context) {
     vector<string> params = getAllParameters(context);
-    Pointer(params.at(1).c_str()).Erase(data);
+    Pointer(params.at(0).c_str()).Erase(data);
 }
 
 
