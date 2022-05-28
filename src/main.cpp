@@ -1,6 +1,4 @@
 #include "HTTPServer.cpp"
-#include "./Nodes/JSONNode.cpp"
-#include "DatabaseManager.cpp"
 
 using namespace httplib;
 

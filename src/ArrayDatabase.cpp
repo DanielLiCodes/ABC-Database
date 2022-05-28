@@ -48,7 +48,7 @@ DatabaseNode* ArrayDatabase::get(const string &context){
     return nullptr;
 }    
 void ArrayDatabase::set(const string &context){
-    //??
+    return;
 }
 void ArrayDatabase::remove(const string &context){
     istringstream ss(context);
