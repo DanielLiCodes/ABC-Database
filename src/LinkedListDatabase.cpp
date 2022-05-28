@@ -78,39 +78,3 @@ void LinkedListDatabase::remove(const string &context){
         }
     }
 }
-// #ifndef ARRAYDATABASE
-// #define ARRAYDATABASE
-// #include "SortingStrats/SortingStrategy.hpp"
-// #include <bits/stdc++.h>
-
-// #include "../headers/Database.h"
-// using namespace std;
-
-// class ArrayDatabase : Database{
-// private:
-//     DatabaseNode *arr = nullptr;
-//     int size;
-// public:
-//     string at(unsigned int index){
-//         if(index < 0 || index >= size) return "";
-//         return arr[index];
-//     }
-    
-//     unsigned int size(){
-//         return size;
-//     }
-    
-//     void sort(string sortStrat="insertion"){
-//         SortingStrategy* strat = nullptr;
-//         if(toLower(sortStrat) == "bogo"){
-//             strat = new BogoSort(size);
-//         }else if(toLower(sortStrat) == "quick"){
-//             strat = new QuickSort(size);
-//         }else{
-//             strat = new InsertionSort(size);
-//         }
-//         strat->sort(array);
-//         delete strat;
-//     }
-// }
-// #endif
