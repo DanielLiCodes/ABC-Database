@@ -6,3 +6,6 @@
 	path = pistache
 	url = https://github.com/pistacheio/pistache
 	ignore = all
+[submodule "rapidjson"]
+	path = rapidjson
+	url = https://github.com/Tencent/rapidjson
