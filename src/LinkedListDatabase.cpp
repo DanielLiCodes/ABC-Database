@@ -24,7 +24,13 @@ void LinkedListDatabase::add(const string &context){
     string temp;
     ss >> temp >> temp >> temp;
     if(temp.substr(0,4) == "json"){
-        arr.push_back(new JSONDatabaseNode(temp.substr(6,temp.length()-6)));
+        if(head == nullptr){
+            head = new LinkedListNode(new JSONDatabaseNode(temp.substr(6,temp.length()-6)));
+            tail = head;
+        }else{
+            tail->next = new LinkedListNode(new JSONDatabaseNode(temp.substr(6,temp.length()-6)));
+            tail = tail->next;
+        }
     }
 }
 DatabaseNode* LinkedListDatabase::get(const string &context){
