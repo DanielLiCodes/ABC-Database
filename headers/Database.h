@@ -29,10 +29,10 @@ public:
         }
         return false;
     }
-    virtual DatabaseNode& add(const string &context) = 0;
-    virtual DatabaseNode& get(const string &context) = 0;
-    virtual DatabaseNode& set(const string &context) = 0;
-    virtual DatabaseNode& remove(const string &context) = 0;
+    virtual void add(const string &context) = 0;
+    virtual DatabaseNode* get(const string &context) = 0;
+    virtual void set(const string &context) = 0;
+    virtual void remove(const string &context) = 0;
 
     void sort();
     void print();
