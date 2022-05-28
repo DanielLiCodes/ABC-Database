@@ -13,7 +13,6 @@ public:
     DatabaseNode* get(const string &context);
     void set(const string &context);
     void remove(const string &context);
-
 };
 
 #endif
