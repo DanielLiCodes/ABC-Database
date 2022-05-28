@@ -1,4 +1,5 @@
 #include "HTTPServer.cpp"
+#include "DatabaseManager.cpp"
 using namespace Pistache;
 
 

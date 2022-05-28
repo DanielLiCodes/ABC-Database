@@ -21,10 +21,11 @@ private:
     vector<Database> databases;
 
 public:
+    DatabaseManager();
     bool canAccess(const Credentials &acc);
     bool setAccess(const Credentials &acc, const Credentials &_new);
-    Database getDatabase(const string &name) const;
-    Database createDatabase(const string &name, const string &type);
+    Database& getDatabase(const string &name) const;
+    Database& createDatabase(const string &name, const string &type);
 };
 
 #endif

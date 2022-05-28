@@ -15,11 +15,10 @@ private:
 
 public:
     Database();
-    ~Database();
-    virtual DatabaseNode add(const string &context) = 0;
-    virtual DatabaseNode get(const string &context) = 0;
-    virtual DatabaseNode set(const string &context) = 0;
-    virtual DatabaseNode remove(const string &context) = 0;
+    virtual DatabaseNode& add(const string &context) = 0;
+    virtual DatabaseNode& get(const string &context) = 0;
+    virtual DatabaseNode& set(const string &context) = 0;
+    virtual DatabaseNode& remove(const string &context) = 0;
 
     void sort();
     void print();
