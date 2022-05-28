@@ -30,7 +30,7 @@ find_package(Threads REQUIRED)
 
 
 # Pistache (HTTP)
-TARGET_LINK_LIBRARIES(ABCdatabase pistache RapidJSON Threads::Threads)
+TARGET_LINK_LIBRARIES(ABCdatabase pistache Threads::Threads)
 
 
 # Google Test (TESTING)

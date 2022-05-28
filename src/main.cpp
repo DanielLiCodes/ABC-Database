@@ -1,9 +1,6 @@
 #include "HTTPServer.cpp"
 #include "DatabaseManager.cpp"
 using namespace Pistache;
-
-#include "rapidjson/document.h"
-using namespace rapidjson;
 int main() {
     Document d;
     Rest::Router router = setupRoutes();
