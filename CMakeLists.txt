@@ -8,8 +8,8 @@ ADD_COMPILE_OPTIONS(-pthread -fPIC)
 # Subdirectory
 # -----------------
 ADD_SUBDIRECTORY(googletest)
-ADD_SUBDIRECTORY(pistache)
-include_directories(rapidjson)
+include_directories(include)
+
 # -----------------
 # Executables
 # -----------------
@@ -29,7 +29,7 @@ find_package(Threads REQUIRED)
 
 
 # Pistache (HTTP)
-TARGET_LINK_LIBRARIES(ABCdatabase pistache Threads::Threads)
+TARGET_LINK_LIBRARIES(ABCdatabase Threads::Threads)
 
 
 # Google Test (TESTING)

@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/**/*",
-                "${workspaceFolder}/googletest/googletest/include"
+                "${workspaceFolder}/googletest/googletest/include",
+                "${workspaceFolder}/include"
             ],
             "defines": [],
             "compilerPath": "/home/linuxbrew/.linuxbrew/bin/gcc-11",

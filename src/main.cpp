@@ -1,16 +1,14 @@
-#include "HTTPServer.cpp"
+// #include "HTTPServer.cpp"
 #include "./Nodes/JSONNode.cpp"
-using namespace Pistache;
+#include "http/httplib.h"
 
 int main() {
-    Rest::Router router = setupRoutes();
-    Address addr(Ipv4::any(), Port(9080));
-    auto opts = Http::Endpoint::options().threads(1);
-    Http::Endpoint server(addr);
+    httplib::Server svr;
 
 
-    
-    server.init(opts);
-    server.setHandler(router.handler());
-    server.serve();
-}
+svr.Get("/hi", [](const httplib::Request &, httplib::Response &res) {
+  res.set_content("Hello World!", "text/plain");
+});
+
+svr.listen("0.0.0.0", 8080);
+}       
