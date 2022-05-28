@@ -23,7 +23,7 @@ ADD_EXECUTABLE(test
 # -----------------
 # Linking Libraries
 # -----------------
-find_package(RapidJSON)
+find_package(RapidJSON REQUIRED)
 set(THREADS_PREFER_PTHREAD_FLAG ON) 
 find_package(Threads REQUIRED) 
 
