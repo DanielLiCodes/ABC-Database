@@ -9,7 +9,7 @@ using namespace std;
 
 class DatabaseNode {
     public:
-        DatabaseNode();
+        DatabaseNode(const string &key): key(key) {};
         ~DatabaseNode();
         virtual void add(const string &context) = 0;
         virtual string get(const string &context) const = 0;
@@ -28,6 +28,8 @@ class DatabaseNode {
             }
             return result;
           }
+    private:
+        string key; 
 };
 
 #endif
