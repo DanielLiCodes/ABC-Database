@@ -8,8 +8,7 @@
 
 
 TEST(DBTest, getAllParameters){
-   const string key = "key";
-   // JSONDatabaseNode* db = new JSONDatabaseNode(key);
+   JSONDatabaseNode* db = new JSONDatabaseNode();
    // EXPECT_EQ("first", params1.at(0));
    EXPECT_EQ(8, 8);
    EXPECT_EQ(8, 8);
