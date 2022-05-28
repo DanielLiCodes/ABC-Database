@@ -9,7 +9,7 @@
 
 
 TEST(DBTest, getAllParameters){
-   DatabaseNode* db = new JSONDatabaseNode();
+   DatabaseNode* db = new JSONDatabaseNode("Test");
    vector<string> params1 = db->getAllParameters("first second third fourth fifth");
    EXPECT_EQ("first", params1.at(0));
    EXPECT_EQ(8, 8);

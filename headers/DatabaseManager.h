@@ -25,7 +25,7 @@ public:
     bool canAccess(const Credentials &acc);
     bool setAccess(const Credentials &acc, const Credentials &_new);
     Database* getDatabase(const string &name) const;
-    Database* createDatabase(const string &name, const string &type);
+    void createDatabase(const string &name, const string &type);
 };
 
 #endif

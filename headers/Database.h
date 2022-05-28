@@ -3,7 +3,7 @@
 
 #include <map>
 #include <string>
-#include "DatabaseNode.h"
+#include "./Nodes/DatabaseNode.h"
 
 using namespace std;
 
