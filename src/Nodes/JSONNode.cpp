@@ -1,7 +1,5 @@
 #include "../../headers/Nodes/JSONNode.h"
 
-
-
 // EXAMPLE CONTEXT : "/john/age"
 void JSONDatabaseNode::add(const string &context) {
     vector<string> params = getAllParameters(context);

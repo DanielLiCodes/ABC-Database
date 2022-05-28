@@ -9,7 +9,7 @@ ADD_COMPILE_OPTIONS(-pthread -fPIC)
 # -----------------
 ADD_SUBDIRECTORY(googletest)
 ADD_SUBDIRECTORY(pistache)
-
+include_directories(rapidjson)
 # -----------------
 # Executables
 # -----------------
@@ -23,7 +23,6 @@ ADD_EXECUTABLE(test
 # -----------------
 # Linking Libraries
 # -----------------
-find_package(RapidJSON REQUIRED)
 set(THREADS_PREFER_PTHREAD_FLAG ON) 
 find_package(Threads REQUIRED) 
 
