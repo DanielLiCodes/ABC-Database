@@ -5,13 +5,13 @@
 using namespace Pistache;
 using namespace Rest;
 
-void HelloWord(const Rest::Request& request, Http::ResponseWriter response) {
+void HelloWorld(const Rest::Request& request, Http::ResponseWriter response) {
      response.send(Http::Code::Ok, "Hello, World\n");
 }
 
-Rest::Router routes_definer() {
+Rest::Router setupRoutes() {
     Rest::Router router;
-    Routes::Get(router, "/users/all", Routes::bind(&HelloWord));
+    Routes::Get(router, "/hw", Routes::bind(&HelloWorld));
     return router;
 }
 
