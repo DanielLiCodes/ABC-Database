@@ -17,7 +17,8 @@ class JSONDatabaseNode : public DatabaseNode {
     private:
         Document data;
     public:
-        JSONDatabaseNode(const string &key): DatabaseNode(key) {
+        JSONDatabaseNode(const string &key) {
+            this->key = key;
             data.SetObject();
         }
         void add(const string &context);
@@ -25,7 +26,9 @@ class JSONDatabaseNode : public DatabaseNode {
         void set(const string &context);
         void remove(const string &context);
         string print();
-        
+        string getKey() const;
+    private:
+        string key;
 };
 
 #endif

@@ -22,7 +22,7 @@ public:
 
     void sort();
     void print();
-    string getName();
+    string getName() {return name;};
     int getSize();
 };
 

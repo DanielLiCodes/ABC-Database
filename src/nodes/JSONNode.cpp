@@ -34,3 +34,7 @@ string JSONDatabaseNode::print() {
     data.Accept(writer);
     return buffer.GetString();
 }
+
+string JSONDatabaseNode::getKey() const {
+    return key;
+}
