@@ -29,16 +29,17 @@ bool DatabaseManager::setAccess(const Credentials &acc, const Credentials &_new)
     
 }
 
-Database& DatabaseManager::getDatabase(const string &name) const {
+Database* DatabaseManager::getDatabase(const string &name) const {
     for(unsigned int i = 0; i < databases.size(); i++) {
-        if(databases.at(i).getName() == name) {
-            return databases.at(i);
+        if(databases.at(i)->getName() == name) {
+            return databases[i];
         }
     }
 }
 
-Database& DatabaseManager::createDatabase(const string &name, const string &type) {
-    Database newDatabase(name, type);
-    databases.push_back(newDatabase);
-    return newDatabase;
+Database* DatabaseManager::createDatabase(const string &name, const string &type) {
+    // Database* db = new Database(name, type);
+    // databases.push_back(db);
+    // return db;
+    return null;
 }
