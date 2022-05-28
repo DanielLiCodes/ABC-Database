@@ -33,7 +33,7 @@ TEST(DBTest, SetNode){
 }
 
 
-TEST(DBTest, SetNode){
+TEST(DBTest, RenmovNode){
    JSONDatabaseNode node = JSONDatabaseNode("Kurs");
    node.set("/john/jogn 18");
    EXPECT_EQ("{\"john\":{\"jogn\":\"18\"}}", node.print());
