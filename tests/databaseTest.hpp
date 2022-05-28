@@ -17,8 +17,28 @@ TEST(DBTest, getAllParameters){
    EXPECT_EQ("third", params.at(2));
    EXPECT_EQ("fourth", params.at(3));
    EXPECT_EQ("fifth", params.at(4));
-   cout << params.size() << endl;
 }
+
+
+TEST(DBTest, AddNode){
+   JSONDatabaseNode node = JSONDatabaseNode("Kurs");
+   node.add("/john/jogn");
+   EXPECT_EQ("{\"john\":{\"jogn\":null}}", node.print());
+}
+
+TEST(DBTest, SetNode){
+   JSONDatabaseNode node = JSONDatabaseNode("Kurs");
+   node.set("/john/jogn 18");
+   EXPECT_EQ("{\"john\":{\"jogn\":\"18\"}}", node.print());
+}
+
+
+TEST(DBTest, SetNode){
+   JSONDatabaseNode node = JSONDatabaseNode("Kurs");
+   node.set("/john/jogn 18");
+   EXPECT_EQ("{\"john\":{\"jogn\":\"18\"}}", node.print());
+}
+
 
 
 #endif

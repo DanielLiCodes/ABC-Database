@@ -9,7 +9,12 @@ ADD_COMPILE_OPTIONS(-pthread -fPIC)
 # -----------------
 ADD_SUBDIRECTORY(googletest)
 ADD_SUBDIRECTORY(pistache)
-
+# ADD_LIBRARY(rapidjson 
+#     rapidjson/document.h
+#     rapidjson/pointer.h
+#     rapidjson/writer.h
+#     rapidjson/stringbuffer.h
+#    )
 # -----------------
 # Executables
 # -----------------
@@ -23,7 +28,6 @@ ADD_EXECUTABLE(test
 # -----------------
 # Linking Libraries
 # -----------------
-find_package(RapidJSON REQUIRED)
 set(THREADS_PREFER_PTHREAD_FLAG ON) 
 find_package(Threads REQUIRED) 
 
