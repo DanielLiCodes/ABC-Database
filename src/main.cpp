@@ -9,6 +9,6 @@ int main() {
 
     Http::Endpoint server(addr);
     server.init(opts);
-    server.setHandler(Http::make_handler<HelloHandler>());
+    server.setHandler(Http::make_handler<ServerHandler>());
     server.serve();
 }
