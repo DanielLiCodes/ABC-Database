@@ -36,8 +36,6 @@ void ArrayDatabase::add(const string &context){
 }
 DatabaseNode* ArrayDatabase::get(const string &context){
     istringstream ss(context);
-    int idx = context.rfind('/');
-    string name = context.substr(idx+1);
     string temp;
     ss >> temp >> temp >> temp;
     if(temp.substr(0,4) == "json"){
@@ -54,8 +52,6 @@ void ArrayDatabase::set(const string &context){
 }
 void ArrayDatabase::remove(const string &context){
     istringstream ss(context);
-    int idx = context.rfind('/');
-    string name = context.substr(idx+1);
     string temp;
     ss >> temp >> temp >> temp;
     if(temp.substr(0,4) == "json"){
