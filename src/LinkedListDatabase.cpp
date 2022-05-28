@@ -5,21 +5,15 @@
 #include <sstream>
 using namespace std;
 
-// void ArrayDatabase::sort(string sortStrat="insertion"){
-//     SortingStrategy* strat = nullptr;
-//     if(sortStrat == "bogo"){
-//         strat = new BogoSort(size);
-//     }else if(sortStrat == "quick"){
-//         strat = new QuickSort(size);
-//     }else{
-//         strat = new InsertionSort(size);
-//     }
-//     strat->sort(arr);
-//     delete strat;
-// }
 
 string LinkedListDatabase::at(int index){
-    return arr[index]->print();
+    LinkedListNode* temp = head;
+    int cur = 0;
+    while(temp && cur < index){
+        temp = temp->next;
+        cur++;
+    }
+    return temp->data->print();
 }
 
 //example context add/str
