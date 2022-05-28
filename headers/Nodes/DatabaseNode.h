@@ -29,6 +29,7 @@ class DatabaseNode {
                 copy = copy.substr(pos + 1);
                 pos = copy.find(" ");
             }
+            result.push_back(copy.substr(pos + 1));
             return result;
           }
 };

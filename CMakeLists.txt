@@ -13,12 +13,7 @@ ADD_SUBDIRECTORY(pistache)
 # -----------------
 # Executables
 # -----------------
-FILE(GLOB src
-     "*.h"
-     "*.cpp"
-)
 ADD_EXECUTABLE(ABCdatabase
-    ${src}
     src/main.cpp
 )
 ADD_EXECUTABLE(test

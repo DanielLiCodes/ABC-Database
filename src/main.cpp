@@ -1,14 +1,12 @@
 #include "HTTPServer.cpp"
-
-
-
+#include "./Nodes/JSONNode.cpp"
 using namespace Pistache;
+
 int main() {
     Rest::Router router = setupRoutes();
     Address addr(Ipv4::any(), Port(9080));
     auto opts = Http::Endpoint::options().threads(1);
     Http::Endpoint server(addr);
-
 
     
     server.init(opts);
