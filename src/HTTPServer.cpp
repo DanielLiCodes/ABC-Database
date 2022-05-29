@@ -58,24 +58,57 @@ Server *setupRoutes(DatabaseManager *manager)
                 DatabaseNode* node = db->get(key);
                 if(node != nullptr) {
                     res.set_content(node->print(), "text/plain");
+                    return;
                 }
                 else {
                     res.status = 404;
                     res.set_content("Key not found", "text/plain");
+                    return;
                 }
                 delete node;
             }
             else {
                 res.status = 404;
                 res.set_content("Database not found", "text/plain");
+                return;
             }
             delete db;
         }
         else {
             res.status = 400;
             res.set_content("Invalid request", "text/plain");
+            return;
         }
-        return;
+    });
+
+
+    
+    // GET /database/add [:)]
+    svr->Get("/database/add", [manager](const Request &req, Response &res) {
+        printRoute("/database/add");
+
+        auto dbName = req.get_param_value("db");
+        auto context = req.get_param_value("context");
+
+        if(dbName != "" && context != "") {
+            Database* db = manager->getDatabase(dbName);
+            if(db != nullptr) {
+                db->add(context);
+                res.set_content("Added", "text/plain");
+                return;
+            }
+            else {
+                res.status = 404;
+                res.set_content("Database not found", "text/plain");
+                return;
+            }
+            delete db;
+        }
+        else {
+            res.status = 400;
+            res.set_content("Invalid request", "text/plain");
+            return;
+        }
     });
 
     // GET /database/set [:)]
@@ -93,24 +126,27 @@ Server *setupRoutes(DatabaseManager *manager)
                 if(node != nullptr) {
                     node->set(context);
                     res.set_content("Modified content", "text/plain");
+                    return;
                 }
                 else {
                     res.status = 404;
                     res.set_content("Key not found", "text/plain");
+                    return;
                 }
                 delete node;
             }
             else {
                 res.status = 404;
                 res.set_content("Database not found", "text/plain");
+                return;
             }
             delete db;
         }
         else {
             res.status = 400;
             res.set_content("Invalid request", "text/plain");
+            return;
         }
-        return;
     });
 
     // GET /database/remove [:)]
@@ -140,7 +176,7 @@ Server *setupRoutes(DatabaseManager *manager)
 
     // GET /stop [:)]
     svr->Get("/stop", [&](const Request &req, Response &res) {
-        cout << "[stop]" << endl;
+        printRoute("/stop");
         res.set_content("Server stopped", "text/plain");
         svr->stop();
         return;
