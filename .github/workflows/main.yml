@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -28,8 +28,8 @@ jobs:
           submodules: 'true'
 
       # Runs a single command using the runners shell
-      - name: Build rapidJSON
-        run: cd rapidjson && mkdir build && cd build && cmake .. -DRAPIDJSON_BUILD_DOC=OFF -DRAPIDJSON_BUILD_EXAMPLES=OFF -DRAPIDJSON_BUILD_TESTS=OFF && make && sudo make install
+      - name: Grab the latest version of HTTPLib
+        run: git clone https://github.com/yhirose/cpp-httplib.git include/http
 
       - name: Running CMAKE
         run: cmake .
