@@ -22,16 +22,14 @@ void ArrayDatabase::add(const string &context)
         JSONDatabaseNode *temp = new JSONDatabaseNode(ctx.at(1));
         temp->set(ctx.at(2));
 
-        DatabaseNode *temp2 = temp;
-        arr.push_back(temp2);
+        arr.push_back(temp);
     }
     else
     {
         StringDatabaseNode *temp = new StringDatabaseNode(ctx.at(1));
         temp->set(ctx.at(2));
-        
+    
         arr.push_back(temp);
-
     }
 }
 

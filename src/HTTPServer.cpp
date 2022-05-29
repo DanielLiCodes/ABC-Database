@@ -126,24 +126,27 @@ Server *setupRoutes(DatabaseManager *manager)
                 if(node != nullptr) {
                     node->set(context);
                     res.set_content("Modified content", "text/plain");
+                    return;
                 }
                 else {
                     res.status = 404;
                     res.set_content("Key not found", "text/plain");
+                    return;
                 }
                 delete node;
             }
             else {
                 res.status = 404;
                 res.set_content("Database not found", "text/plain");
+                return;
             }
             delete db;
         }
         else {
             res.status = 400;
             res.set_content("Invalid request", "text/plain");
+            return;
         }
-        return;
     });
 
     // GET /database/remove [:)]
