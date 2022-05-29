@@ -60,7 +60,6 @@ void DatabaseManager::createDatabase(const string &name, const string &type) {
     if (type == "array")
     {
         databases.push_back(new ArrayDatabase(name));
-        cout << databases.size() << endl;
     }
 }
 
