@@ -6,21 +6,15 @@
 #include <vector>
 #include "DatabaseNode.h"
 
-
-#include "rapidjson/document.h"
-#include "rapidjson/pointer.h"
-#include "rapidjson/writer.h"
-#include "rapidjson/stringbuffer.h"
-
 using namespace std;
 using namespace rapidjson;
 
 class StringDatabaseNode : public DatabaseNode {
     private:
-        Document data;
+        string data;
     public:
         StringDatabaseNode(const string &key): DatabaseNode(key) {
-            data.SetObject();
+            data = "";
         }
         void add(const string &context);
         string get(const string &context) const;
