@@ -2,9 +2,9 @@
 #include "DatabaseManager.cpp"
 using namespace httplib;
 
-Server* setupRoutes(DatabaseManager* manager) {
-    Server* svr = new Server();
-
+Server *setupRoutes(DatabaseManager *manager)
+{
+    Server *svr = new Server();
 
     // GET /create
     svr->Get("/create", [&](const Request &req, Response &res) {
@@ -18,9 +18,8 @@ Server* setupRoutes(DatabaseManager* manager) {
             res.status = 400;
             res.set_content("Invalid request", "text/plain");
         }
-        res.set_content(val, "text/plain");
+        res.set_content(val, "text/plain"); 
     });
-
 
     // GET /databases/list
     svr->Get("/databases/list", [&](const Request &req, Response &res) {
@@ -28,8 +27,9 @@ Server* setupRoutes(DatabaseManager* manager) {
         for(unsigned int i = 0; i < manager->size(); i++) {
             ss << manager->getDatabases()[i]->getName() << endl;
         }
-        res.set_content(ss.str(), "text/plain");
+        res.set_content(ss.str(), "text/plain"); 
     });
+
+    
     return svr;
 }
-

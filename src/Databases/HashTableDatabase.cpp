@@ -1,5 +1,7 @@
-#include "../headers/Databases/HashTableDatabase.h"
-#include "Nodes/JSONNode.cpp"
+#include "../../headers/Databases/HashTableDatabase.h"
+#include "../../headers/Nodes/JSONNode.h"
+#include "../../headers/Nodes/StringNode.h"
+
 
 #include <string>
 #include <sstream>

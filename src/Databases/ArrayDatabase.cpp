@@ -1,7 +1,7 @@
-#include "../headers/Databases/ArrayDatabase.h"
-#include "../headers/SortingStrats/SortingStrategy.hpp"
-#include "../headers/Nodes/JSONNode.h"
-// #include "../headers/Nodes/StringNode.h"
+#include "../../headers/Databases/ArrayDatabase.h"
+#include "../../headers/SortingStrats/SortingStrategy.hpp"
+#include "../../headers/Nodes/JSONNode.h"
+#include "../../headers/Nodes/StringNode.h"
 
 #include <string>
 #include <sstream>

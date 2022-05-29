@@ -1,5 +1,7 @@
 #include "../headers/DatabaseManager.h"
-#include "ArrayDatabase.cpp"
+#include "Databases/ArrayDatabase.cpp"
+#include "Databases/HashTableDatabase.cpp"
+#include "Databases/LinkedListDatabase.cpp"
 #include "Nodes/JSONNode.cpp"
 // #include "../headers/Databases/HashTableDatabase.h"
 // #include "../headers/Databases/LinkedListDatabase.h"
