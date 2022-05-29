@@ -1,11 +1,27 @@
 #include "../../headers/Databases/ArrayDatabase.h"
 #include "../../headers/SortingStrats/SortingStrategy.hpp"
+#include "../../headers/SortingStrats/BogoSort.hpp"
+#include "../../headers/SortingStrats/InsertionSort.hpp"
+#include "../../headers/SortingStrats/SelectionSort.hpp"
 #include "../../headers/Nodes/JSONNode.h"
 #include "../../headers/Nodes/StringNode.h"
 
 #include <string>
 #include <sstream>
 using namespace std;
+
+void ArrayDatabase::sort(string sortStrat){
+    SortingStrategy *temp = nullptr;
+    if(sortStrat == "merge"){
+
+    }else if(sortStrat == "quick"){
+
+    }else{
+        temp = new InsertionSort();
+    }
+    temp->sort(arr);
+}
+
 
 string ArrayDatabase::at(int index)
 {
