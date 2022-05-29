@@ -9,7 +9,7 @@ void JSONDatabaseNode::add(const string &context) {
 
 // EXAMPLE CONTEXT : "{\"john\":{\"jogn\":\"18\"}}"
 void JSONDatabaseNode::set(const string &context) {
-    data.Parse(context.c_str());
+    data.Parse<0>(context.c_str());
 }
 
 
