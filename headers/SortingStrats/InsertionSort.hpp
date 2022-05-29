@@ -12,16 +12,14 @@ class InsertionSort : public SortingStrategy{
         InsertionSort(){}
     private:
         void sort(vector<DatabaseNode*> &arr){
-            for(int i = 0; i < arr.size(); i++){
-                int smallest = i;
-                for(int j = i+1; j < arr.size(); j++){
-                    if(arr[j]->print() < arr[smallest]->print()){
-                        smallest = j;
-                    }
+            for(int i = 1; i < arr.size(); i++){
+                DatabaseNode* cur = arr[i];
+                int prev = i-1;
+                while(cur->print() < arr[prev]->print() && prev >= 0){
+                    arr[prev+1] = arr[prev];
+                    prev--;
                 }
-                DatabaseNode* temp = arr[i];
-                arr[i] = arr[smallest];
-                arr[smallest] = temp;
+                arr[prev+1] = cur;
             }
         }
 };
