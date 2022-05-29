@@ -1,4 +1,4 @@
-#include "../headers/Databases/LinkedListDatabase.h"
+#include "../../headers/Databases/LinkedListDatabase.h"
 #include "../../headers/Nodes/JSONNode.h"
 #include "../../headers/Nodes/StringNode.h"
 
@@ -21,27 +21,28 @@ string LinkedListDatabase::at(int index){
 //example context add/str
 void LinkedListDatabase::add(const string &context){
     istringstream ss(context);
-    if(context.substr(0,4) == "json"){
+    vector<string> ctx = getAllParameters(context);
+    if(ctx.at(0) == "json"){
         if(head == nullptr){
-            JSONDatabaseNode* temp = new JSONDatabaseNode(context.substr(5));
-            temp->set(context.substr(5));
+            JSONDatabaseNode* temp = new JSONDatabaseNode(ctx.at(1));
+            temp->set(ctx.at(2));
             head = new LinkedListNode(temp);
             tail = head;
         }else{
-            JSONDatabaseNode* temp = new JSONDatabaseNode(context.substr(5));
-            temp->set(context.substr(5));
+            JSONDatabaseNode* temp = new JSONDatabaseNode(ctx.at(1));
+            temp->set(ctx.at(2));
             tail->next = new LinkedListNode(temp);
             tail = tail->next;
         }
     }else{
         if(head == nullptr){
-            StringDatabaseNode* temp = new StringDatabaseNode(context.substr(7));
-            temp->set(context.substr(7));
+            StringDatabaseNode* temp = new StringDatabaseNode(ctx.at(1));
+            temp->set(ctx.at(2));
             head = new LinkedListNode(temp);
             tail = head;
         }else{
-            StringDatabaseNode* temp = new StringDatabaseNode(context.substr(7));
-            temp->set(context.substr(7));
+            StringDatabaseNode* temp = new StringDatabaseNode(ctx.at(1));
+            temp->set(ctx.at(2));
             tail->next = new LinkedListNode(temp);
             tail = tail->next;
         }
@@ -50,32 +51,21 @@ void LinkedListDatabase::add(const string &context){
 
 DatabaseNode* LinkedListDatabase::get(const string &context){
     istringstream ss(context);
-    if(context.substr(0,4) == "json"){
-        LinkedListNode* temp2 = head;
-        while(temp2){
-            if(temp2->data->getKey() == context.substr(5)){
-                return temp2->data;
-            }
-            temp2 = temp2->next;
-        }
-    }else{
-        LinkedListNode* temp2 = head;
-        while(temp2){
-            if(temp2->data->getKey() == context.substr(7)){
-                return temp2->data;
-            }
-            temp2 = temp2->next;
+    vector<string> ctx = getAllParameters(context);
+    LinkedListNode* temp = head;
+    while(temp){
+        if(temp->data->getKey() == ctx.at(0)){
+            return temp->data;
         }
     }
     return nullptr;
 }    
 void LinkedListDatabase::set(const string &context){
-    int number = context.substr(0,4) == "json" ? 5 : 7;
     LinkedListNode* temp2 = head;
+    vector<string> ctx = getAllParameters(context);
     while(temp2){
-        if(temp2->data->getKey() == context.substr(number)){
-            temp2->data->set(context.substr(number));
-            temp2->data->setKey(context.substr(number));
+        if(temp2->data->getKey() == ctx.at(0)){
+            temp2->data->set(ctx.at(1));
             return;
         }
         temp2 = temp2->next;
@@ -83,10 +73,9 @@ void LinkedListDatabase::set(const string &context){
 }
 void LinkedListDatabase::remove(const string &context){
     istringstream ss(context);
-    int number = 7;
-    if(context.substr(0,4)=="json") number = 5;
+    vector<string> ctx = getAllParameters(context);
     LinkedListNode* temp2 = head;
-    if(head->data->getKey() == context.substr(number)){
+    if(head->data->getKey() == ctx.at(0)){
         head = head->next;
         delete temp2;
         if(!head) tail = nullptr;
@@ -94,7 +83,7 @@ void LinkedListDatabase::remove(const string &context){
         LinkedListNode* prev = temp2;
         temp2 = temp2->next;
         while(temp2){
-            if(temp2->data->getKey() == context.substr(number)){
+            if(temp2->data->getKey() == ctx.at(0)){
                 prev->next = temp2->next;
                 delete temp2;
                 if (prev->next == nullptr){
