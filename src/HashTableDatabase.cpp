@@ -14,31 +14,35 @@ string HashTableDatabase::at(string key){
 //example context add/str
 void HashTableDatabase::add(const string &context){
     istringstream ss(context);
-    int idx = context.rfind('/');
-    string name = context.substr(idx+1);
-    string temp;
-    ss >> temp >> temp >> temp;
-    if(temp.substr(0,4) == "json"){
+    string key;
+    ss >> key >> key;
+    bool isJson = context.substr(0,4) == "json";
+    if(isJson){
+        JSONDatabaseNode* temp = new JSONDatabaseNode(key);
+        temp->set(context.substr(5+key.length()+1));
+        hashTable[key] = temp;
+    }else{
+        StringDatabaseNode* temp = new StringDatabaseNode(key);
+        temp->set(context.substr(7+key.length()+1));
+        hashTable[key] = temp;
     }
 }
 
 DatabaseNode* HashTableDatabase::get(const string &context){
     istringstream ss(context);
-    string temp;
-    ss >> temp >> temp >> temp;
-    if(temp.substr(0,4) == "json"){
-
-    }
-    return nullptr;
+    string key;
+    ss >> key >> key;
+    return hashTable[key];
 }    
 void HashTableDatabase::set(const string &context){
-    //??
+    istringstream ss(context);
+    string key;
+    ss >> key >> key;
+    hashTable[key]->set(context.substr(5+key.length()+1));
 }
 void HashTableDatabase::remove(const string &context){
     istringstream ss(context);
-    string temp;
-    ss >> temp >> temp >> temp;
-    if(temp.substr(0,4) == "json"){
-        
-    }
+    string key;
+    ss >> key >> key;
+    hashTable.erase(key);
 }
