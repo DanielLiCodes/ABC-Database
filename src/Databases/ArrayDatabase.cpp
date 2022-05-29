@@ -25,57 +25,85 @@ string ArrayDatabase::at(int index)
     return arr[index]->print();
 }
 
-// EXAMPLE CONTEXT: "json <rest send to context of Node>"
-// EXAMPLE CONTEXT: "string <rest send to context of Node>"
-void ArrayDatabase::add(const string &context)
-{
-    if (context.substr(0, 4) == "json")
-    {
+//EXAMPLE CONTEXT: "json <rest send to context of Node>"
+//EXAMPLE CONTEXT: "string <rest send to context of Node>"
+void ArrayDatabase::add(const string &context){
+    istringstream ss(context);
+    string type;
+    ss >> type;
+    bool isJson = type == "json";
+    if(isJson){
         JSONDatabaseNode *temp = new JSONDatabaseNode(context.substr(5));
         temp->set(context.substr(5));
         arr.push_back(temp);
-    }
-    else if (context.substr(0, 6) == "string")
-    {
-        // TODO:
+    }else{
+        StringDatabaseNode *temp = new StringDatabaseNode(context.substr(7));
+        temp->set(context.substr(7));
+        arr.push_back(temp);
     }
 }
+    // if(context.substr(0,4) == "json"){
+    //     JSONDatabaseNode* temp = new JSONDatabaseNode(context.substr(5));
+    //     temp->set(context.substr(5));
+    //     arr.push_back(temp);
+    // }
+    // else{
+    //     JSONDatabaseNode* temp = new StringDatabaseNode(context.substr(7));
+    //     temp->set(context.substr(7));
+    //     arr.push_back(temp);
+    // }
 
-// EXAMPLE CONTEXT: "get <rest send to context of Node>"
-// EXAMPLE CONTEXT: "get <rest send to context of Node>"
-DatabaseNode *ArrayDatabase::get(const string &context)
-{
-    istringstream ss(context);
-    string temp;
-    ss >> temp >> temp >> temp;
-    if (temp.substr(0, 4) == "json")
-    {
-        for (int i = 0; i < arr.size(); i++)
-        {
-            if (arr[i]->print() == temp.substr(6, temp.length() - 6))
-            {
+
+//EXAMPLE CONTEXT: "get <rest send to context of Node>"
+//EXAMPLE CONTEXT: "get <rest send to context of Node>"
+DatabaseNode* ArrayDatabase::get(const string &context){
+    if(context.substr(0,4) == "json"){
+        for(int i = 0; i < arr.size(); i++){
+            if(arr[i]->getKey() ==  context.substr(5)){
+                return arr[i];
+            }
+        }
+    }else{
+        for(int i = 0; i < arr.size(); i++){
+            if(arr[i]->getKey() ==  context.substr(7)){
                 return arr[i];
             }
         }
     }
     return nullptr;
-}
-void ArrayDatabase::set(const string &context)
-{
-    return;
-}
-void ArrayDatabase::remove(const string &context)
-{
+}    
+void ArrayDatabase::set(const string &context){
     istringstream ss(context);
-    string temp;
-    ss >> temp >> temp >> temp;
-    if (temp.substr(0, 4) == "json")
-    {
-        for (int i = 0; i < arr.size(); i++)
-        {
-            if (arr[i]->print() == temp.substr(6, temp.length() - 6))
-            {
-                arr.erase(arr.begin() + i);
+    string wordToLF;
+    bool isJson = false;
+    ss >> wordToLF;
+    if(wordToLF == "json"){
+        isJson = true;
+    }
+    for(int i = 0; i < arr.size(); i++){
+        if(arr[i]->getKey() == wordToLF){
+            if(isJson){
+                arr[i]->set(context.substr(5));
+                arr[i]->setKey(context.substr(5));
+            }else{
+                arr[i]->set(context.substr(7));
+                arr[i]->setKey(context.substr(7));
+            }
+        }
+    }
+}
+
+void ArrayDatabase::remove(const string &context){
+    if(context.substr(0,4) == "json"){
+        for(int i = 0; i < arr.size(); i++){
+            if(arr[i]->getKey() ==  context.substr(5)){
+                arr.erase(arr.begin()+i);
+            }
+        }
+    }else{
+        for(int i = 0; i < arr.size(); i++){
+            if(arr[i]->getKey() == context.substr(7)){
+                arr.erase(arr.begin()+i);
             }
         }
     }
