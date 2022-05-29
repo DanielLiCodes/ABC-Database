@@ -9,7 +9,7 @@ using namespace std;
 
 class BogoSort : public SortingStrategy{
     public:
-        BogoSort(unsigned int size){}
+        BogoSort(){}
     private:
         void randomShuffle(vector<DatabaseNode*> arr){
             for(int i = 0; i < arr.size(); i++){
