@@ -7,140 +7,63 @@
 #include <sstream>
 using namespace std;
 
-// void ArrayDatabase::sort(string sortStrat="insertion"){
-//     SortingStrategy* strat = nullptr;
-//     if(sortStrat == "bogo"){
-//         strat = new BogoSort(size);
-//     }else if(sortStrat == "quick"){
-//         strat = new QuickSort(size);
-//     }else{
-//         strat = new InsertionSort(size);
-//     }
-//     strat->sort(arr);
-//     delete strat;
-// }
-
 string ArrayDatabase::at(int index)
 {
     return arr[index]->print();
 }
 
-//EXAMPLE CONTEXT: "json <rest send to context of Node>"
-//EXAMPLE CONTEXT: "string <rest send to context of Node>"
-void ArrayDatabase::add(const string &context){
-    istringstream ss(context);
-    string type;
-    ss >> type;
-    bool isJson = type == "json";
-    if(isJson){
-        JSONDatabaseNode *temp = new JSONDatabaseNode(context.substr(5));
-        temp->set(context.substr(5));
+// EXAMPLE CONTEXT: "json <key> <rest send to context of Node>"
+// EXAMPLE CONTEXT: "string <key> <rest send to context of Node>"
+void ArrayDatabase::add(const string &context)
+{
+    vector<string> ctx = getAllParameters(context);
+    if (ctx.at(0) == "json")
+    {
+        JSONDatabaseNode *temp = new JSONDatabaseNode(ctx.at(1));
+        temp->set(ctx.at(2));
         arr.push_back(temp);
-    }else{
-        StringDatabaseNode *temp = new StringDatabaseNode(context.substr(7));
-        temp->set(context.substr(7));
+    }
+    else
+    {
+        StringDatabaseNode *temp = new StringDatabaseNode(ctx.at(1));
+        temp->set(ctx.at(2));
         arr.push_back(temp);
     }
 }
-    // if(context.substr(0,4) == "json"){
-    //     JSONDatabaseNode* temp = new JSONDatabaseNode(context.substr(5));
-    //     temp->set(context.substr(5));
-    //     arr.push_back(temp);
-    // }
-    // else{
-    //     JSONDatabaseNode* temp = new StringDatabaseNode(context.substr(7));
-    //     temp->set(context.substr(7));
-    //     arr.push_back(temp);
-    // }
 
-
-//EXAMPLE CONTEXT: "get <rest send to context of Node>"
-//EXAMPLE CONTEXT: "get <rest send to context of Node>"
-DatabaseNode* ArrayDatabase::get(const string &context){
-    if(context.substr(0,4) == "json"){
-        for(int i = 0; i < arr.size(); i++){
-            if(arr[i]->getKey() ==  context.substr(5)){
-                return arr[i];
-            }
-        }
-    }else{
-        for(int i = 0; i < arr.size(); i++){
-            if(arr[i]->getKey() ==  context.substr(7)){
-                return arr[i];
-            }
+// EXAMPLE CONTEXT: "<key> <rest send to context of Node>"
+DatabaseNode *ArrayDatabase::get(const string &context)
+{
+    vector<string> ctx = getAllParameters(context);
+    for (int i = 0; i < arr.size(); i++)
+    {
+        if (arr[i]->getKey() == ctx.at(0))
+        {
+            return arr[i];
         }
     }
     return nullptr;
-}    
-void ArrayDatabase::set(const string &context){
-    istringstream ss(context);
-    string wordToLF;
-    bool isJson = false;
-    ss >> wordToLF;
-    if(wordToLF == "json"){
-        isJson = true;
-    }
-    for(int i = 0; i < arr.size(); i++){
-        if(arr[i]->getKey() == wordToLF){
-            if(isJson){
-                arr[i]->set(context.substr(5));
-                arr[i]->setKey(context.substr(5));
-            }else{
-                arr[i]->set(context.substr(7));
-                arr[i]->setKey(context.substr(7));
-            }
+}
+void ArrayDatabase::set(const string &context)
+{
+    vector<string> ctx = getAllParameters(context);
+    for (int i = 0; i < arr.size(); i++)
+    {
+        if (arr[i]->getKey() == ctx.at(0))
+        {
+            arr[i]->set(ctx.at(1));
         }
     }
 }
 
-void ArrayDatabase::remove(const string &context){
-    if(context.substr(0,4) == "json"){
-        for(int i = 0; i < arr.size(); i++){
-            if(arr[i]->getKey() ==  context.substr(5)){
-                arr.erase(arr.begin()+i);
-            }
-        }
-    }else{
-        for(int i = 0; i < arr.size(); i++){
-            if(arr[i]->getKey() == context.substr(7)){
-                arr.erase(arr.begin()+i);
-            }
+void ArrayDatabase::remove(const string &context)
+{
+    vector<string> ctx = getAllParameters(context);
+    for (int i = 0; i < arr.size(); i++)
+    {
+        if (arr[i]->getKey() == ctx.at(0))
+        {
+            arr.erase(arr.begin() + i);
         }
     }
 }
-// #ifndef ARRAYDATABASE
-// #define ARRAYDATABASE
-// #include "SortingStrats/SortingStrategy.hpp"
-// #include <bits/stdc++.h>
-
-// #include "../headers/Database.h"
-// using namespace std;
-
-// class ArrayDatabase : Database{
-// private:
-//     DatabaseNode *arr = nullptr;
-//     int size;
-// public:
-//     string at(unsigned int index){
-//         if(index < 0 || index >= size) return "";
-//         return arr[index];
-//     }
-
-//     unsigned int size(){
-//         return size;
-//     }
-
-//     void sort(string sortStrat="insertion"){
-//         SortingStrategy* strat = nullptr;
-//         if(toLower(sortStrat) == "bogo"){
-//             strat = new BogoSort(size);
-//         }else if(toLower(sortStrat) == "quick"){
-//             strat = new QuickSort(size);
-//         }else{
-//             strat = new InsertionSort(size);
-//         }
-//         strat->sort(array);
-//         delete strat;
-//     }
-// }
-// #endif
