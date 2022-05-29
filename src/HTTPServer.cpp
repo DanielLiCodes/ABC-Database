@@ -1,13 +1,19 @@
 #include "http/httplib.h"
 #include "DatabaseManager.cpp"
 using namespace httplib;
+using namespace std;
+#include <iostream>
+void printRoute(const string &route) {
+    cout << "Route: " << route << endl;
+}
+Server *setupRoutes(DatabaseManager *manager)
+{
+    Server *svr = new Server();
 
-Server* setupRoutes(DatabaseManager* manager) {
-    Server* svr = new Server();
+    // GET /create [:)]
+    svr->Get("/database/create", [manager](const Request &req, Response &res) {
+        printRoute("/database/create");
 
-
-    // GET /create
-    svr->Get("/create", [&](const Request &req, Response &res) {
         auto val = req.get_param_value("name");
         auto type = req.get_param_value("type");
         if(val != "" && type != "") {
@@ -18,18 +24,127 @@ Server* setupRoutes(DatabaseManager* manager) {
             res.status = 400;
             res.set_content("Invalid request", "text/plain");
         }
-        res.set_content(val, "text/plain");
+        return;
     });
 
-
-    // GET /databases/list
-    svr->Get("/databases/list", [&](const Request &req, Response &res) {
+    // GET /databases/list [:)]
+    svr->Get("/database/list", [manager](const Request &req, Response &res) {
+        printRoute("/database/list");
         stringstream ss;
-        for(unsigned int i = 0; i < manager->size(); i++) {
-            ss << manager->getDatabases()[i]->getName() << endl;
+
+        if(manager->getDatabases().size() == 0) {
+            ss << "No databases found";
+        }
+        else {
+            for(auto db : manager->getDatabases()) {
+                ss << db->getName() << " ";
+            }
         }
         res.set_content(ss.str(), "text/plain");
+        return;
+         
     });
+
+    // GET /database/get [:)]
+    svr->Get("/database/get", [manager](const Request &req, Response &res) {
+        printRoute("/database/get");
+
+        auto dbName = req.get_param_value("db");
+        auto key = req.get_param_value("key");
+
+        if(dbName != "" && key != "") {
+            Database* db = manager->getDatabase(dbName);
+            if(db != nullptr) {
+                DatabaseNode* node = db->get(key);
+                if(node != nullptr) {
+                    res.set_content(node->print(), "text/plain");
+                }
+                else {
+                    res.status = 404;
+                    res.set_content("Key not found", "text/plain");
+                }
+                delete node;
+            }
+            else {
+                res.status = 404;
+                res.set_content("Database not found", "text/plain");
+            }
+            delete db;
+        }
+        else {
+            res.status = 400;
+            res.set_content("Invalid request", "text/plain");
+        }
+        return;
+    });
+
+    // GET /database/set [:)]
+    svr->Get("/database/set", [manager](const Request &req, Response &res) {
+        printRoute("/database/set");
+
+        auto dbName = req.get_param_value("db");
+        auto key = req.get_param_value("key");
+        auto context = req.get_param_value("context");
+
+        if(dbName != "" && key != "" && context != "") {
+            Database* db = manager->getDatabase(dbName);
+            if(db != nullptr) {
+                DatabaseNode* node = db->get(key);
+                if(node != nullptr) {
+                    node->set(context);
+                    res.set_content("Modified content", "text/plain");
+                }
+                else {
+                    res.status = 404;
+                    res.set_content("Key not found", "text/plain");
+                }
+                delete node;
+            }
+            else {
+                res.status = 404;
+                res.set_content("Database not found", "text/plain");
+            }
+            delete db;
+        }
+        else {
+            res.status = 400;
+            res.set_content("Invalid request", "text/plain");
+        }
+        return;
+    });
+
+    // GET /database/remove [:)]
+    svr->Get("/database/remove", [manager](const Request &req, Response &res) {
+        printRoute("/database/remove");
+
+        auto dbName = req.get_param_value("db");
+        auto key = req.get_param_value("key");
+
+        if(dbName != "" && key != "") {
+            Database* db = manager->getDatabase(dbName);
+            if(db != nullptr) {
+                db->remove(key);
+            }
+            else {
+                res.status = 404;
+                res.set_content("Database not found", "text/plain");
+            }
+            delete db;
+        }
+        else {
+            res.status = 400;
+            res.set_content("Invalid request", "text/plain");
+        }
+        return;
+    });
+
+    // GET /stop [:)]
+    svr->Get("/stop", [&](const Request &req, Response &res) {
+        cout << "[stop]" << endl;
+        res.set_content("Server stopped", "text/plain");
+        svr->stop();
+        return;
+    });
+
     return svr;
 }
-

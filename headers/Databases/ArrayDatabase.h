@@ -13,7 +13,7 @@ private:
     int size;
     int capacity = 10;
 public:
-    ArrayDatabase(string username="admin", string pw = "admin") : Database(username, pw) {}
+    ArrayDatabase(const string& name) : Database(name) {}
 
     void sort(string SortingStrategy="insertion");
     string at(int index);

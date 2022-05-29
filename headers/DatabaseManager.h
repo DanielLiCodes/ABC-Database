@@ -5,6 +5,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <functional>
 #include "Database.h"
 
 using namespace std;
@@ -20,7 +21,6 @@ class DatabaseManager
 private:
     map<string, string> accessability;
     vector<Database*> databases;
-
 public:
     DatabaseManager();
     bool canAccess(const Credentials &acc);

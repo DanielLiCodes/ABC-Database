@@ -1,7 +1,7 @@
-#include "../headers/Databases/ArrayDatabase.h"
-#include "../headers/SortingStrats/SortingStrategy.hpp"
-#include "../headers/Nodes/JSONNode.h"
-#include "../headers/Nodes/StringNode.h"
+#include "../../headers/Databases/ArrayDatabase.h"
+#include "../../headers/SortingStrats/SortingStrategy.hpp"
+#include "../../headers/Nodes/JSONNode.h"
+#include "../../headers/Nodes/StringNode.h"
 
 #include <string>
 #include <sstream>
@@ -20,7 +20,8 @@ using namespace std;
 //     delete strat;
 // }
 
-string ArrayDatabase::at(int index){
+string ArrayDatabase::at(int index)
+{
     return arr[index]->print();
 }
 
@@ -36,7 +37,7 @@ void ArrayDatabase::add(const string &context){
         temp->set(context.substr(5));
         arr.push_back(temp);
     }else{
-        JSONDatabaseNode *temp = new StringDatabaseNode(context.substr(7));
+        StringDatabaseNode *temp = new StringDatabaseNode(context.substr(7));
         temp->set(context.substr(7));
         arr.push_back(temp);
     }
@@ -124,11 +125,11 @@ void ArrayDatabase::remove(const string &context){
 //         if(index < 0 || index >= size) return "";
 //         return arr[index];
 //     }
-    
+
 //     unsigned int size(){
 //         return size;
 //     }
-    
+
 //     void sort(string sortStrat="insertion"){
 //         SortingStrategy* strat = nullptr;
 //         if(toLower(sortStrat) == "bogo"){
