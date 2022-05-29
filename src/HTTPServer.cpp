@@ -6,9 +6,12 @@ using namespace std;
 void printRoute(const string &route) {
     cout << "Route: " << route << endl;
 }
+
+
 Server *setupRoutes(DatabaseManager *manager)
 {
     Server *svr = new Server();
+    svr->new_task_queue = [] { return new ThreadPool(1); };
 
     // GET /create [:)]
     svr->Get("/database/create", [manager](const Request &req, Response &res) {
