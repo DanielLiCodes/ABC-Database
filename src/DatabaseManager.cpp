@@ -3,12 +3,14 @@
 #include "Databases/HashTableDatabase.cpp"
 #include "Databases/LinkedListDatabase.cpp"
 #include "Nodes/JSONNode.cpp"
+#include "Nodes/StringNode.cpp"
 // #include "../headers/Databases/HashTableDatabase.h"
 // #include "../headers/Databases/LinkedListDatabase.h"
 
 // Adds default username and password
-DatabaseManager::DatabaseManager()
+DatabaseManager::DatabaseManager(vector<Database*>* databases)
 {
+    this->databases = databases;
     accessability.insert(pair<string, string>("admin", "admin"));
 }
 
@@ -43,37 +45,45 @@ bool DatabaseManager::setAccess(const Credentials &acc, const Credentials &_new)
         return false;
 }
 
-Database *DatabaseManager::getDatabase(const string &name) const
+Database* DatabaseManager::getDatabase(const string &name) const
 {
-    for (unsigned int i = 0; i < databases.size(); i++)
+    for (unsigned int i = 0; i < databases->size(); i++)
     {
-        if (databases.at(i)->getName() == name)
+        if (databases->at(i)->getName() == name)
         {
-            return databases[i];
+            return databases->at(i);
         }
     }
 }
 
-void DatabaseManager::createDatabase(const string &name, const string &type)
-{
+Database* DatabaseManager::createDatabase(const string &name, const string &type) {
     if (type == "array")
     {
-        databases.push_back(new ArrayDatabase(name));
+        Database* database = new ArrayDatabase(name);
+        cout << &database << endl;
+        return database;
     }
-    // else if(type == "hashtable") {
-    //     databases.push_back(new HashTableDatabase(name));
-    // }
-    // else if(type == "linkedlist") {
-    //     databases.push_back(new LinkedListDatabase(name));
-    // }
 }
 
-vector<Database *> DatabaseManager::getDatabases() const
+
+
+vector<Database *>* DatabaseManager::getDatabases() const
 {
     return databases;
 }
 
+string DatabaseManager::printDatabases() const
+{
+    stringstream ss;
+    for (unsigned int i = 0; i < databases->size(); i++)
+    {
+        ss << databases->at(i)->getName() << " ";
+    }
+    return ss.str();
+}
+
+
 int DatabaseManager::size() const
 {
-    return databases.size();
+    return databases->size();
 }

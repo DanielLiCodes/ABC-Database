@@ -5,6 +5,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <functional>
 #include "Database.h"
 
 using namespace std;
@@ -19,16 +20,16 @@ class DatabaseManager
 {
 private:
     map<string, string> accessability;
-    vector<Database*> databases;
-
+    vector<Database*>* databases;
 public:
-    DatabaseManager();
+    DatabaseManager(vector<Database*>* databases);
     bool canAccess(const Credentials &acc);
     bool setAccess(const Credentials &acc, const Credentials &_new);
     Database* getDatabase(const string &name) const;
-    void createDatabase(const string &name, const string &type);
+    Database* createDatabase(const string &name, const string &type);
     int size() const;
-    vector<Database*> getDatabases() const;
+    vector<Database *>* getDatabases() const;
+    string printDatabases() const;
 };
 
 #endif
