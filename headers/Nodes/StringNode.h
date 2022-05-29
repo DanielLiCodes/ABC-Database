@@ -1,1 +1,1 @@
-class StringJSONNode : public DatabaseNode {}
+class StringDatabaseNode : public DatabaseNode {}
