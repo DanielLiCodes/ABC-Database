@@ -20,6 +20,7 @@ DatabaseManager::~DatabaseManager()
     databases.clear();
 }
 
+//check if the user's username and password match to allow/deny access
 bool DatabaseManager::canAccess(const Credentials &acc)
 {
     if (accessability.find(acc.user) != accessability.end())
@@ -32,6 +33,7 @@ bool DatabaseManager::canAccess(const Credentials &acc)
     return false;
 }
 
+//set new password/credentials
 bool DatabaseManager::setAccess(const Credentials &acc, const Credentials &_new)
 {
     if (this->canAccess(acc))
@@ -51,6 +53,7 @@ bool DatabaseManager::setAccess(const Credentials &acc, const Credentials &_new)
         return false;
 }
 
+//return database
 Database *DatabaseManager::getDatabase(const string &name) const
 {
     for (unsigned int i = 0; i < databases.size(); i++)
@@ -63,6 +66,7 @@ Database *DatabaseManager::getDatabase(const string &name) const
     return nullptr;
 }
 
+//create new database based on type: array, hashtable, linkedlist
 void DatabaseManager::createDatabase(const string &name, const string &type)
 {
     if (type == "array")
