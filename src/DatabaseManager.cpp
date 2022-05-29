@@ -11,6 +11,15 @@ DatabaseManager::DatabaseManager()
     accessability.insert(pair<string, string>("admin", "admin"));
 }
 
+DatabaseManager::~DatabaseManager()
+{
+    for (auto p : databases)
+    {
+        delete p;
+    }
+    databases.clear();
+}
+
 bool DatabaseManager::canAccess(const Credentials &acc)
 {
     if (accessability.find(acc.user) != accessability.end())
@@ -42,7 +51,7 @@ bool DatabaseManager::setAccess(const Credentials &acc, const Credentials &_new)
         return false;
 }
 
-Database* DatabaseManager::getDatabase(const string &name) const
+Database *DatabaseManager::getDatabase(const string &name) const
 {
     for (unsigned int i = 0; i < databases.size(); i++)
     {
@@ -54,7 +63,8 @@ Database* DatabaseManager::getDatabase(const string &name) const
     return nullptr;
 }
 
-void DatabaseManager::createDatabase(const string &name, const string &type) {
+void DatabaseManager::createDatabase(const string &name, const string &type)
+{
     if (type == "array")
     {
         databases.push_back(new ArrayDatabase(name));
@@ -68,8 +78,6 @@ void DatabaseManager::createDatabase(const string &name, const string &type) {
         databases.push_back(new LinkedListDatabase(name));
     }
 }
-
-
 
 vector<Database *> DatabaseManager::getDatabases() const
 {

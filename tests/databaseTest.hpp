@@ -7,38 +7,26 @@
 #include <vector>
 
 using namespace std;
-#include "../src/Nodes/JSONNode.cpp"
+#include "../src/DatabaseManager.cpp"
 
-TEST(DBTest, getAllParameters){
-   JSONDatabaseNode node = JSONDatabaseNode("Kurs");
-   vector<string> params = node.getAllParameters("first second third fourth fifth");
-   EXPECT_EQ("first", params.at(0));
-   EXPECT_EQ("second", params.at(1));
-   EXPECT_EQ("third", params.at(2));
-   EXPECT_EQ("fourth", params.at(3));
-   EXPECT_EQ("fifth", params.at(4));
+DatabaseManager* manager = new DatabaseManager();
+
+TEST(ARRAYDBTest, createJSONNode) {
+   manager->createDatabase("test", "array");
+   manager->getDatabase("test")->add("json test {\"key\":\"value\"}");
+   EXPECT_EQ("{\"key\":\"value\"}", manager->getDatabase("test")->get("test")->print());
+}
+
+TEST(ARRAYDBTest, createStringNode) {
+   manager->createDatabase("test2", "array");
+   manager->getDatabase("test2")->add("string test wassup");
+   EXPECT_EQ("wassup", manager->getDatabase("test2")->get("test")->print());
 }
 
 
-TEST(DBTest, AddNode){
-   JSONDatabaseNode node = JSONDatabaseNode("Kurs");
-   node.add("/john/jogn");
-   EXPECT_EQ("{\"john\":{\"jogn\":null}}", node.print());
-}
-
-TEST(DBTest, SetNode){
-   JSONDatabaseNode node = JSONDatabaseNode("Kurs");
-   node.set("/john/jogn 18");
-   EXPECT_EQ("{\"john\":{\"jogn\":\"18\"}}", node.print());
-}
-
-
-TEST(DBTest, RenmovNode){
-   JSONDatabaseNode node = JSONDatabaseNode("Kurs");
-   node.set("/john/jogn 18");
-   EXPECT_EQ("{\"john\":{\"jogn\":\"18\"}}", node.print());
-}
-
+// NOW TEST HASHTABLE DATABASE
+// NOW TEST LINKEDLIST DATABASE
+// MAKE SURE TESTING IS DONE WITH DIFFERENT DATABASES IE. TEST3, TEST4, TEST5
 
 
 #endif

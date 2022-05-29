@@ -178,10 +178,11 @@ Server *setupRoutes(DatabaseManager *manager)
     });
 
     // GET /stop [:)]
-    svr->Get("/stop", [&](const Request &req, Response &res) {
+    svr->Get("/stop", [manager, svr](const Request &req, Response &res) {
         printRoute("/stop");
         res.set_content("Server stopped", "text/plain");
         svr->stop();
+        delete manager; 
         return;
     });
 
