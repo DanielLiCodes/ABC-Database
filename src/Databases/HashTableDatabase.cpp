@@ -15,36 +15,28 @@ string HashTableDatabase::at(string key){
 
 //example context add/str
 void HashTableDatabase::add(const string &context){
-    istringstream ss(context);
-    string key;
-    ss >> key >> key;
-    bool isJson = context.substr(0,4) == "json";
+    vector<string> ctx = getAllParameters(context);
+    bool isJson = ctx.at(0) == "json";
     if(isJson){
-        JSONDatabaseNode* temp = new JSONDatabaseNode(key);
-        temp->set(context.substr(5+key.length()+1));
-        hashTable[key] = temp;
+        JSONDatabaseNode* temp = new JSONDatabaseNode(ctx.at(1));
+        temp->set(ctx.at(2));
+        hashTable[ctx.at(1)] = temp;
     }else{
-        StringDatabaseNode* temp = new StringDatabaseNode(key);
-        temp->set(context.substr(7+key.length()+1));
-        hashTable[key] = temp;
+        StringDatabaseNode* temp = new StringDatabaseNode(ctx.at(1));
+        temp->set(ctx.at(2));
+        hashTable[ctx.at(1)] = temp;
     }
 }
 
 DatabaseNode* HashTableDatabase::get(const string &context){
-    istringstream ss(context);
-    string key;
-    ss >> key >> key;
-    return hashTable[key];
+    vector<string> ctx = getAllParameters(context);
+    return hashTable[ctx.at(0)];
 }    
 void HashTableDatabase::set(const string &context){
-    istringstream ss(context);
-    string key;
-    ss >> key >> key;
-    hashTable[key]->set(context.substr(5+key.length()+1));
+    vector<string> ctx = getAllParameters(context);
+    hashTable[ctx.at(0)]->set(ctx.at(1));
 }
 void HashTableDatabase::remove(const string &context){
-    istringstream ss(context);
-    string key;
-    ss >> key >> key;
-    hashTable.erase(key);
+    vector<string> ctx = getAllParameters(context);
+    hashTable.erase(ctx.at(0));
 }
