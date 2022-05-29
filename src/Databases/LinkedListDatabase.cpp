@@ -5,6 +5,7 @@
 
 #include <string>
 #include <sstream>
+#include <numeric>
 using namespace std;
 
 
@@ -25,24 +26,24 @@ void LinkedListDatabase::add(const string &context){
     if(ctx.at(0) == "json"){
         if(head == nullptr){
             JSONDatabaseNode* temp = new JSONDatabaseNode(ctx.at(1));
-            temp->set(ctx.at(2));
+            temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string("")));
             head = new LinkedListNode(temp);
             tail = head;
         }else{
             JSONDatabaseNode* temp = new JSONDatabaseNode(ctx.at(1));
-            temp->set(ctx.at(2));
+            temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string("")));
             tail->next = new LinkedListNode(temp);
             tail = tail->next;
         }
     }else{
         if(head == nullptr){
             StringDatabaseNode* temp = new StringDatabaseNode(ctx.at(1));
-            temp->set(ctx.at(2));
+            temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string("")));
             head = new LinkedListNode(temp);
             tail = head;
         }else{
             StringDatabaseNode* temp = new StringDatabaseNode(ctx.at(1));
-            temp->set(ctx.at(2));
+            temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string("")));
             tail->next = new LinkedListNode(temp);
             tail = tail->next;
         }

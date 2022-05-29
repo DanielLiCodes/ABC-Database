@@ -8,7 +8,10 @@
 
 #include <string>
 #include <sstream>
+#include <numeric>
 using namespace std;
+
+
 
 void ArrayDatabase::sort(string sortStrat){
     SortingStrategy *temp = nullptr;
@@ -36,15 +39,14 @@ void ArrayDatabase::add(const string &context)
     if (ctx.at(0) == "json")
     {
         JSONDatabaseNode *temp = new JSONDatabaseNode(ctx.at(1));
-        temp->set(ctx.at(2));
-
+        temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string("")));
         arr.push_back(temp);
     }
     else
     {
         StringDatabaseNode *temp = new StringDatabaseNode(ctx.at(1));
-        temp->set(ctx.at(2));
-    
+        temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string("")));
+
         arr.push_back(temp);
     }
 }
