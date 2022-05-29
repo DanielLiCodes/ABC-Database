@@ -20,7 +20,15 @@ Server *setupRoutes(DatabaseManager *manager)
         auto val = req.get_param_value("name");
         auto type = req.get_param_value("type");
         if(val != "" && type != "") {
-            manager->createDatabase(val, type);
+            try {
+                manager->createDatabase(val, type);
+                res.status = 200;
+                res.set_content(val + " created", "text/plain");
+            } catch(exception& e) {
+                cout << e.what() << endl;
+                res.status = 400;
+                res.set_content(e.what(), "text/plain");
+            }
             res.set_content("Database created", "text/plain");
         }
         else {

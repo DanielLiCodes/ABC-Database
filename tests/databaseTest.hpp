@@ -24,32 +24,30 @@ TEST(ARRAYDBTest, createStringNode) {
 }
 
 
-// NOW TEST HASHTABLE DATABASE
-// NOW TEST LINKEDLIST DATABASE
-// MAKE SURE TESTING IS DONE WITH DIFFERENT DATABASES IE. TEST3, TEST4, TEST5
-
-
+// Hashtable tests
 TEST(HASHDBTest, createStringNode) {
-   manager->createDatabase("test3", "hashTable");
+   manager->createDatabase("test3", "hashtable");
    manager->getDatabase("test3")->add("string test lol pls work");
    EXPECT_EQ("lol pls work", manager->getDatabase("test3")->get("test")->print());
 }
 TEST(HASHDBTest, createJSONNode) {
-   manager->createDatabase("test5", "hashTable");
-   manager->getDatabase("test5")->add("json test {\"key\":\"value\"}");
-   EXPECT_EQ("{\"key\":\"value\"}", manager->getDatabase("test5")->get("test")->print());
+   manager->createDatabase("test4", "hashtable");
+   manager->getDatabase("test4")->add("json test {\"key\":\"value\"}");
+   EXPECT_EQ("{\"key\":\"value\"}", manager->getDatabase("test4")->get("test")->print());
 }
 
 
+// LinkedDBTest
 TEST(LinkedDBTest, createStringNode) {
-   manager->createDatabase("test4", "hashTable");
-   manager->getDatabase("test4")->add("lol hash test");
-   EXPECT_EQ("lol hash test", manager->getDatabase("test4")->get("test")->print());
+   manager->createDatabase("test5", "linkedlist");
+   manager->getDatabase("test5")->add("lol hash test");
+   EXPECT_EQ("lol hash test", manager->getDatabase("test5")->get("test")->print());
 }
+
 TEST(LinkedDBTest, createJSONNode) {
-   manager->createDatabase("test", "hashTable");
-   manager->getDatabase("test")->add("lol hash test");
-   EXPECT_EQ("{\"key\":\"value\"}", manager->getDatabase("test")->get("test")->print());
+   manager->createDatabase("test6", "linkedlist");
+   manager->getDatabase("test6")->add("lol hash test");
+   EXPECT_EQ("{\"key\":\"value\"}", manager->getDatabase("test6")->get("test")->print());
 }
 
 // TEST(ARRAYDBTest, returnSize) {

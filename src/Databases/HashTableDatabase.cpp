@@ -8,7 +8,6 @@
 #include <numeric>
 using namespace std;
 
-
 string HashTableDatabase::at(string key){
     int cur = 0;
     return hashTable[key]->print();
@@ -20,11 +19,11 @@ void HashTableDatabase::add(const string &context){
     bool isJson = ctx.at(0) == "json";
     if(isJson){
         JSONDatabaseNode* temp = new JSONDatabaseNode(ctx.at(1));
-        temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string("")));
+        temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
         hashTable[ctx.at(1)] = temp;
     }else{
         StringDatabaseNode* temp = new StringDatabaseNode(ctx.at(1));
-        temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string("")));
+        temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
         hashTable[ctx.at(1)] = temp;
     }
 }

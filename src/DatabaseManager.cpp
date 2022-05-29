@@ -5,6 +5,7 @@
 #include "Nodes/JSONNode.cpp"
 #include "Nodes/StringNode.cpp"
 
+
 // Adds default username and password
 DatabaseManager::DatabaseManager()
 {
@@ -80,6 +81,9 @@ void DatabaseManager::createDatabase(const string &name, const string &type)
     else if (type == "linkedlist")
     {
         databases.push_back(new LinkedListDatabase(name));
+    }
+    else {
+        throw "Invalid database type";
     }
 }
 

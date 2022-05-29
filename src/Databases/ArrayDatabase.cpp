@@ -39,13 +39,13 @@ void ArrayDatabase::add(const string &context)
     if (ctx.at(0) == "json")
     {
         JSONDatabaseNode *temp = new JSONDatabaseNode(ctx.at(1));
-        temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string("")));
+        temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
         arr.push_back(temp);
     }
     else
     {
         StringDatabaseNode *temp = new StringDatabaseNode(ctx.at(1));
-        temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string("")));
+        temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
 
         arr.push_back(temp);
     }

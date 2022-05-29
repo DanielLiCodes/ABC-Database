@@ -43,6 +43,7 @@ public:
         result.push_back(copy.substr(pos + 1));
         return result;
     }
+    static string addStrings (string x, string y) {return x + " " + y;};
 };
 
 #endif
