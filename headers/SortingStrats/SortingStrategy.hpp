@@ -1,11 +1,10 @@
 #ifndef SORTING_STRATEGY
 #define SORTING_STRATEGY
+#include "../Nodes/DatabaseNode.h"
 
 class SortingStrategy{
-    protected:
-        unsigned int size;
-
-        virtual void sort() = 0;
+    public:
+        virtual void sort(vector<DatabaseNode*> &arr) = 0;
 };
 
 #endif

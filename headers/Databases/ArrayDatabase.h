@@ -17,7 +17,7 @@ private:
 public:
     ArrayDatabase(const string &name) : Database(name) {}
 
-    void sort(string SortingStrategy = "insertion");
+    void sort(string sortStrat = "insertion");
     string at(int index);
     void add(const string &context);
     DatabaseNode *get(const string &context);

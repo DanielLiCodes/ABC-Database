@@ -1,12 +1,12 @@
-#ifndef QUICKSORT
-#define QUICKSORT
+#ifndef BOGOSORT
+#define BOGOSORT
 
 #include "./SortingStrategy.hpp"
 using namespace std;
 
-class QuickSort : public SortingStrategy{
+class BogoSort : public SortingStrategy{
     public:
-        QuickSort(unsigned int size){}
+        BogoSort(unsigned int size){}
     private:
         void sort(vector<DatabaseNode*> &arr){
             //add sort code here

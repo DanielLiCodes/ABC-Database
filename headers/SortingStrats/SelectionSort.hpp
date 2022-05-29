@@ -1,12 +1,12 @@
-#ifndef QUICKSORT
-#define QUICKSORT
+#ifndef SELECTIONSORT
+#define SELECTIONSORT
 
 #include "./SortingStrategy.hpp"
 using namespace std;
 
-class QuickSort : public SortingStrategy{
+class SelectionSort : public SortingStrategy{
     public:
-        QuickSort(unsigned int size){}
+        SelectionSort(unsigned int size){}
     private:
         void sort(vector<DatabaseNode*> &arr){
             //add sort code here
