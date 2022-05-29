@@ -5,9 +5,7 @@ using namespace std;
 
 
 int main() {
-    vector<Database*>* databases = new vector<Database*>();
-    databases->push_back(new ArrayDatabase("array"));
-    DatabaseManager* manager = new DatabaseManager(databases);
+    DatabaseManager* manager = new DatabaseManager();
     cout << &manager << endl;
     Server* svr = setupRoutes(manager);
     svr->listen("0.0.0.0", 8080);

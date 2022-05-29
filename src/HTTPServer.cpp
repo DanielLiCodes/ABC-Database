@@ -10,29 +10,37 @@ Server *setupRoutes(DatabaseManager *manager)
     // GET /create
     svr->Get("/create", [manager](const Request &req, Response &res)
              {
-        cout << "[create]" << endl;
+        cout << "[create] 2" << endl;
         auto val = req.get_param_value("name");
         auto type = req.get_param_value("type");
         if(val != "" && type != "") {
+            manager->createDatabase(val, type);
             res.set_content("Database created", "text/plain");
         }
         else {
             res.status = 400;
             res.set_content("Invalid request", "text/plain");
         }
-        res.set_content(val, "text/plain"); });
+        return;
+        });
 
     // GET /databases/list
     svr->Get("/databases/list", [manager](const Request &req, Response &res)
              {
         cout << "[list]" << endl;
+        stringstream ss;
 
-        if(manager->getDatabases()->size() == 0) {
-            res.set_content("No databases found", "text/plain");
+        if(manager->getDatabases().size() == 0) {
+            ss << "No databases found";
         }
         else {
-            res.set_content(manager->printDatabases(), "text/plain");
-        } });
+            for(auto db : manager->getDatabases()) {
+                ss << db->getName() << " ";
+            }
+        }
+        res.set_content(ss.str(), "text/plain");
+        return;
+         });
 
     svr->Get("/stop", [&](const Request &req, Response &res)
              {
@@ -42,3 +50,4 @@ Server *setupRoutes(DatabaseManager *manager)
 
     return svr;
 }
+

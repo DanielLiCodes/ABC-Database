@@ -8,9 +8,8 @@
 // #include "../headers/Databases/LinkedListDatabase.h"
 
 // Adds default username and password
-DatabaseManager::DatabaseManager(vector<Database*>* databases)
+DatabaseManager::DatabaseManager()
 {
-    this->databases = databases;
     accessability.insert(pair<string, string>("admin", "admin"));
 }
 
@@ -47,43 +46,37 @@ bool DatabaseManager::setAccess(const Credentials &acc, const Credentials &_new)
 
 Database* DatabaseManager::getDatabase(const string &name) const
 {
-    for (unsigned int i = 0; i < databases->size(); i++)
+    for (unsigned int i = 0; i < databases.size(); i++)
     {
-        if (databases->at(i)->getName() == name)
+        if (databases.at(i)->getName() == name)
         {
-            return databases->at(i);
+            return databases[i];
         }
     }
+    return nullptr;
 }
 
-Database* DatabaseManager::createDatabase(const string &name, const string &type) {
+void DatabaseManager::createDatabase(const string &name, const string &type) {
     if (type == "array")
     {
-        Database* database = new ArrayDatabase(name);
-        cout << &database << endl;
-        return database;
+        databases.push_back(new ArrayDatabase(name));
+        cout << databases.size() << endl;
     }
 }
 
 
 
-vector<Database *>* DatabaseManager::getDatabases() const
+vector<Database *> DatabaseManager::getDatabases() const
 {
     return databases;
 }
 
-string DatabaseManager::printDatabases() const
-{
-    stringstream ss;
-    for (unsigned int i = 0; i < databases->size(); i++)
-    {
-        ss << databases->at(i)->getName() << " ";
-    }
-    return ss.str();
-}
-
-
 int DatabaseManager::size() const
 {
-    return databases->size();
+    return databases.size();
 }
+
+// void DatabaseManager::addDatabase(Database *db)
+// {
+//     databases.push_back(db);
+// }
