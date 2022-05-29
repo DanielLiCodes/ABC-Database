@@ -22,7 +22,7 @@ public:
     virtual void remove(const string &context) = 0;
     
     void sort();
-    void print();
+    string print();
     string getName() {return name;};
     int getSize();
 };
