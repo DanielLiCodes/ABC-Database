@@ -18,6 +18,9 @@ class DatabaseNode {
         virtual void remove(const string &context) = 0;
         virtual string print() = 0;
         virtual string getKey() const = 0;
+        void setKey(string key){
+            this->key = key;
+        }
         
         // Splits the string based on spaces: "first second" -> ["first", "second"]
         vector<string> getAllParameters(const string& str) const {  
