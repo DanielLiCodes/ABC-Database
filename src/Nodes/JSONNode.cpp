@@ -7,14 +7,13 @@ void JSONDatabaseNode::add(const string &context) {
 }
 
 
-// EXAMPLE CONTEXT : "/john/age 18"
+// EXAMPLE CONTEXT : "{\"john\":{\"jogn\":\"18\"}}"
 void JSONDatabaseNode::set(const string &context) {
-    vector<string> params = getAllParameters(context);
-    Pointer(params.at(0).c_str()).Set(data, params.at(1).c_str());
+    data.Parse(context.c_str());
 }
 
 
-// EXAMPLE CONTEXT : "/john/age"
+// EXAMPLE CONTEXT : "/john/age" or ""
 string JSONDatabaseNode::get(const string &context) const {
     vector<string> params = getAllParameters(context);
     return Pointer(params.at(0).c_str()).Get(data)->GetString();

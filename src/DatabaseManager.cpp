@@ -4,8 +4,6 @@
 #include "Databases/LinkedListDatabase.cpp"
 #include "Nodes/JSONNode.cpp"
 #include "Nodes/StringNode.cpp"
-// #include "../headers/Databases/HashTableDatabase.h"
-// #include "../headers/Databases/LinkedListDatabase.h"
 
 // Adds default username and password
 DatabaseManager::DatabaseManager()
@@ -60,6 +58,14 @@ void DatabaseManager::createDatabase(const string &name, const string &type) {
     if (type == "array")
     {
         databases.push_back(new ArrayDatabase(name));
+    }
+    else if (type == "hashtable")
+    {
+        databases.push_back(new HashTableDatabase(name));
+    }
+    else if (type == "linkedlist")
+    {
+        databases.push_back(new LinkedListDatabase(name));
     }
 }
 
