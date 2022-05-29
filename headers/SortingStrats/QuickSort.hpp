@@ -10,10 +10,12 @@ class QuickSort : public SortingStrategy{
         QuickSort(){}
         
     private:
+    
+        //find partition. sort elements before the partition and elements after
         void sort(vector<DatabaseNode*> &arr){
             int h = arr.size();
             int l = 0;
-
+            
             if(l < h){
                 int part_in = partition(arr, l, h);
 
@@ -21,6 +23,7 @@ class QuickSort : public SortingStrategy{
                 sort(arr, part_in+1, h);
             }
         }
+        //place pivot index in the correct position in the array
         int Partition(vector<DatabaseNode*> &arr, int low, int high){
             int piv = arr[high];
             int i = (low - 1);
