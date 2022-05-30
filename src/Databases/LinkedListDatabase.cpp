@@ -8,6 +8,15 @@
 #include <numeric>
 using namespace std;
 
+LinkedListDatabase::~LinkedListDatabase(){
+    LinkedListNode* cur = head;
+    while(cur != nullptr){
+        LinkedListNode* temp = cur;
+        cur = cur->next;
+        delete temp;
+    }
+}
+
 string LinkedListDatabase::at(int index){
     LinkedListNode* temp = head;
     int cur = 0;
