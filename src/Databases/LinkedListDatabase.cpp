@@ -34,7 +34,8 @@ void LinkedListDatabase::add(const string &context){
             tail->next = new LinkedListNode(temp);
             tail = tail->next;
         }
-    }else{
+    }
+    else if(ctx.at(0) == "string") {
         if(head == nullptr){
             StringDatabaseNode* temp = new StringDatabaseNode(ctx.at(1));
             temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
@@ -47,14 +48,18 @@ void LinkedListDatabase::add(const string &context){
             tail = tail->next;
         }
     }
+    else {
+        throw "Proper node not defined";
+    }
 }
 
 DatabaseNode* LinkedListDatabase::get(const string &context){
     istringstream ss(context);
     vector<string> ctx = getAllParameters(context);
     LinkedListNode* temp = head;
-    while(temp != nullptr){
+    while(temp != nullptr) {
         cout << temp->data->getKey() << endl;
+        cout << ctx.at(0) << endl;
         if(temp->data->getKey() == ctx.at(0)){
             return temp->data;
         }
