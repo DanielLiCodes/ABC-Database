@@ -53,10 +53,12 @@ DatabaseNode* LinkedListDatabase::get(const string &context){
     istringstream ss(context);
     vector<string> ctx = getAllParameters(context);
     LinkedListNode* temp = head;
-    while(temp){
+    while(temp != nullptr){
+        cout << temp->data->getKey() << endl;
         if(temp->data->getKey() == ctx.at(0)){
             return temp->data;
         }
+        temp = temp->next;
     }
     return nullptr;
 }    

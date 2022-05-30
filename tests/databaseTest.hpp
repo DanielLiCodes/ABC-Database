@@ -40,13 +40,13 @@ TEST(HASHDBTest, createJSONNode) {
 // LinkedDBTest
 TEST(LinkedDBTest, createStringNode) {
    manager->createDatabase("test5", "linkedlist");
-   manager->getDatabase("test5")->add("lol hash test");
+   manager->getDatabase("test5")->add("test lol hash test");
    EXPECT_EQ("lol hash test", manager->getDatabase("test5")->get("test")->print());
 }
 
 TEST(LinkedDBTest, createJSONNode) {
    manager->createDatabase("test6", "linkedlist");
-   manager->getDatabase("test6")->add("lol hash test");
+   manager->getDatabase("test6")->add("test lol hash test");
    EXPECT_EQ("{\"key\":\"value\"}", manager->getDatabase("test6")->get("test")->print());
 }
 
