@@ -7,6 +7,14 @@
 #include <numeric>
 using namespace std;
 
+//deconstructor for hashtable, go thru hashmap keys and delete all values
+HashTableDatabase::~HashTableDatabase(){
+    for(auto it = hashTable.begin(); it != hashTable.end(); it++){
+        delete it->second;
+    }
+}
+
+
 string HashTableDatabase::at(string key)
 {
     int cur = 0;
