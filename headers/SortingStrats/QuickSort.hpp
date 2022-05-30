@@ -24,23 +24,23 @@ class QuickSort : public SortingStrategy{
             }
         }
         //place pivot index in the correct position in the array
-        int Partition(vector<DatabaseNode*> &arr, int low, int high){
-            int piv = arr[high];
+        int partition(vector<DatabaseNode*> &arr, int low, int high){
+            DatabaseNode* pivot = arr[high];
             int i = (low - 1);
 
             for(int j = low; j <= high-1; j++){
                 if(arr[j] < pivot){
-                    i++
-                    swap(&arr[i], &arr[j]);
+                    i++;
+                    swap(arr, i, j);
                 }
             }
-            swap(&arr[i + 1], &arr[high]);
+            swap(arr, i + 1, high);
             return(i + 1);
         }
-        void swap(int* a, int* b){
-            int t = *a;
-            *a = *b;
-            *b = t;
+        void swap(vector<DatabaseNode*> &arr, int a, int b){
+            DatabaseNode* temp = arr[a];
+            arr[a] = arr[b];
+            arr[b] = temp;
         }
 };
 
