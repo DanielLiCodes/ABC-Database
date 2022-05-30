@@ -15,7 +15,6 @@ private:
 public:
     ~LinkedListDatabase();
     LinkedListDatabase(const string &name) : Database(name) {}
-    ~LinkedListDatabase();
     string at(int index);
     void add(const string &context);
     DatabaseNode* get(const string &context);
