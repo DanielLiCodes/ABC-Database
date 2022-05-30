@@ -12,6 +12,11 @@
 using namespace std;
 
 
+ArrayDatabase::~ArrayDatabase(){
+    for(int i = 0; i < arr.size(); i++){
+        delete arr.at(i);
+    }
+}
 
 void ArrayDatabase::sort(string sortStrat){
     SortingStrategy *temp = nullptr;
