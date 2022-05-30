@@ -5,8 +5,9 @@ using namespace std;
 
 
 int main() {
-    DatabaseManager* manager = new DatabaseManager();
-    cout << &manager << endl;
-    Server* svr = setupRoutes(manager);
-    svr->listen("0.0.0.0", 8080);
+    DatabaseManager manager;
+    Server svr;
+    setupRoutes(manager, svr);
+    svr.listen("0.0.0.0", 8080);
+    return 0;
 }       
