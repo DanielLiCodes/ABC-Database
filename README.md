@@ -1,4 +1,5 @@
 # ABC DATABASE
+![Build](https://github.com/cs100/final-project-abcer/actions/workflows/main.yml/badge.svg)
 
 
  > Authors: [Shashank Biju, ](https://github.com/shadJack127)
@@ -10,8 +11,8 @@
 # Project Description
 
 > * We plan to use C++ for our language with REST libraries, allowing us to communicate with the database and its potential clients. The data that will be stored will be JSON, so a JSON library will also be used. 
-> * [RESTCPP](https://github.com/microsoft/cpprestsdk) - REST API for CPP
-> * [JSONCPP](https://github.com/open-source-parsers/jsoncpp) - JSON for CPP
+> * [Pistache](https://github.com/pistacheio/pistache) - REST API for CPP
+> * [JSONCPP](https://github.com/Tencent/rapidjson) - JSON for CPP
 
 > * For personal technologies/clients, we will be using VSCode as our IDE and Github as our version control.
 > * [VSCODE](https://code.visualstudio.com/) - a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.

@@ -1,21 +1,35 @@
+#pragma once
 #ifndef __DATABASE_MANAGER_H__
 #define __DATABASE_MANAGER_H__
 
 #include <map>
 #include <string>
+#include <vector>
+#include <functional>
 #include "Database.h"
+
 using namespace std;
+
+
+struct Credentials {
+    string user;
+    string password;
+};
 
 class DatabaseManager
 {
 private:
     map<string, string> accessability;
-    map<string, Database> data;
-
+    vector<Database*> databases;
 public:
-    bool canAccess(const string &user, const string &password);
-    void setAccess(const string &user, const string &password);
-    Database getDatabase(const string &name);
+    DatabaseManager();
+    ~DatabaseManager();
+    bool canAccess(const Credentials &acc);
+    bool setAccess(const Credentials &acc, const Credentials &_new);
+    Database* getDatabase(const string &name) const;
+    void createDatabase(const string &name, const string &type);
+    int size() const;
+    vector<Database*> getDatabases() const;
 };
 
 #endif
