@@ -1,4 +1,5 @@
 # ABC DATABASE
+![Build](https://github.com/cs100/final-project-abcer/actions/workflows/main.yml/badge.svg)
 
 
  > Authors: [Shashank Biju, ](https://github.com/shadJack127)
