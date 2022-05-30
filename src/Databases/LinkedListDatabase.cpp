@@ -22,13 +22,13 @@ string LinkedListDatabase::at(int index){
 void LinkedListDatabase::add(const string &context){
     istringstream ss(context);
     vector<string> ctx = getAllParameters(context);
-    if(ctx.at(0) == "json"){
+    if(ctx.at(0) == "json") {
         if(head == nullptr){
             JSONDatabaseNode* temp = new JSONDatabaseNode(ctx.at(1));
             temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
             head = new LinkedListNode(temp);
             tail = head;
-        }else{
+        } else{
             JSONDatabaseNode* temp = new JSONDatabaseNode(ctx.at(1));
             temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
             tail->next = new LinkedListNode(temp);
@@ -41,7 +41,7 @@ void LinkedListDatabase::add(const string &context){
             temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
             head = new LinkedListNode(temp);
             tail = head;
-        }else{
+        } else{
             StringDatabaseNode* temp = new StringDatabaseNode(ctx.at(1));
             temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
             tail->next = new LinkedListNode(temp);
@@ -58,8 +58,6 @@ DatabaseNode* LinkedListDatabase::get(const string &context){
     vector<string> ctx = getAllParameters(context);
     LinkedListNode* temp = head;
     while(temp != nullptr) {
-        cout << temp->data->getKey() << endl;
-        cout << ctx.at(0) << endl;
         if(temp->data->getKey() == ctx.at(0)){
             return temp->data;
         }

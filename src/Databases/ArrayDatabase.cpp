@@ -42,12 +42,14 @@ void ArrayDatabase::add(const string &context)
         temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
         arr.push_back(temp);
     }
-    else
-    {
+    else if(ctx.at(0) == "string") {
         StringDatabaseNode *temp = new StringDatabaseNode(ctx.at(1));
         temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
 
         arr.push_back(temp);
+    }
+    else {
+        throw "Proper node not defined";
     }
 }
 
