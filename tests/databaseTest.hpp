@@ -37,14 +37,14 @@ TEST(ARRAYDBTest, setStringNode) {
 
 TEST(ARRAYDBTest, removeJSONNode) {
    manager->createDatabase("test5", "array");
-   manager->add("test5", "test")
+   manager->getDatabase("test5")->add("test5", "test")
    manager->getDatabase("test5")->remove("test");
    EXPECT_EQ(0, manager->getDatabase("test5")->getSize());
 }
 
 TEST(ARRAYDBTest, removeStringNode) {
    manager->createDatabase("test6", "array");
-   manager->add("test6", "test")
+   manager->getDatabase("test6")->add("test6", "test")
    manager->getDatabase("test6")->remove("test");
    EXPECT_EQ(0, manager->getDatabase("test6")->getSize());
 }
@@ -76,14 +76,14 @@ TEST(HASHDBTest, setJSONNode) {
 
 TEST(HASHDBTest, removeStringNode) {
    manager->createDatabase("test11", "array");
-   manager->add("test11", "test")
+   manager->getDatabase("test11")->add("test11", "test")
    manager->getDatabase("test11")->remove("test");
    EXPECT_EQ(0, manager->getDatabase("test11")->getSize());
 }
 
 TEST(HASHDBTest, removeJSONNode) {
    manager->createDatabase("test12", "array");
-   manager->add("test12", "test")
+   manager->getDatabase("test12")->add("test12", "test")
    manager->getDatabase("test12")->remove("test");
    EXPECT_EQ(0, manager->getDatabase("test12")->getSize());
 }
@@ -116,14 +116,14 @@ TEST(LinkedDBTest, setJSONNode) {
 
 TEST(LinkedDBTest, removeStringNode) {
    manager->createDatabase("test17", "array");
-   manager->add("test17", "test")
+   manager->getDatabase("test17")->add("test17", "test")
    manager->getDatabase("test17")->remove("test");
    EXPECT_EQ(0, manager->getDatabase("test17")->getSize());
 }
 
 TEST(LinkedDBTest, removeJSONNode) {
    manager->createDatabase("test18", "array");
-   manager->add("test18", "test")
+   manager->getDatabase("test18")->add("test18", "test")
    manager->getDatabase("test18")->remove("test");
    EXPECT_EQ(0, manager->getDatabase("test18")->getSize());
 }
