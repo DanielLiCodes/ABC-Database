@@ -28,6 +28,7 @@ public:
     bool setAccess(const Credentials &acc, const Credentials &_new);
     Database* getDatabase(const string &name) const;
     void createDatabase(const string &name, const string &type);
+    void removeDatabase(const string &name);
     int size() const;
     vector<Database*> getDatabases() const;
 };

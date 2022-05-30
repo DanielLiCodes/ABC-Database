@@ -11,142 +11,163 @@ using namespace std;
 
 DatabaseManager* manager = new DatabaseManager();
 
+
+// ------> ARRAY TESTS <----------
+
+// Create & add items to array
 TEST(ARRAYDBTest, createJSONNode) {
    manager->createDatabase("test", "array");
-   manager->getDatabase("test")->add("json test {\"key\":\"value\"}");
-   EXPECT_EQ("{\"key\":\"value\"}", manager->getDatabase("test")->get("test")->print());
+   manager->getDatabase("test")->add("json test_j {\"key\":\"value\"}");
+   EXPECT_EQ("{\"key\":\"value\"}", manager->getDatabase("test")->get("test_j")->print());
 }
 
 TEST(ARRAYDBTest, createStringNode) {
    manager->createDatabase("test2", "array");
-   manager->getDatabase("test2")->add("string test wassup");
-   EXPECT_EQ("wassup", manager->getDatabase("test2")->get("test")->print());
+   manager->getDatabase("test2")->add("string test_s wassup");
+   EXPECT_EQ("wassup", manager->getDatabase("test2")->get("test_s")->print());
 }
 
+// Set items in array
 TEST(ARRAYDBTest, setJSONNode) {
-   manager->createDatabase("test3", "array");
-   manager->getDatabase("test3")->set("test3 {\"key\":\"value\"}");
-   EXPECT_EQ("{\"key\":\"value\"}", manager->getDatabase("test3")->get("test")->print());
+   manager->getDatabase("test")->set("test_j {\"key\":\"newValue\"}");
+   EXPECT_EQ("{\"key\":\"newValue\"}", manager->getDatabase("test")->get("test_j")->print());
 }
 
 TEST(ARRAYDBTest, setStringNode) {
-   manager->createDatabase("test4", "array");
-   manager->getDatabase("test4")->set("test4 hello");
-   EXPECT_EQ("hello", manager->getDatabase("test4")->get("test")->print());
+   manager->getDatabase("test2")->set("test_s newValue");
+   EXPECT_EQ("newValue", manager->getDatabase("test2")->get("test_s")->print());
 }
 
+// Remove items from array
 TEST(ARRAYDBTest, removeJSONNode) {
-   manager->createDatabase("test5", "array");
-   manager->getDatabase("test5")->add("test5", "test")
-   manager->getDatabase("test5")->remove("test");
-   EXPECT_EQ(0, manager->getDatabase("test5")->getSize());
+   manager->createDatabase("test3", "array");
+   manager->getDatabase("test3")->add("json test_j {\"key\":\"value\"}");
+   manager->getDatabase("test3")->remove("test_j");
+   EXPECT_EQ(0, manager->getDatabase("test3")->getSize());
 }
 
 TEST(ARRAYDBTest, removeStringNode) {
-   manager->createDatabase("test6", "array");
-   manager->getDatabase("test6")->add("test6", "test")
-   manager->getDatabase("test6")->remove("test");
-   EXPECT_EQ(0, manager->getDatabase("test6")->getSize());
-}
-
-// Hashtable tests
-TEST(HASHDBTest, createStringNode) {
-   manager->createDatabase("test7", "hashtable");
-   manager->getDatabase("test7")->add("string test lol pls work");
-   EXPECT_EQ("lol pls work", manager->getDatabase("test7")->get("test")->print());
-}
-
-TEST(HASHDBTest, createJSONNode) {
-   manager->createDatabase("test8", "hashtable");
-   manager->getDatabase("test8")->add("json test {\"key\":\"value\"}");
-   EXPECT_EQ("{\"key\":\"value\"}", manager->getDatabase("test8")->get("test")->print());
-}
-
-TEST(HASHDBTest, setStringNode) {
-   manager->createDatabase("test9", "array");
-   manager->getDatabase("test9")->set("test9 hello");
-   EXPECT_EQ("hello", manager->getDatabase("test9")->get("test")->print());
-}
-
-TEST(HASHDBTest, setJSONNode) {
-   manager->createDatabase("test10", "array");
-   manager->getDatabase("test10")->set("test10 {\"key\":\"value\"}");
-   EXPECT_EQ("{\"key\":\"value\"}", manager->getDatabase("test10")->get("test")->print());
-}
-
-TEST(HASHDBTest, removeStringNode) {
-   manager->createDatabase("test11", "array");
-   manager->getDatabase("test11")->add("test11", "test")
-   manager->getDatabase("test11")->remove("test");
-   EXPECT_EQ(0, manager->getDatabase("test11")->getSize());
-}
-
-TEST(HASHDBTest, removeJSONNode) {
-   manager->createDatabase("test12", "array");
-   manager->getDatabase("test12")->add("test12", "test")
-   manager->getDatabase("test12")->remove("test");
-   EXPECT_EQ(0, manager->getDatabase("test12")->getSize());
+   manager->createDatabase("test4", "array");
+   manager->getDatabase("test4")->add("string test_s wassup");
+   manager->getDatabase("test4")->remove("test_s");
+   EXPECT_EQ(0, manager->getDatabase("test4")->getSize());
 }
 
 
-// LinkedDBTest
-TEST(LinkedDBTest, createStringNode) {
-   manager->createDatabase("test13", "linkedlist");
-   manager->getDatabase("test13")->add("lol hash test");
-   EXPECT_EQ("lol hash test", manager->getDatabase("test13")->get("test")->print());
+TEST(ARRAYDBTest, removeDatabase) {
+   manager->removeDatabase("test");
+   manager->removeDatabase("test2");
+   manager->removeDatabase("test3");
+   manager->removeDatabase("test4");
+   EXPECT_EQ(0, manager->getDatabases().size());
 }
 
-TEST(LinkedDBTest, createJSONNode) {
-   manager->createDatabase("test14", "linkedlist");
-   manager->getDatabase("test14")->add("json test {\"key\":\"value\"}");
-   EXPECT_EQ("{\"key\":\"value\"}", manager->getDatabase("test14")->get("test")->print());
+
+
+
+
+// ------> LINKED LIST TESTS <----------
+
+// Create & add it4ems to linked list
+
+TEST(LINKEDLISTDBTest, createJSONNode) {
+   manager->createDatabase("test", "linkedlist");
+   manager->getDatabase("test")->add("json test_j {\"key\":\"value\"}");
+   EXPECT_EQ("{\"key\":\"value\"}", manager->getDatabase("test")->get("test_j")->print());
 }
 
-TEST(LinkedDBTest, setStringNode) {
-   manager->createDatabase("test15", "array");
-   manager->getDatabase("test15")->set("test15 hello");
-   EXPECT_EQ("hello", manager->getDatabase("test15")->get("test")->print());
+TEST(LINKEDLISTDBTest, createStringNode) {
+   manager->createDatabase("test2", "linkedlist");
+   manager->getDatabase("test2")->add("string test_s wassup");
+   EXPECT_EQ("wassup", manager->getDatabase("test2")->get("test_s")->print());
 }
 
-TEST(LinkedDBTest, setJSONNode) {
-   manager->createDatabase("test16", "array");
-   manager->getDatabase("test16")->set("test16 {\"key\":\"value\"}");
-   EXPECT_EQ("{\"key\":\"value\"}", manager->getDatabase("test16")->get("test")->print());
+// Set items in linkedlist
+TEST(LINKEDLISTDBTest, setJSONNode) {
+   manager->getDatabase("test")->set("test_j {\"key\":\"newValue\"}");
+   EXPECT_EQ("{\"key\":\"newValue\"}", manager->getDatabase("test")->get("test_j")->print());
 }
 
-TEST(LinkedDBTest, removeStringNode) {
-   manager->createDatabase("test17", "array");
-   manager->getDatabase("test17")->add("test17", "test")
-   manager->getDatabase("test17")->remove("test");
-   EXPECT_EQ(0, manager->getDatabase("test17")->getSize());
+TEST(LINKEDLISTDBTest, setStringNode) {
+   manager->getDatabase("test2")->set("test_s newValue");
+   EXPECT_EQ("newValue", manager->getDatabase("test2")->get("test_s")->print());
 }
 
-TEST(LinkedDBTest, removeJSONNode) {
-   manager->createDatabase("test18", "array");
-   manager->getDatabase("test18")->add("test18", "test")
-   manager->getDatabase("test18")->remove("test");
-   EXPECT_EQ(0, manager->getDatabase("test18")->getSize());
+// Remove items from linkedlist
+TEST(LINKEDLISTDBTest, removeJSONNode) {
+   manager->createDatabase("test3", "linkedlist");
+   manager->getDatabase("test3")->add("json test_j {\"key\":\"value\"}");
+   manager->getDatabase("test3")->remove("test_j");
+   EXPECT_EQ(0, manager->getDatabase("test3")->getSize());
 }
-// TEST(ARRAYDBTest, returnSize) {
-// //    manager->createDatabase("testSize", "array");
-// //    manager->getDatabase("test3")->add("pos 1");
-// //    manager->getDatabase("test3")->add("pos 2");
-// //    manager->getDatabase("test3")->add("pos 3");
-// //    EXPECT_EQ( 3, manager->getDatabase("test3")->size()->print());
-// // }
-//
-// // TEST(LinkedDBTest, returnAt) {
-// //    manager->createDatabase("testSize", "linkedList");
-// //    manager->getDatabase("test2")->add("pos 0");
-// //    manager->getDatabase("test2")->add("pos 1");
-// //    manager->getDatabase("test2")->add("pos 2");
-// //    EXPECT_EQ( 2, manager->getDatabase("test2")->at(1)->print());
-// // }
-//
-// // TEST(HASHDBTest, createStringNode) {
-// //    manager->createDatabase("test3", "hashTable");
-// //    manager->getDatabase("test3")->add("lol hash test");
-// //    EXPECT_EQ("wassup", manager->getDatabase("test3")->get("test")->print());
-// // }
+
+TEST(LINKEDLISTDBTest, removeStringNode) {
+   manager->createDatabase("test4", "linkedlist");
+   manager->getDatabase("test4")->add("string test_s wassup");
+   manager->getDatabase("test4")->remove("test_s");
+   EXPECT_EQ(0, manager->getDatabase("test4")->getSize());
+}
+
+
+TEST(LINKEDLISTDBTest, removeDatabase) {
+   manager->removeDatabase("test");
+   manager->removeDatabase("test2");
+   manager->removeDatabase("test3");
+   manager->removeDatabase("test4");
+   EXPECT_EQ(0, manager->getDatabases().size());
+}
+
+
+// ------> HASH TABLE TESTS <----------
+
+// Create & add it4ems to linked list
+
+TEST(HASHTABLEDBTest, createJSONNode) {
+   manager->createDatabase("test", "hashtable");
+   manager->getDatabase("test")->add("json test_j {\"key\":\"value\"}");
+   EXPECT_EQ("{\"key\":\"value\"}", manager->getDatabase("test")->get("test_j")->print());
+}
+
+TEST(HASHTABLEDBTest, createStringNode) {
+   manager->createDatabase("test2", "hashtable");
+   manager->getDatabase("test2")->add("string test_s wassup");
+   EXPECT_EQ("wassup", manager->getDatabase("test2")->get("test_s")->print());
+}
+
+// Set items in hashtable
+TEST(HASHTABLEDBTest, setJSONNode) {
+   manager->getDatabase("test")->set("test_j {\"key\":\"newValue\"}");
+   EXPECT_EQ("{\"key\":\"newValue\"}", manager->getDatabase("test")->get("test_j")->print());
+}
+
+TEST(HASHTABLEDBTest, setStringNode) {
+   manager->getDatabase("test2")->set("test_s newValue");
+   EXPECT_EQ("newValue", manager->getDatabase("test2")->get("test_s")->print());
+}
+
+// Remove items from hashtable
+TEST(HASHTABLEDBTest, removeJSONNode) {
+   manager->createDatabase("test3", "hashtable");
+   manager->getDatabase("test3")->add("json test_j {\"key\":\"value\"}");
+   manager->getDatabase("test3")->remove("test_j");
+   EXPECT_EQ(0, manager->getDatabase("test3")->getSize());
+}
+
+TEST(HASHTABLEDBTest, removeStringNode) {
+   manager->createDatabase("test4", "hashtable");
+   manager->getDatabase("test4")->add("string test_s wassup");
+   manager->getDatabase("test4")->remove("test_s");
+   EXPECT_EQ(0, manager->getDatabase("test4")->getSize());
+}
+
+
+TEST(HASHTABLEDBTest, removeDatabase) {
+   manager->removeDatabase("test");
+   manager->removeDatabase("test2");
+   manager->removeDatabase("test3");
+   manager->removeDatabase("test4");
+   EXPECT_EQ(0, manager->getDatabases().size());
+}
+
 
 #endif

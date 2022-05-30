@@ -14,6 +14,7 @@ public:
     DatabaseNode* get(const string &context);
     void set(const string &context);
     void remove(const string &context);
+    int getSize() { return hashTable.size();};
 };
 
 #endif

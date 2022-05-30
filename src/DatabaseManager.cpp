@@ -97,7 +97,18 @@ int DatabaseManager::size() const
     return databases.size();
 }
 
-// void DatabaseManager::addDatabase(Database *db)
-// {
-//     databases.push_back(db);
-// }
+
+//remove database
+void DatabaseManager::removeDatabase(const string &name)
+{
+    for (unsigned int i = 0; i < databases.size(); i++)
+    {
+        if (databases.at(i)->getName() == name)
+        {
+            delete databases[i];
+            databases.erase(databases.begin() + i);
+        }
+    }
+}
+
+

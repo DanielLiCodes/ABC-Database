@@ -101,3 +101,14 @@ void LinkedListDatabase::remove(const string &context){
         }
     }
 }
+
+
+int LinkedListDatabase::getSize(){
+    LinkedListNode* temp = head;
+    int count = 0;
+    while(temp){
+        count++;
+        temp = temp->next;
+    }
+    return count;
+}

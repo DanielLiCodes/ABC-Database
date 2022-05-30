@@ -11,9 +11,6 @@ class ArrayDatabase : public Database
 {
 private:
     vector<DatabaseNode *> arr;
-    int size;
-    int capacity = 10;
-
 public:
     ArrayDatabase(const string &name) : Database(name) {}
 
@@ -23,9 +20,7 @@ public:
     DatabaseNode *get(const string &context);
     void set(const string &context);
     void remove(const string &context);
-    int getSize(){
-        return arr.size();
-    }
+    int getSize() { return arr.size();};
 };
 
 #endif

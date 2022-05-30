@@ -24,7 +24,6 @@ public:
     void sort();
     string print();
     string getName() { return name; };
-    int getSize();
     
     //put all parameters in a vector of strings
     vector<string> getAllParameters(const string &str) const
@@ -44,6 +43,7 @@ public:
         return result;
     }
     static string addStrings (string x, string y) {return x + " " + y;};
+    virtual int getSize() = 0;
 };
 
 #endif
