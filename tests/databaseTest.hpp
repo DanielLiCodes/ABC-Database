@@ -54,11 +54,38 @@ TEST(ARRAYDBTest, removeStringNode) {
 }
 
 
+
+string random_string( size_t length )
+{
+    auto randchar = []() -> char
+    {
+        const char charset[] =
+        "0123456789"
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        "abcdefghijklmnopqrstuvwxyz";
+        const size_t max_index = (sizeof(charset) - 1);
+        return charset[ rand() % max_index ];
+    };
+    string str(length,0);
+    generate_n( str.begin(), length, randchar );
+    return str;
+}
+
+TEST(ARRAYDBTest, performanceAddTest) {
+   manager->createDatabase("test5", "array");
+   for (int i = 0; i < 100000; i++) {
+      manager->getDatabase("test5")->add("string test_s" + to_string(i) + " " + random_string(300));
+   }
+   EXPECT_EQ(100000, manager->getDatabase("test5")->getSize());
+}
+
+
 TEST(ARRAYDBTest, removeDatabase) {
    manager->removeDatabase("test");
    manager->removeDatabase("test2");
    manager->removeDatabase("test3");
    manager->removeDatabase("test4");
+   manager->removeDatabase("test5");
    EXPECT_EQ(0, manager->getDatabases().size());
 }
 
@@ -108,12 +135,20 @@ TEST(LINKEDLISTDBTest, removeStringNode) {
    EXPECT_EQ(0, manager->getDatabase("test4")->getSize());
 }
 
+TEST(LINKEDLISTDBTest, performanceAddTest) {
+   manager->createDatabase("test5", "linkedlist");
+   for (int i = 0; i < 100000; i++) {
+      manager->getDatabase("test5")->add("string test_s" + to_string(i) + " " + random_string(300));
+   }
+   EXPECT_EQ(100000, manager->getDatabase("test5")->getSize());
+}
 
 TEST(LINKEDLISTDBTest, removeDatabase) {
    manager->removeDatabase("test");
    manager->removeDatabase("test2");
    manager->removeDatabase("test3");
    manager->removeDatabase("test4");
+   manager->removeDatabase("test5");
    EXPECT_EQ(0, manager->getDatabases().size());
 }
 
@@ -160,12 +195,21 @@ TEST(HASHTABLEDBTest, removeStringNode) {
    EXPECT_EQ(0, manager->getDatabase("test4")->getSize());
 }
 
+TEST(HASHTABLEDBTest, performanceAddTest) {
+   manager->createDatabase("test5", "hashtable");
+   for (int i = 0; i < 100000; i++) {
+      manager->getDatabase("test5")->add("string test_s" + to_string(i) + " " + random_string(300));
+   }
+   EXPECT_EQ(100000, manager->getDatabase("test5")->getSize());
+}
+
 
 TEST(HASHTABLEDBTest, removeDatabase) {
    manager->removeDatabase("test");
    manager->removeDatabase("test2");
    manager->removeDatabase("test3");
    manager->removeDatabase("test4");
+   manager->removeDatabase("test5");
    EXPECT_EQ(0, manager->getDatabases().size());
 }
 

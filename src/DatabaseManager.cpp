@@ -55,7 +55,7 @@ bool DatabaseManager::setAccess(const Credentials &acc, const Credentials &_new)
 }
 
 //return database
-Database *DatabaseManager::getDatabase(const string &name) const
+Database* DatabaseManager::getDatabase(const string &name) const
 {
     for (unsigned int i = 0; i < databases.size(); i++)
     {
