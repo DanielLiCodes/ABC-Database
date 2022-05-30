@@ -8,8 +8,6 @@
 #include <numeric>
 using namespace std;
 
-
-
 LinkedListDatabase::~LinkedListDatabase(){
     LinkedListNode* cur = head;
     while(cur != nullptr){
