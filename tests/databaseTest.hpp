@@ -5,6 +5,9 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <random>
+#include <functional>
+#include <algorithm>  
 
 using namespace std;
 #include "../src/DatabaseManager.cpp"
@@ -73,10 +76,10 @@ string random_string( size_t length )
 
 TEST(ARRAYDBTest, performanceAddTest) {
    manager->createDatabase("test5", "array");
-   for (int i = 0; i < 100000; i++) {
+   for (int i = 0; i < 10; i++) {
       manager->getDatabase("test5")->add("string test_s" + to_string(i) + " " + random_string(300));
    }
-   EXPECT_EQ(100000, manager->getDatabase("test5")->getSize());
+   EXPECT_EQ(10, manager->getDatabase("test5")->getSize());
 }
 
 
@@ -137,10 +140,10 @@ TEST(LINKEDLISTDBTest, removeStringNode) {
 
 TEST(LINKEDLISTDBTest, performanceAddTest) {
    manager->createDatabase("test5", "linkedlist");
-   for (int i = 0; i < 100000; i++) {
+   for (int i = 0; i < 10; i++) {
       manager->getDatabase("test5")->add("string test_s" + to_string(i) + " " + random_string(300));
    }
-   EXPECT_EQ(100000, manager->getDatabase("test5")->getSize());
+   EXPECT_EQ(10, manager->getDatabase("test5")->getSize());
 }
 
 TEST(LINKEDLISTDBTest, removeDatabase) {
@@ -197,10 +200,10 @@ TEST(HASHTABLEDBTest, removeStringNode) {
 
 TEST(HASHTABLEDBTest, performanceAddTest) {
    manager->createDatabase("test5", "hashtable");
-   for (int i = 0; i < 100000; i++) {
+   for (int i = 0; i < 10; i++) {
       manager->getDatabase("test5")->add("string test_s" + to_string(i) + " " + random_string(300));
    }
-   EXPECT_EQ(100000, manager->getDatabase("test5")->getSize());
+   EXPECT_EQ(10, manager->getDatabase("test5")->getSize());
 }
 
 
