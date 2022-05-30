@@ -2,3 +2,6 @@
 	path = googletest
 	url = https://github.com/google/googletest.git
 	ignore = all
+[submodule "include/http"]
+	path = include/http
+	url = https://github.com/yhirose/cpp-httplib

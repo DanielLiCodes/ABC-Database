@@ -12,6 +12,8 @@ class SelectionSort : public SortingStrategy{
         SelectionSort(){}
     private:
         void sort(vector<DatabaseNode*> &arr){
+            
+            //find min in unsorted array
             for(int i = 0; i < arr.size(); i++){
                 int smallest = i;
                 for(int j = i+1; j < arr.size(); j++){
@@ -19,6 +21,7 @@ class SelectionSort : public SortingStrategy{
                         smallest = j;
                     }
                 }
+                //swap min index with first index (i)
                 DatabaseNode* temp = arr[i];
                 arr[i] = arr[smallest];
                 arr[smallest] = temp;

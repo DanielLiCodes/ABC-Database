@@ -24,14 +24,17 @@ public:
     void sort();
     string print();
     string getName() { return name; };
-    int getSize();
+    
+    //put all parameters in a vector of strings
     vector<string> getAllParameters(const string &str) const
     {
         vector<string> result;
         string copy = str;
         size_t pos = copy.find(" ");
+        //if not a space, then put the parameter in the vector
         while (pos != string::npos)
         {
+            //store the string until next space is found
             result.push_back(copy.substr(0, pos));
             copy = copy.substr(pos + 1);
             pos = copy.find(" ");
@@ -39,6 +42,8 @@ public:
         result.push_back(copy.substr(pos + 1));
         return result;
     }
+    static string addStrings (string x, string y) {return x + " " + y;};
+    virtual int getSize() = 0;
 };
 
 #endif

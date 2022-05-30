@@ -8,7 +8,10 @@
 
 #include <string>
 #include <sstream>
+#include <numeric>
 using namespace std;
+
+
 
 void ArrayDatabase::sort(string sortStrat){
     SortingStrategy *temp = nullptr;
@@ -36,14 +39,17 @@ void ArrayDatabase::add(const string &context)
     if (ctx.at(0) == "json")
     {
         JSONDatabaseNode *temp = new JSONDatabaseNode(ctx.at(1));
-        temp->set(ctx.at(2));
+        temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
         arr.push_back(temp);
     }
-    else
-    {
+    else if(ctx.at(0) == "string") {
         StringDatabaseNode *temp = new StringDatabaseNode(ctx.at(1));
-        temp->set(ctx.at(2));
+        temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
+
         arr.push_back(temp);
+    }
+    else {
+        throw "Proper node not defined";
     }
 }
 
@@ -53,9 +59,9 @@ DatabaseNode *ArrayDatabase::get(const string &context)
     vector<string> ctx = getAllParameters(context);
     for (int i = 0; i < arr.size(); i++)
     {
-        if (arr[i]->getKey() == ctx.at(0))
+        if (arr.at(i)->getKey() == ctx.at(0))
         {
-            return arr[i];
+            return arr.at(i);
         }
     }
     return nullptr;
@@ -65,9 +71,9 @@ void ArrayDatabase::set(const string &context)
     vector<string> ctx = getAllParameters(context);
     for (int i = 0; i < arr.size(); i++)
     {
-        if (arr[i]->getKey() == ctx.at(0))
+        if (arr.at(i)->getKey() == ctx.at(0))
         {
-            arr[i]->set(ctx.at(1));
+            arr.at(i)->set(ctx.at(1));
         }
     }
 }
@@ -77,7 +83,7 @@ void ArrayDatabase::remove(const string &context)
     vector<string> ctx = getAllParameters(context);
     for (int i = 0; i < arr.size(); i++)
     {
-        if (arr[i]->getKey() == ctx.at(0))
+        if (arr.at(i)->getKey() == ctx.at(0))
         {
             arr.erase(arr.begin() + i);
         }

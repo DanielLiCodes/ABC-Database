@@ -6,9 +6,12 @@ using namespace std;
 void printRoute(const string &route) {
     cout << "Route: " << route << endl;
 }
+
+
 Server *setupRoutes(DatabaseManager *manager)
 {
     Server *svr = new Server();
+    svr->new_task_queue = [] { return new ThreadPool(1); };
 
     // GET /create [:)]
     svr->Get("/database/create", [manager](const Request &req, Response &res) {
@@ -17,7 +20,15 @@ Server *setupRoutes(DatabaseManager *manager)
         auto val = req.get_param_value("name");
         auto type = req.get_param_value("type");
         if(val != "" && type != "") {
-            manager->createDatabase(val, type);
+            try {
+                manager->createDatabase(val, type);
+                res.status = 200;
+                res.set_content(val + " created", "text/plain");
+            } catch(exception& e) {
+                cout << e.what() << endl;
+                res.status = 400;
+                res.set_content(e.what(), "text/plain");
+            }
             res.set_content("Database created", "text/plain");
         }
         else {
@@ -58,24 +69,57 @@ Server *setupRoutes(DatabaseManager *manager)
                 DatabaseNode* node = db->get(key);
                 if(node != nullptr) {
                     res.set_content(node->print(), "text/plain");
+                    return;
                 }
                 else {
                     res.status = 404;
                     res.set_content("Key not found", "text/plain");
+                    return;
                 }
                 delete node;
             }
             else {
                 res.status = 404;
                 res.set_content("Database not found", "text/plain");
+                return;
             }
             delete db;
         }
         else {
             res.status = 400;
             res.set_content("Invalid request", "text/plain");
+            return;
         }
-        return;
+    });
+
+
+    
+    // GET /database/add [:)]
+    svr->Get("/database/add", [manager](const Request &req, Response &res) {
+        printRoute("/database/add");
+
+        auto dbName = req.get_param_value("db");
+        auto context = req.get_param_value("context");
+
+        if(dbName != "" && context != "") {
+            Database* db = manager->getDatabase(dbName);
+            if(db != nullptr) {
+                db->add(context);
+                res.set_content("Added", "text/plain");
+                return;
+            }
+            else {
+                res.status = 404;
+                res.set_content("Database not found", "text/plain");
+                return;
+            }
+            delete db;
+        }
+        else {
+            res.status = 400;
+            res.set_content("Invalid request", "text/plain");
+            return;
+        }
     });
 
     // GET /database/set [:)]
@@ -93,24 +137,27 @@ Server *setupRoutes(DatabaseManager *manager)
                 if(node != nullptr) {
                     node->set(context);
                     res.set_content("Modified content", "text/plain");
+                    return;
                 }
                 else {
                     res.status = 404;
                     res.set_content("Key not found", "text/plain");
+                    return;
                 }
                 delete node;
             }
             else {
                 res.status = 404;
                 res.set_content("Database not found", "text/plain");
+                return;
             }
             delete db;
         }
         else {
             res.status = 400;
             res.set_content("Invalid request", "text/plain");
+            return;
         }
-        return;
     });
 
     // GET /database/remove [:)]
@@ -139,10 +186,11 @@ Server *setupRoutes(DatabaseManager *manager)
     });
 
     // GET /stop [:)]
-    svr->Get("/stop", [&](const Request &req, Response &res) {
-        cout << "[stop]" << endl;
+    svr->Get("/stop", [manager, svr](const Request &req, Response &res) {
+        printRoute("/stop");
         res.set_content("Server stopped", "text/plain");
         svr->stop();
+        delete manager; 
         return;
     });
 

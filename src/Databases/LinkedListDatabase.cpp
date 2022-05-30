@@ -5,7 +5,9 @@
 
 #include <string>
 #include <sstream>
+#include <numeric>
 using namespace std;
+
 
 
 LinkedListDatabase::~LinkedListDatabase(){
@@ -31,30 +33,34 @@ string LinkedListDatabase::at(int index){
 void LinkedListDatabase::add(const string &context){
     istringstream ss(context);
     vector<string> ctx = getAllParameters(context);
-    if(ctx.at(0) == "json"){
+    if(ctx.at(0) == "json") {
         if(head == nullptr){
             JSONDatabaseNode* temp = new JSONDatabaseNode(ctx.at(1));
-            temp->set(ctx.at(2));
+            temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
             head = new LinkedListNode(temp);
             tail = head;
-        }else{
+        } else{
             JSONDatabaseNode* temp = new JSONDatabaseNode(ctx.at(1));
-            temp->set(ctx.at(2));
+            temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
             tail->next = new LinkedListNode(temp);
             tail = tail->next;
         }
-    }else{
+    }
+    else if(ctx.at(0) == "string") {
         if(head == nullptr){
             StringDatabaseNode* temp = new StringDatabaseNode(ctx.at(1));
-            temp->set(ctx.at(2));
+            temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
             head = new LinkedListNode(temp);
             tail = head;
-        }else{
+        } else{
             StringDatabaseNode* temp = new StringDatabaseNode(ctx.at(1));
-            temp->set(ctx.at(2));
+            temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
             tail->next = new LinkedListNode(temp);
             tail = tail->next;
         }
+    }
+    else {
+        throw "Proper node not defined";
     }
 }
 
@@ -62,10 +68,11 @@ DatabaseNode* LinkedListDatabase::get(const string &context){
     istringstream ss(context);
     vector<string> ctx = getAllParameters(context);
     LinkedListNode* temp = head;
-    while(temp){
+    while(temp != nullptr) {
         if(temp->data->getKey() == ctx.at(0)){
             return temp->data;
         }
+        temp = temp->next;
     }
     return nullptr;
 }    
@@ -104,4 +111,15 @@ void LinkedListDatabase::remove(const string &context){
             prev = prev->next;
         }
     }
+}
+
+
+int LinkedListDatabase::getSize(){
+    LinkedListNode* temp = head;
+    int count = 0;
+    while(temp){
+        count++;
+        temp = temp->next;
+    }
+    return count;
 }

@@ -4,8 +4,7 @@
 #include "Databases/LinkedListDatabase.cpp"
 #include "Nodes/JSONNode.cpp"
 #include "Nodes/StringNode.cpp"
-// #include "../headers/Databases/HashTableDatabase.h"
-// #include "../headers/Databases/LinkedListDatabase.h"
+
 
 // Adds default username and password
 DatabaseManager::DatabaseManager()
@@ -13,6 +12,16 @@ DatabaseManager::DatabaseManager()
     accessability.insert(pair<string, string>("admin", "admin"));
 }
 
+DatabaseManager::~DatabaseManager()
+{
+    for (auto p : databases)
+    {
+        delete p;
+    }
+    databases.clear();
+}
+
+//check if the user's username and password match to allow/deny access
 bool DatabaseManager::canAccess(const Credentials &acc)
 {
     if (accessability.find(acc.user) != accessability.end())
@@ -25,6 +34,7 @@ bool DatabaseManager::canAccess(const Credentials &acc)
     return false;
 }
 
+//set new password/credentials
 bool DatabaseManager::setAccess(const Credentials &acc, const Credentials &_new)
 {
     if (this->canAccess(acc))
@@ -44,6 +54,7 @@ bool DatabaseManager::setAccess(const Credentials &acc, const Credentials &_new)
         return false;
 }
 
+//return database
 Database* DatabaseManager::getDatabase(const string &name) const
 {
     for (unsigned int i = 0; i < databases.size(); i++)
@@ -56,15 +67,25 @@ Database* DatabaseManager::getDatabase(const string &name) const
     return nullptr;
 }
 
-void DatabaseManager::createDatabase(const string &name, const string &type) {
+//create new database based on type: array, hashtable, linkedlist
+void DatabaseManager::createDatabase(const string &name, const string &type)
+{
     if (type == "array")
     {
         databases.push_back(new ArrayDatabase(name));
-        cout << databases.size() << endl;
+    }
+    else if (type == "hashtable")
+    {
+        databases.push_back(new HashTableDatabase(name));
+    }
+    else if (type == "linkedlist")
+    {
+        databases.push_back(new LinkedListDatabase(name));
+    }
+    else {
+        throw "Invalid database type";
     }
 }
-
-
 
 vector<Database *> DatabaseManager::getDatabases() const
 {
@@ -76,7 +97,18 @@ int DatabaseManager::size() const
     return databases.size();
 }
 
-// void DatabaseManager::addDatabase(Database *db)
-// {
-//     databases.push_back(db);
-// }
+
+//remove database
+void DatabaseManager::removeDatabase(const string &name)
+{
+    for (unsigned int i = 0; i < databases.size(); i++)
+    {
+        if (databases.at(i)->getName() == name)
+        {
+            delete databases[i];
+            databases.erase(databases.begin() + i);
+        }
+    }
+}
+
+

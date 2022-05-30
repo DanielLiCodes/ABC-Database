@@ -2,37 +2,31 @@
 
 // EXAMPLE CONTEXT : "/john/age"
 void StringDatabaseNode::add(const string &context) {
-    vector<string> params = getAllParameters(context);
-    Pointer(params.at(0).c_str()).Create(data);
+    string temp = context + " " + data;
+    data = temp;
 }
 
 
 // EXAMPLE CONTEXT : "/john/age 18"
 void StringDatabaseNode::set(const string &context) {
-    vector<string> params = getAllParameters(context);
-    Pointer(params.at(0).c_str()).Set(data, params.at(1).c_str());
+    data = context;
 }
 
 
 // EXAMPLE CONTEXT : "/john/age"
 string StringDatabaseNode::get(const string &context) const {
-    vector<string> params = getAllParameters(context);
-    return Pointer(params.at(0).c_str()).Get(data)->GetString();
+    return data;
 }
 
 
 // EXAMPLE CONTEXT : "/john/age"
 void StringDatabaseNode::remove(const string &context) {
-    vector<string> params = getAllParameters(context);
-    Pointer(params.at(0).c_str()).Erase(data);
+    data = "";
 }
 
 
 string StringDatabaseNode::print() {
-    StringBuffer buffer;
-    Writer<StringBuffer> writer(buffer);
-    data.Accept(writer);
-    return buffer.GetString();
+    return data;
 }
 
 string StringDatabaseNode::getKey() const {

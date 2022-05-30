@@ -14,11 +14,13 @@ private:
     LinkedListNode* tail = nullptr;
 public:
     ~LinkedListDatabase();
+    LinkedListDatabase(const string &name) : Database(name) {}
     string at(int index);
     void add(const string &context);
     DatabaseNode* get(const string &context);
     void set(const string &context);
     void remove(const string &context);
+    int getSize();
 
 };
 
