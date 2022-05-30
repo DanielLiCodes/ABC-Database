@@ -13,6 +13,7 @@ private:
     LinkedListNode* head = nullptr;
     LinkedListNode* tail = nullptr;
 public:
+    ~LinkedListDatabase();
     string at(int index);
     void add(const string &context);
     DatabaseNode* get(const string &context);
