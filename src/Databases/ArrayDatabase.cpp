@@ -90,6 +90,7 @@ void ArrayDatabase::remove(const string &context)
     {
         if (arr.at(i)->getKey() == ctx.at(0))
         {
+            delete arr.at(i);
             arr.erase(arr.begin() + i);
         }
     }
