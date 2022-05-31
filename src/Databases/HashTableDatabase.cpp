@@ -7,13 +7,14 @@
 #include <numeric>
 using namespace std;
 
-//deconstructor for hashtable, go thru hashmap keys and delete all values
-HashTableDatabase::~HashTableDatabase(){
-    for(auto it = hashTable.begin(); it != hashTable.end(); it++){
+// deconstructor for hashtable, go thru hashmap keys and delete all values
+HashTableDatabase::~HashTableDatabase()
+{
+    for (auto it = hashTable.begin(); it != hashTable.end(); it++)
+    {
         delete it->second;
     }
 }
-
 
 string HashTableDatabase::at(string key)
 {
@@ -33,11 +34,10 @@ void HashTableDatabase::add(const string &context)
     }
     else if (ctx.at(0) == "string")
     {
-        {
-            StringDatabaseNode *temp = new StringDatabaseNode(ctx.at(1));
-            temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
-            hashTable[ctx.at(1)] = temp;
-        }
+
+        StringDatabaseNode *temp = new StringDatabaseNode(ctx.at(1));
+        temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
+        hashTable[ctx.at(1)] = temp;
     }
     else
     {

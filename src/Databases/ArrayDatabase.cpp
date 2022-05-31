@@ -12,11 +12,6 @@
 using namespace std;
 
 
-ArrayDatabase::~ArrayDatabase(){
-    for(int i = 0; i < arr.size(); i++){
-        delete arr.at(i);
-    }
-}
 
 void ArrayDatabase::sort(string sortStrat){
     SortingStrategy *temp = nullptr;
@@ -59,7 +54,7 @@ void ArrayDatabase::add(const string &context)
 }
 
 // EXAMPLE CONTEXT: "<key> <rest send to context of Node>"
-DatabaseNode *ArrayDatabase::get(const string &context)
+DatabaseNode * ArrayDatabase::get(const string &context)
 {
     vector<string> ctx = getAllParameters(context);
     for (int i = 0; i < arr.size(); i++)
@@ -90,7 +85,6 @@ void ArrayDatabase::remove(const string &context)
     {
         if (arr.at(i)->getKey() == ctx.at(0))
         {
-            delete arr.at(i);
             arr.erase(arr.begin() + i);
         }
     }
