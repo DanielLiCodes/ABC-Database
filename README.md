@@ -47,11 +47,11 @@ We decided upon using the strategy pattern, because we realized that we could us
 
  
  > ## Final deliverable
- > All group members will give a demo to the TA/reader during lab time. The TA/reader will check the demo and the project GitHub repository and ask a few questions to all the team members. 
- > Before the demo, you should do the following:
- > * Complete the sections below (i.e. Screenshots, Installation/Usage, Testing)
- > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Project board.
- > * Make sure your README file and Project board are up-to-date reflecting the current status of your project (e.g. any changes that you have made during the project such as changes to your class diagram). Previous versions should still be visible through your commit history. 
+ ![Final UML Diagram](https://lucid.app/documents/view/ab73a3fa-6382-4592-9be9-e489b1a5917e)
+ 
+ There are some significant chnages that have happened since the third phase of the project. We have intorduced a Database Manager class which is used to determine wether an individual has the verification needed to access a Databaase. Our project continued witht the strategy pattern, and like prior used sorting algortithms to organize our array database, the only difference being the new sorting startegy we added(SelectionSort). The continued updates on the UML diagram helped us follow the chnages on our code cleanly, so we could visualize the steps we would need to take to ensure a complete project.
+ 
+ The overall efficiency of the code has been tested and we have found no errors in our testing process thus far which will be touched on further below. Through the developmental process certain functions we intially planned on creating have been dropped or switched out. We found the need for function we intially hadn't had and found others redundant and we acted accordingly reaching the end of this sprint. The kanban board has the ideas in place for the next sprint.
  
  ## Screenshots
  > Screenshots of the input/output after running your application
