@@ -12,20 +12,6 @@
 using namespace std;
 
 
-
-void ArrayDatabase::sort(string sortStrat){
-    SortingStrategy *temp = nullptr;
-    if(sortStrat == "merge"){
-
-    }else if(sortStrat == "quick"){
-
-    }else{
-        temp = new InsertionSort();
-    }
-    temp->sort(arr);
-}
-
-
 string ArrayDatabase::at(int index)
 {
     return arr[index]->print();
@@ -54,7 +40,7 @@ void ArrayDatabase::add(const string &context)
 }
 
 // EXAMPLE CONTEXT: "<key> <rest send to context of Node>"
-DatabaseNode * ArrayDatabase::get(const string &context)
+DatabaseNode* ArrayDatabase::get(const string &context)
 {
     vector<string> ctx = getAllParameters(context);
     for (int i = 0; i < arr.size(); i++)
