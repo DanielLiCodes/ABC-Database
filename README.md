@@ -59,16 +59,28 @@ We decided upon using the strategy pattern, because we realized that we could us
  ## Installation/Usage
  > Instructions on installing and running your application
   Step 1
-   * clone the repository to your device
+   - clone the repository to your device
   Step 2
-   * type in (cmake .) or (cmake3 . on hammer)
+   - type in (cmake .) or (cmake3 . on hammer)
   Step 3
-   * type make into the terminal
+   - type make into the terminal
   Step 4
-   * Congrats you've installed the program and now you can begin to use the database
+   - Congrats you've installed the program and now you can begin to use the database
  
  Usage:
- 
+After installing the program onto your terminal, we can begin using ABCDatabase. 
+Step 1:
+
+On one terminal page, type in ./ABCdatabase. This will activate the system. 
+
+Step two: 
+
+Then on another terminal you can curl information for example:
+	Curl “http://localhost:8080/database/create?type=array&name=accounts” 
+Which will create an array named accounts. The file below further describes the pathways of adding/setting/getting/removing/printing values into a database.
+
+You can continue to do this until satisfied with the database
+
  ## Testing
  > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
  
