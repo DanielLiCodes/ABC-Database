@@ -46,8 +46,9 @@ We decided upon using the strategy pattern, because we realized that we could us
 
 
  
- > ## Final deliverable
- ![Final UML Diagram](https://lucid.app/documents/view/ab73a3fa-6382-4592-9be9-e489b1a5917e)
+ > ## Final deliverable!
+
+ ![UML final](https://user-images.githubusercontent.com/62776702/171256170-1a8fb58e-d5d5-4dfa-9832-a7914b196806.jpeg)
  
  There are some significant chnages that have happened since the third phase of the project. We have intorduced a Database Manager class which is used to determine wether an individual has the verification needed to access a Databaase. Our project continued witht the strategy pattern, and like prior used sorting algortithms to organize our array database, the only difference being the new sorting startegy we added(SelectionSort). The continued updates on the UML diagram helped us follow the chnages on our code cleanly, so we could visualize the steps we would need to take to ensure a complete project.
  
