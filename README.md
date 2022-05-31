@@ -78,6 +78,8 @@ Which will create an array named accounts. The file below further describes the 
 You can continue to do this until satisfied with the database
 [script.pdf](https://github.com/cs100/final-project-abcer/files/8809519/script.pdf)
 
+This script contains all the available paths for the database in a neat json format, so be sure to use it as documentation!
+
  ## Testing
  > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
  
