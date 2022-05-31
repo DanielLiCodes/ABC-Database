@@ -11,7 +11,7 @@ class SelectionSort : public SortingStrategy{
     public:
         SelectionSort(){}
     private:
-        void sort(vector<DatabaseNode*> &arr){
+        void sort(vector<unique_ptr<DatabaseNode> > &arr){
             
             //find min in unsorted array
             for(int i = 0; i < arr.size(); i++){
@@ -22,9 +22,9 @@ class SelectionSort : public SortingStrategy{
                     }
                 }
                 //swap min index with first index (i)
-                DatabaseNode* temp = arr[i];
-                arr[i] = arr[smallest];
-                arr[smallest] = temp;
+                unique_ptr<DatabaseNode>  temp = move(arr[i]);
+                arr[i] = move(arr[smallest]);
+                arr[smallest] = move(temp);
             }
         }
 };

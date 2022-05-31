@@ -132,7 +132,7 @@ void setupRoutes(DatabaseManager &manager, Server &svr)
         if(dbName != "" && key != "" && context != "") {
             Database* db = manager.getDatabase(dbName);
             if(db != nullptr) {
-                DatabaseNode* node = db->get(key);
+                DatabaseNode*  node = db->get(key);
                 if(node != nullptr) {
                     node->set(context);
                     res.set_content("Modified content", "text/plain");

@@ -10,14 +10,14 @@ using namespace std;
 class ArrayDatabase : public Database
 {
 private:
-    vector<DatabaseNode *> arr;
+    vector<unique_ptr<DatabaseNode> > arr;
 public:
     ArrayDatabase(const string &name) : Database(name) {}
     ~ArrayDatabase();
     void sort(string sortStrat = "insertion");
     string at(int index);
     void add(const string &context);
-    DatabaseNode *get(const string &context);
+    DatabaseNode* get(const string &context);
     void set(const string &context);
     void remove(const string &context);
     int getSize() { return arr.size();};

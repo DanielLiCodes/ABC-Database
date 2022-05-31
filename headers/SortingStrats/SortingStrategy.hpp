@@ -4,7 +4,7 @@
 
 class SortingStrategy{
     public:
-        virtual void sort(vector<DatabaseNode*> &arr) = 0;
+        virtual void sort(vector<unique_ptr<DatabaseNode> > &arr) = 0;
 };
 
 #endif

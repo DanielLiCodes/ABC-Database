@@ -19,26 +19,23 @@ void HashTableDatabase::add(const string &context)
     vector<string> ctx = getAllParameters(context);
     if (ctx.at(0) == "json")
     {
-        JSONDatabaseNode *temp = new JSONDatabaseNode(ctx.at(1));
-        temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
-        hashTable[ctx.at(1)] = temp;
+        hashTable[ctx.at(1)] = unique_ptr<DatabaseNode> (new JSONDatabaseNode(ctx.at(1)));
+        hashTable[ctx.at(1)]->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
     }
     else if (ctx.at(0) == "string")
     {
-
-        StringDatabaseNode *temp = new StringDatabaseNode(ctx.at(1));
-        temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
-        hashTable[ctx.at(1)] = temp;
+        hashTable[ctx.at(1)] = unique_ptr<DatabaseNode> (new StringDatabaseNode(ctx.at(1)));
+        hashTable[ctx.at(1)]->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
     }
     else
     {
         throw "Proper node not defined";
     }
 }
-DatabaseNode *HashTableDatabase::get(const string &context)
+DatabaseNode* HashTableDatabase::get(const string &context)
 {
     vector<string> ctx = getAllParameters(context);
-    return hashTable[ctx.at(0)];
+    return hashTable[ctx.at(0)].get();
 }
 void HashTableDatabase::set(const string &context)
 {

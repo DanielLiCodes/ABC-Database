@@ -17,7 +17,7 @@ protected:
 public:
     Database(const string &name) : name(name) {}
     virtual void add(const string &context) = 0;
-    virtual DatabaseNode *get(const string &context) = 0;
+    virtual DatabaseNode* get(const string &context) = 0;
     virtual void set(const string &context) = 0;
     virtual void remove(const string &context) = 0;
 

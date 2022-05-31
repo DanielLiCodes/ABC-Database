@@ -12,11 +12,11 @@ class QuickSort : public SortingStrategy{
     private:
     
         //find partition. sort elements before the partition and elements after
-        void sort(vector<DatabaseNode*> &arr){
+        void sort(vector<unique_ptr<DatabaseNode> > &arr){
             quickSort(arr, 0, arr.size()-1);
         }
 
-        void quickSort(vector<DatabaseNode*> &arr, int l, int h){
+        void quickSort(vector<unique_ptr<DatabaseNode> > &arr, int l, int h){
             if(l < h){
                 int part_in = partition(arr, l, h);
                 quickSort(arr, l, part_in-1);
@@ -25,8 +25,8 @@ class QuickSort : public SortingStrategy{
         }
 
         //place pivot index in the correct position in the array
-        int partition(vector<DatabaseNode*> &arr, int low, int high){
-            DatabaseNode* pivot = arr[low];
+        int partition(vector<unique_ptr<DatabaseNode> > &arr, int low, int high){
+            unique_ptr<DatabaseNode>  pivot = arr[low];
             int i = low+1;
 
             for(int j = low+1; j <= high; j++){
@@ -38,8 +38,8 @@ class QuickSort : public SortingStrategy{
             swap(arr, low, i-1);
             return(i - 1);
         }
-        void swap(vector<DatabaseNode*> &arr, int a, int b){
-            DatabaseNode* temp = arr[a];
+        void swap(vector<unique_ptr<DatabaseNode> > &arr, int a, int b){
+            unique_ptr<DatabaseNode>  temp = arr[a];
             arr[a] = arr[b];
             arr[b] = temp;
         }

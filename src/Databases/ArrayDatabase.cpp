@@ -24,15 +24,12 @@ void ArrayDatabase::add(const string &context)
     vector<string> ctx = getAllParameters(context);
     if (ctx.at(0) == "json")
     {
-        JSONDatabaseNode *temp = new JSONDatabaseNode(ctx.at(1));
-        temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
-        arr.push_back(temp);
+        arr.emplace_back(new JSONDatabaseNode(ctx.at(1)));
+        arr.back()->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
     }
     else if(ctx.at(0) == "string") {
-        StringDatabaseNode *temp = new StringDatabaseNode(ctx.at(1));
-        temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
-
-        arr.push_back(temp);
+        arr.emplace_back(new StringDatabaseNode(ctx.at(1)));
+        arr.back()->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
     }
     else {
         throw "Proper node not defined";
@@ -47,7 +44,7 @@ DatabaseNode* ArrayDatabase::get(const string &context)
     {
         if (arr.at(i)->getKey() == ctx.at(0))
         {
-            return arr.at(i);
+            return arr.at(i).get();
         }
     }
     return nullptr;

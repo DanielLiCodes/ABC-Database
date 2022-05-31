@@ -33,27 +33,23 @@ void LinkedListDatabase::add(const string &context){
     vector<string> ctx = getAllParameters(context);
     if(ctx.at(0) == "json") {
         if(head == nullptr){
-            JSONDatabaseNode* temp = new JSONDatabaseNode(ctx.at(1));
-            temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
-            head = new LinkedListNode(temp);
+            head = new LinkedListNode( unique_ptr<DatabaseNode> (new JSONDatabaseNode(ctx.at(1))));
+            head->data->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
             tail = head;
         } else{
-            JSONDatabaseNode* temp = new JSONDatabaseNode(ctx.at(1));
-            temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
-            tail->next = new LinkedListNode(temp);
+            tail->next = new LinkedListNode( unique_ptr<DatabaseNode> (new JSONDatabaseNode(ctx.at(1))));
+            tail->next->data->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
             tail = tail->next;
         }
     }
     else if(ctx.at(0) == "string") {
         if(head == nullptr){
-            StringDatabaseNode* temp = new StringDatabaseNode(ctx.at(1));
-            temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
-            head = new LinkedListNode(temp);
+            head = new LinkedListNode( unique_ptr<DatabaseNode> (new StringDatabaseNode(ctx.at(1))));
+            head->data->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
             tail = head;
         } else{
-            StringDatabaseNode* temp = new StringDatabaseNode(ctx.at(1));
-            temp->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
-            tail->next = new LinkedListNode(temp);
+            tail->next = new LinkedListNode( unique_ptr<DatabaseNode> (new StringDatabaseNode(ctx.at(1))));
+            tail->next->data->set(accumulate(next(ctx.begin(), 2), ctx.end(), std::string(""), addStrings).substr(1));
             tail = tail->next;
         }
     }
@@ -68,7 +64,7 @@ DatabaseNode* LinkedListDatabase::get(const string &context){
     LinkedListNode* temp = head;
     while(temp != nullptr) {
         if(temp->data->getKey() == ctx.at(0)){
-            return temp->data;
+            return temp->data.get();
         }
         temp = temp->next;
     }
