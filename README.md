@@ -101,5 +101,5 @@ You can continue to do this until satisfied with the database
 This script contains all the available paths for the database in a neat json format, so be sure to use it as documentation!
 
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+For testing, we validated our work by testing for CI in GitHub. Because the database is built to function for arrays, linked lists, and hash tables, we tested functions for each database. The tests include creating and adding items into a database for both string and JSON types, setting those items, and then removing them without error and more importantly memory leaks. Additionally, we tested the speed of the database by adding 10 elements to assess the efficiency which we found to be 0 ms. 
  
