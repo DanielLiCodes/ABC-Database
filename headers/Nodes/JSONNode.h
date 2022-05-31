@@ -20,6 +20,7 @@ class JSONDatabaseNode : public DatabaseNode {
         JSONDatabaseNode(const string &key): DatabaseNode(key) {
             data.SetObject();
         }
+        ~JSONDatabaseNode() {}
 	// Creates a Json data structure of type defined by a key.
         void add(const string &context);
 	// this will add data into the the datastructure

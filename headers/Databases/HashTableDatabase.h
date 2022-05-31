@@ -8,7 +8,7 @@ class HashTableDatabase : public Database {
 private:
     unordered_map<string, unique_ptr<DatabaseNode> > hashTable;
 public:
-    ~HashTableDatabase();
+    ~HashTableDatabase() {};
     HashTableDatabase(const string &name) : Database(name) {}
     string at(string key);
     void add(const string &context);

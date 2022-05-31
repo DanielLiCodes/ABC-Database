@@ -13,7 +13,7 @@ private:
     vector<unique_ptr<DatabaseNode> > arr;
 public:
     ArrayDatabase(const string &name) : Database(name) {}
-    ~ArrayDatabase();
+    ~ArrayDatabase() {};
     void sort(string sortStrat = "insertion");
     string at(int index);
     void add(const string &context);

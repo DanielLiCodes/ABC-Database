@@ -42,13 +42,11 @@ void setupRoutes(DatabaseManager &manager, Server &svr)
         printRoute("/database/list");
         stringstream ss;
 
-        if(manager.getDatabases().size() == 0) {
+        if(manager.size() == 0) {
             ss << "No databases found";
         }
         else {
-            for(auto db : manager.getDatabases()) {
-                ss << db->getName() << " ";
-            }
+            ss << manager.print();
         }
         res.set_content(ss.str(), "text/plain");
         return;

@@ -12,6 +12,7 @@ class DatabaseNode {
         string key;
     public:
         DatabaseNode(const string &key): key(key){}
+        virtual ~DatabaseNode() {}
 	// creates a DatabaseNode and uses the key input to decide what type
         virtual void add(const string &context) = 0;
 	// adds a value into a position 

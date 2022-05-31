@@ -7,7 +7,6 @@
 #include "DatabaseNode.h"
 
 using namespace std;
-using namespace rapidjson;
 
 class StringDatabaseNode : public DatabaseNode {
     private:
@@ -16,6 +15,7 @@ class StringDatabaseNode : public DatabaseNode {
         StringDatabaseNode(const string &key): DatabaseNode(key) {
             data = "";
         }
+        ~StringDatabaseNode() {}
 	// Creates a  database of string values
         void add(const string &context);
 	// add a string value(data) into the data structure

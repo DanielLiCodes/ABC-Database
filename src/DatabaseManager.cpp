@@ -12,15 +12,6 @@ DatabaseManager::DatabaseManager()
     accessability.insert(pair<string, string>("admin", "admin"));
 }
 
-DatabaseManager::~DatabaseManager()
-{
-    for (auto p : databases)
-    {
-        delete p;
-    }
-    databases.clear();
-}
-
 //check if the user's username and password match to allow/deny access
 bool DatabaseManager::canAccess(const Credentials &acc)
 {
@@ -61,7 +52,7 @@ Database* DatabaseManager::getDatabase(const string &name) const
     {
         if (databases.at(i)->getName() == name)
         {
-            return databases[i];
+            return databases[i].get();
         }
     }
     return nullptr;
@@ -72,24 +63,19 @@ void DatabaseManager::createDatabase(const string &name, const string &type)
 {
     if (type == "array")
     {
-        databases.push_back(new ArrayDatabase(name));
+        databases.push_back(unique_ptr<Database> (new ArrayDatabase(name)));
     }
     else if (type == "hashtable")
     {
-        databases.push_back(new HashTableDatabase(name));
+        databases.push_back(unique_ptr<Database> (new HashTableDatabase(name)));
     }
     else if (type == "linkedlist")
     {
-        databases.push_back(new LinkedListDatabase(name));
+        databases.push_back(unique_ptr<Database> (new LinkedListDatabase(name)));
     }
     else {
         throw "Invalid database type";
     }
-}
-
-vector<Database *> DatabaseManager::getDatabases() const
-{
-    return databases;
 }
 
 int DatabaseManager::size() const
@@ -98,6 +84,16 @@ int DatabaseManager::size() const
 }
 
 
+string DatabaseManager::print() const
+{
+    stringstream ss;
+    for (unsigned int i = 0; i < databases.size(); i++)
+    {
+        ss << databases[i]->getName() << endl;
+    }
+    return ss.str();
+}
+
 //remove database
 void DatabaseManager::removeDatabase(const string &name)
 {
@@ -105,10 +101,8 @@ void DatabaseManager::removeDatabase(const string &name)
     {
         if (databases.at(i)->getName() == name)
         {
-            delete databases[i];
             databases.erase(databases.begin() + i);
         }
     }
 }
-
 

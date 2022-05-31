@@ -20,17 +20,17 @@ class DatabaseManager
 {
 private:
     map<string, string> accessability;
-    vector<Database*> databases;
+    vector<unique_ptr<Database>> databases;
 public:
     DatabaseManager();
-    ~DatabaseManager();
+    ~DatabaseManager() {};
     bool canAccess(const Credentials &acc);
     bool setAccess(const Credentials &acc, const Credentials &_new);
     Database* getDatabase(const string &name) const;
     void createDatabase(const string &name, const string &type);
     void removeDatabase(const string &name);
+    string print() const;
     int size() const;
-    vector<Database*> getDatabases() const;
 };
 
 #endif
