@@ -76,6 +76,7 @@ Then on another terminal you can curl information for example:
 Which will create an array named accounts. The file below further describes the pathways of adding/setting/getting/removing/printing values into a database.
 
 You can continue to do this until satisfied with the database
+[script.pdf](https://github.com/cs100/final-project-abcer/files/8809519/script.pdf)
 
  ## Testing
  > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
