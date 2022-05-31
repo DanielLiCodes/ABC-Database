@@ -59,13 +59,13 @@ We decided upon using the strategy pattern, because we realized that we could us
  ## Installation/Usage
  > Instructions on installing and running your application
   Step 1
-   - clone the repository to your device
+    clone the repository to your device
   Step 2
-   - type in (cmake .) or (cmake3 . on hammer)
+    type in (cmake .) or (cmake3 . on hammer)
   Step 3
-   - type make into the terminal
+    type make into the terminal
   Step 4
-   - Congrats you've installed the program and now you can begin to use the database
+    Congrats you've installed the program and now you can begin to use the database
  
  Usage:
 After installing the program onto your terminal, we can begin using ABCDatabase. 
