@@ -7,5 +7,7 @@
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
+  int hi = RUN_ALL_TESTS();
+  delete manager2;
+  return hi;
 }

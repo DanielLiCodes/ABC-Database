@@ -214,6 +214,7 @@ TEST(HASHTABLEDBTest, removeDatabase) {
    manager->removeDatabase("test4");
    manager->removeDatabase("test5");
    EXPECT_EQ(0, manager->size());
+   delete manager;
 }
 
 // TEST(DatabaseManagerTest, getDatabase) {

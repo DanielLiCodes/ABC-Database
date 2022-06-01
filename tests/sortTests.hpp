@@ -96,11 +96,11 @@ TEST(ARRAYSORTDBTest, InsertionSortTestingJSON) {
 }
 
 TEST(ARRAYSORTDBTest, DatabaseDelete) {
-   manager->removeDatabase("test");
-   manager->removeDatabase("test2");
-   manager->removeDatabase("test3");
-   manager->removeDatabase("test4");
-   manager->removeDatabase("test5");
+   manager2->removeDatabase("test");
+   manager2->removeDatabase("test2");
+   manager2->removeDatabase("test3");
+   manager2->removeDatabase("test4");
+   manager2->removeDatabase("test5");
 }
 
 
@@ -186,15 +186,15 @@ TEST(LINKEDLISTSORTDBTest, InsertionSortTestingJSON) {
 
 
 TEST(LINKEDLISTSORTDBTest, DatabaseDelete2) {
-   manager->removeDatabase("test");
-   manager->removeDatabase("test2");
-   manager->removeDatabase("test3");
-   manager->removeDatabase("test4");
-   manager->removeDatabase("test5");
+   manager2->removeDatabase("test");
+   manager2->removeDatabase("test2");
+   manager2->removeDatabase("test3");
+   manager2->removeDatabase("test4");
+   manager2->removeDatabase("test5");
 }
 
 
-TEST(HASHTABLEDBTest, QuickSortTesting)
+TEST(HASHTABLESORTDBTest, QuickSortTesting)
 {
    manager2->createDatabase("test", "array");
    for (int i = 0; i < 10; i++)
@@ -205,7 +205,7 @@ TEST(HASHTABLEDBTest, QuickSortTesting)
    EXPECT_EQ("0", manager2->getDatabase("test")->at(0));
 }
 
-TEST(HASHTABLEDBTest, QuickSortTestingJSON)
+TEST(HASHTABLESORTDBTest, QuickSortTestingJSON)
 {
    manager2->createDatabase("test3", "array");
    for (int i = 0; i < 10; i++)
@@ -218,7 +218,7 @@ TEST(HASHTABLEDBTest, QuickSortTestingJSON)
 
 // Array selectionsort
 
-TEST(HASHTABLEDBTest, SelectionSortTesting) {
+TEST(HASHTABLESORTDBTest, SelectionSortTesting) {
    manager2->createDatabase("test4", "array");
    for (int i = 0; i < 10; i++) {
       manager2->getDatabase("test4")->add("string test_s" + to_string(i) + " " + to_string(i));
@@ -227,7 +227,7 @@ TEST(HASHTABLEDBTest, SelectionSortTesting) {
    EXPECT_EQ("0", manager2->getDatabase("test4")->at(0));
 }
 
-TEST(HASHTABLEDBTest, SelectionSortTestingJSON) {
+TEST(HASHTABLESORTDBTest, SelectionSortTestingJSON) {
    manager2->createDatabase("test5", "array");
    for (int i = 0; i < 10; i++) {
       manager2->getDatabase("test5")->add("json test_j" + to_string(i) + " {\"key\":\"" + to_string(i) + "\"}");
@@ -237,7 +237,7 @@ TEST(HASHTABLEDBTest, SelectionSortTestingJSON) {
 }
 
 //BOGO
-TEST(HASHTABLEDBTest, BogoSortTesting) {
+TEST(HASHTABLESORTDBTest, BogoSortTesting) {
    manager2->createDatabase("test", "array");
    for (int i = 0; i < 3; i++) {
       manager2->getDatabase("test")->add("string test_s" + to_string(i) + " " + to_string(i));
@@ -246,7 +246,7 @@ TEST(HASHTABLEDBTest, BogoSortTesting) {
    EXPECT_EQ("0", manager2->getDatabase("test")->at(0));
 }
 
-TEST(HASHTABLEDBTest, BogoSortTestingJSON) {
+TEST(HASHTABLESORTDBTest, BogoSortTestingJSON) {
    manager2->createDatabase("test", "array");
    for (int i = 0; i < 3; i++) {
       manager2->getDatabase("test3")->add("json test_j" + to_string(i) + " {\"key\":\"" + to_string(i) + "\"}");
@@ -256,7 +256,7 @@ TEST(HASHTABLEDBTest, BogoSortTestingJSON) {
 }
 //insetionSort
 
-TEST(HASHTABLEDBTest, InsertionSortTesting) {
+TEST(HASHTABLESORTDBTest, InsertionSortTesting) {
    manager2->createDatabase("test", "array");
    for (int i = 0; i < 10; i++) {
       manager2->getDatabase("test")->add("string test_s" + to_string(i) + " " + to_string(i));
@@ -265,7 +265,7 @@ TEST(HASHTABLEDBTest, InsertionSortTesting) {
    EXPECT_EQ("0", manager2->getDatabase("test")->at(0));
 }
 
-TEST(HASHTABLEDBTest, InsertionSortTestingJSON) {
+TEST(HASHTABLESORTDBTest, InsertionSortTestingJSON) {
    manager2->createDatabase("test", "array");
    for (int i = 0; i < 10; i++) {
       manager2->getDatabase("test3")->add("json test_j" + to_string(i) + " {\"key\":\"" + to_string(i) + "\"}");
@@ -274,7 +274,14 @@ TEST(HASHTABLEDBTest, InsertionSortTestingJSON) {
    EXPECT_EQ("{\"key\":\"0\"}", manager2->getDatabase("test3")->at(0));
 }
 
-
+TEST(LINKEDLISTDBTest, DatabaseDelete) {
+   manager2->removeDatabase("test");
+   manager2->removeDatabase("test2");
+   manager2->removeDatabase("test3");
+   manager2->removeDatabase("test4");
+   manager2->removeDatabase("test5");
+   EXPECT_EQ(0, manager2->size());
+}
 
 
 
