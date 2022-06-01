@@ -55,9 +55,51 @@ We decided upon using the strategy pattern, because we realized that we could us
  The overall efficiency of the code has been tested and we have found no errors in our testing process thus far which will be touched on further below. Through the developmental process certain functions we intially planned on creating have been dropped or switched out. We found the need for function we intially hadn't had and found others redundant and we acted accordingly reaching the end of this sprint. The kanban board has the ideas in place for the next sprint.
  
  ## Screenshots
- > Screenshots of the input/output after running your application
+ Database Creation
+<img width="870" alt="databasecreation" src="https://user-images.githubusercontent.com/64798216/171290983-6bf2d1a2-8fdc-4a14-9a7d-2fb274d109ca.png">
+
+Adding elements(String node here, with key nisarg, value patel)
+<img width="870" alt="image" src="https://user-images.githubusercontent.com/64798216/171291432-5175a296-65e2-4627-b642-0ee79b5edb9c.png">
+
+After adding all elements(our group's first and last names), we want to get the element! So we send a get request
+<img width="870" alt="image" src="https://user-images.githubusercontent.com/64798216/171291747-76649267-2072-435e-9aab-23d1cc0234c5.png">
+
+And we get it in the response!
+
+<img width="461" alt="image" src="https://user-images.githubusercontent.com/64798216/171291780-cecce6a0-cc17-4ae9-8c33-71b0bd80b9ff.png">
+
+This is how the terminal running the database looks like after creating the database, adding 4 elements, and getting one.
+
+
  ## Installation/Usage
  > Instructions on installing and running your application
+  - Step 1: clone the repository to your device
+  - Step 2: type in (cmake .) or (cmake3 . on hammer)
+  - Step 3: type make into the terminal
+  - Step 4: Congrats you've installed the program and now you can begin to use the database
+ >
+Usage:
+After installing the program onto your terminal, we can begin using ABCDatabase. 
+Step 1:
+
+On one terminal page, type in ./ABCdatabase. This will activate the system. 
+
+Step two: 
+
+Then on another terminal you can curl information for example:
+	Curl “http://localhost:8080/database/create?type=array&name=accounts” 
+Which will create an array named accounts. The file below further describes the pathways of adding/setting/getting/removing/printing values into a database. Other than curl, you could also make a network request to the local host, with the correct path. This way, it can be used in other applications as a database, and is quick and easy to access!
+
+In order to add data to the database, you would make another network get request, to the same host, with a different url. For example, 
+ > http://localhost:8080/database/add?db=accounts&context=string sheshank biju
+
+would add a new string node, with key sheshank, and biju as the value. 
+
+You can continue to do this until satisfied with the database
+[script.pdf](https://github.com/cs100/final-project-abcer/files/8809519/script.pdf)
+
+This script contains all the available paths for the database in a neat json format, so be sure to use it as documentation!
+
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+For testing, we validated our work by testing for CI in GitHub. Because the database is built to function for arrays, linked lists, and hash tables, we tested functions for each database. The tests include creating and adding items into a database for both string and JSON types, setting those items, and then removing them without error and more importantly memory leaks. Additionally, we tested the speed of the database by adding 10 elements to assess the efficiency which we found to be 0 ms. 
  
