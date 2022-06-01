@@ -102,4 +102,6 @@ This script contains all the available paths for the database in a neat json for
 
  ## Testing
 For testing, we validated our work by testing for CI in GitHub. Because the database is built to function for arrays, linked lists, and hash tables, we tested functions for each database. The tests include creating and adding items into a database for both string and JSON types, setting those items, and then removing them without error and more importantly memory leaks. Additionally, we tested the speed of the database by adding 10 elements to assess the efficiency which we found to be 0 ms. 
+
+After testing those functions, we tested out sorting functions. This is primarily designed for the array databases and tests the Quicksort, BoGoSort, SelectionSort, and Insertionsort. This test would fill an array database with numbers and then call the sort function to ensure that that array was sorted correctly, testing locations to make sure it would return an expected value.
  
