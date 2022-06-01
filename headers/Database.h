@@ -21,10 +21,10 @@ public:
     virtual DatabaseNode* get(const string &context) = 0;
     virtual void set(const string &context) = 0;
     virtual void remove(const string &context) = 0;
-
-    void sort();
+    void sort(const string &name);
     string print();
     string getName() { return name; };
+    DatabaseNode* at(int x) const;
     
     //put all parameters in a vector of strings
     vector<string> getAllParameters(const string &str) const

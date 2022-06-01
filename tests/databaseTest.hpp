@@ -8,9 +8,9 @@
 #include <random>
 #include <functional>
 #include <algorithm>  
+#include "../src/DatabaseManager.cpp"
 
 using namespace std;
-#include "../src/DatabaseManager.cpp"
 
 DatabaseManager* manager = new DatabaseManager();
 
