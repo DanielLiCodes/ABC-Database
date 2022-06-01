@@ -36,6 +36,21 @@ void ArrayDatabase::add(const string &context)
     }
 }
 
+void ArrayDatabase::sort(string sortStrat){
+    SortingStrat* temp;
+    if(sortStrat == "bogo"){
+        temp = new bogoSort();
+    }else if(sortStrat == "selection"){
+        temp = new selectionSort();
+    }else if(sortStrat == "quick"){
+        temp = new quickSort();
+    }else{
+        temp = new insertionSort();
+    }
+    temp->sort(arr);
+    delete temp;
+}
+
 // EXAMPLE CONTEXT: "<key> <rest send to context of Node>"
 DatabaseNode* ArrayDatabase::get(const string &context)
 {
