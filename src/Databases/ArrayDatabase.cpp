@@ -1,4 +1,5 @@
 #include "../../headers/Databases/ArrayDatabase.h"
+#include "../../headers/SortingStrats/QuickSort.hpp"
 #include "../../headers/SortingStrats/SortingStrategy.hpp"
 #include "../../headers/SortingStrats/BogoSort.hpp"
 #include "../../headers/SortingStrats/InsertionSort.hpp"
