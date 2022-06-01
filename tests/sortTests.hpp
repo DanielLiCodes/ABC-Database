@@ -22,7 +22,7 @@ TEST(ARRAYDBTest, QuickSortTesting) {
    for (int i = 0; i < 10; i++) {
       manager->getDatabase("test")->add("string test_s" + to_string(i));
    }
-   manager->getDatabase("test")->QuickSort();
+   manager->getDatabase("test")->sort("quick");
    EXPECT_EQ(0, manager->getDatabase("test")->at(0));
 }
 
@@ -32,7 +32,7 @@ TEST(ARRAYDBTest, QuickSortTestingJSON) {
    for (int i = 0; i < 10; i++) {
       manager->getDatabase("test3")->add("json test_j {\"key\":\"to_string(i)\"}");
    }
-   manager->getDatabase("test3")->QuickSort();
+   manager->getDatabase("test3")->sort("quick");
    EXPECT_EQ("{\"key\":\"0\"}", manager->getDatabase("test3")->at(0));
 }
 
@@ -43,7 +43,7 @@ TEST(ARRAYDBTest, SelectionSortTesting) {
    for (int i = 0; i < 10; i++) {
       manager->getDatabase("test")->add("string test_s" + to_string(i));
    }
-   manager->getDatabase("test")->SelectionSort();
+   manager->getDatabase("test")->sort("selection");
    EXPECT_EQ(0, manager->getDatabase("test")->at(0));
 }
 
@@ -54,7 +54,7 @@ TEST(ARRAYDBTest, SelectionSortTestingJSON) {
    for (int i = 0; i < 10; i++) {
       manager->getDatabase("test3")->add("json test_j {\"key\":\"to_string(i)\"}");
    }
-   manager->getDatabase("test3")->SelectionSort();
+   manager->getDatabase("test3")->sort("selection");
    EXPECT_EQ("{\"key\":\"0\"}", manager->getDatabase("test3")->at(0));
 }
 
@@ -66,7 +66,7 @@ TEST(ARRAYDBTest, BogoSortTesting) {
    for (int i = 0; i < 3; i++) {
       manager->getDatabase("test")->add("string test_s" + to_string(i));
    }
-   manager->getDatabase("test")->BogoSort();
+   manager->getDatabase("test")->sort("bogo");
    EXPECT_EQ(0, manager->getDatabase("test")->at(0));
 }
 
@@ -75,7 +75,7 @@ TEST(ARRAYDBTest, BogoSortTestingJSON) {
    for (int i = 0; i < 3; i++) {
       manager->getDatabase("test3")->add("json test_j {\"key\":\"to_string(i)\"}");
    }
-   manager->getDatabase("test3")->BogoSort();
+   manager->getDatabase("test3")->sort("bogo");
    EXPECT_EQ("{\"key\":\"0\"}", manager->getDatabase("test3")->at(0));
 }
 //insetionSort
@@ -85,7 +85,7 @@ TEST(ARRAYDBTest, InsertionSortTesting) {
    for (int i = 0; i < 10; i++) {
       manager->getDatabase("test")->add("string test_s" + to_string(i));
    }
-   manager->getDatabase("test")->BogoSort();
+   manager->getDatabase("test")->sort("insertion");
    EXPECT_EQ(0, manager->getDatabase("test")->at(0));
 }
 
@@ -94,7 +94,7 @@ TEST(ARRAYDBTest, InsertionSortTestingJSON) {
    for (int i = 0; i < 10; i++) {
       manager->getDatabase("test3")->add("json test_j {\"key\":\"to_string(i)\"}");
    }
-   manager->getDatabase("test3")->BogoSort();
+   manager->getDatabase("test3")->sort("insertion");
    EXPECT_EQ("{\"key\":\"0\"}", manager->getDatabase("test3")->at(0));
 }
 
