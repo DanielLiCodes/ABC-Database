@@ -2,8 +2,8 @@
 #define BOGOSORT
 
 #include "./SortingStrategy.hpp"
-#include <stdlib.h>
 #include "../Nodes/DatabaseNode.h"
+#include <stdlib.h>
 #include <vector>
 using namespace std;
 
