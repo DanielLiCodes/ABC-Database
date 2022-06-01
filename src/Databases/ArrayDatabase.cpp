@@ -37,15 +37,15 @@ void ArrayDatabase::add(const string &context)
 }
 
 void ArrayDatabase::sort(string sortStrat){
-    SortingStrat* temp;
+    SortingStrategy* temp;
     if(sortStrat == "bogo"){
-        temp = new bogoSort();
+        temp = new BogoSort();
     }else if(sortStrat == "selection"){
-        temp = new selectionSort();
+        temp = new SelectionSort();
     }else if(sortStrat == "quick"){
-        temp = new quickSort();
+        temp = new QuickSort();
     }else{
-        temp = new insertionSort();
+        temp = new InsertionSort();
     }
     temp->sort(arr);
     delete temp;
