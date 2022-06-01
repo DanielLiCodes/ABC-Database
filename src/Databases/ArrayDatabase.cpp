@@ -15,7 +15,7 @@ using namespace std;
 
 string ArrayDatabase::at(int index)
 {
-    return arr[index]->print();
+    return arr.at(index)->print();
 }
 
 // EXAMPLE CONTEXT: "json <key> <rest send to context of Node>"
@@ -37,19 +37,19 @@ void ArrayDatabase::add(const string &context)
     }
 }
 
-void ArrayDatabase::sort(string sortStrat){
+void ArrayDatabase::sort(const string &name) {
+    if(!name.empty()) return;
     SortingStrategy* temp;
-    if(sortStrat == "bogo"){
+    if(name == "bogo"){
         temp = new BogoSort();
-    }else if(sortStrat == "selection"){
+    }else if(name == "selection"){
         temp = new SelectionSort();
-    }else if(sortStrat == "quick"){
+    }else if(name == "quick"){
         temp = new QuickSort();
     }else{
         temp = new InsertionSort();
     }
     temp->sort(arr);
-    delete temp;
 }
 
 // EXAMPLE CONTEXT: "<key> <rest send to context of Node>"

@@ -21,6 +21,7 @@ public:
     void set(const string &context);
     void remove(const string &context);
     int getSize();
+    void sort(const string &name);
 
 };
 

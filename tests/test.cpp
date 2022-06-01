@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 #include "databaseTest.hpp" 
-// #include "sortTests.hpp"
+#include "sortTests.hpp"
 // #include "utilTest.hpp"
 
 

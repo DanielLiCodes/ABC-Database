@@ -7,10 +7,10 @@
 #include <numeric>
 using namespace std;
 
-string HashTableDatabase::at(string key)
+string HashTableDatabase::at(int key)
 {
     int cur = 0;
-    return hashTable[key]->print();
+    return hashTable[to_string(key)]->print();
 }
 
 // example context add/str
@@ -46,4 +46,9 @@ void HashTableDatabase::remove(const string &context)
 {
     vector<string> ctx = getAllParameters(context);
     hashTable.erase(ctx.at(0));
+}
+
+
+void HashTableDatabase::sort(const string &name) {
+    return;
 }

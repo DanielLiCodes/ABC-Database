@@ -117,3 +117,6 @@ int LinkedListDatabase::getSize(){
     }
     return count;
 }
+
+
+void LinkedListDatabase::sort(const string &name) { return;}

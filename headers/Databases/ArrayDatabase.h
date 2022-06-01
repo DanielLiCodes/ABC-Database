@@ -10,11 +10,11 @@ using namespace std;
 class ArrayDatabase : public Database
 {
 private:
-    vector<unique_ptr<DatabaseNode> > arr;
+    vector<unique_ptr<DatabaseNode>> arr;
 public:
     ArrayDatabase(const string &name) : Database(name) {}
     ~ArrayDatabase() {};
-    void sort(string sortStrat = "insertion");
+    void sort(const string &name);
     string at(int index);
     void add(const string &context);
     DatabaseNode* get(const string &context);
