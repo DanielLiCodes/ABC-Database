@@ -25,6 +25,12 @@
 
 > * **Delete** - given an id, Using the hash algorithm, it will find the data stored at the location and delete it.
 
+> * **Database Manager** - This class sets and determines if an account has permission to access and modify a database. A database manager will be able to create and pull a database.
+
+> * **Databases** - There are three data structure types within our database, a linkedList, a Hashtable, and an array. Each of these can be populated by eaithera stringNode or a JSONNode.
+
+> * **DatabaseNodes** - As stated above, there are two databaseNodes, String and JSON. Theses nodes come with a set of add, get, set, and remove functions which allows a database Manager to maniuplate individual pieces of data in a sata structure.
+
 
  # Phase II
  
