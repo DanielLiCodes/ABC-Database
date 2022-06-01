@@ -91,9 +91,9 @@ Then on another terminal you can curl information for example:
 Which will create an array named accounts. The file below further describes the pathways of adding/setting/getting/removing/printing values into a database. Other than curl, you could also make a network request to the local host, with the correct path. This way, it can be used in other applications as a database, and is quick and easy to access!
 
 In order to add data to the database, you would make another network get request, to the same host, with a different url. For example, 
- > http://localhost:8080/database/add?db=accounts&context=string sheshank biju
+ > http://localhost:8080/database/add?db=accounts&context=string shashank biju
 
-would add a new string node, with key sheshank, and biju as the value. 
+would add a new string node, with key shashank, and biju as the value. 
 
 You can continue to do this until satisfied with the database
 [script.pdf](https://github.com/cs100/final-project-abcer/files/8809519/script.pdf)
