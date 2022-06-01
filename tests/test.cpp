@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-
+#include "sortTests.hpp"
 #include "databaseTest.hpp"
 // #include "utilTest.hpp"
 
